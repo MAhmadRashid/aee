@@ -1,0 +1,2660 @@
+[
+  {
+    "id": "royal-wood-h3nu6",
+    "name": "Royal Wood",
+    "brand": "Zero To One",
+    "category": "Perfumes",
+    "type": "Men",
+    "tagline": "A captivating perfumes perfect for any occasion.",
+    "price": 8900,
+    "originalPrice": 11558,
+    "rating": 4,
+    "reviews": 160,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Peach",
+        "Lemon"
+      ],
+      "middle": [
+        "Cedarwood",
+        "Freesia"
+      ],
+      "base": [
+        "Oud",
+        "Ambergris"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "50ml",
+        "price": 8900,
+        "originalPrice": 11558,
+        "stock": 33
+      }
+    ],
+    "image": "/images/lux_perfume_white_1788341260242.jpg",
+    "sku": "ZTO-1000",
+    "tags": [
+      "new-arrival",
+      "oriental"
+    ],
+    "discount_percentage": 23,
+    "stock_quantity": 87
+  },
+  {
+    "id": "noir-sultan-r1b13",
+    "name": "Noir Sultan",
+    "brand": "Zero To One",
+    "category": "Perfumes",
+    "type": "Women",
+    "tagline": "A captivating perfumes perfect for any occasion.",
+    "price": 8200,
+    "originalPrice": 8200,
+    "rating": 4.5,
+    "reviews": 87,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Pink Pepper",
+        "Marine Notes"
+      ],
+      "middle": [
+        "Tuberose",
+        "Ylang-Ylang"
+      ],
+      "base": [
+        "Musk",
+        "Vanilla"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "30ml",
+        "price": 8200,
+        "originalPrice": 8200,
+        "stock": 48
+      }
+    ],
+    "image": "/images/lux_perfume_attar_silver_1788341282939.jpg",
+    "sku": "ZTO-1001",
+    "tags": [
+      "new-arrival",
+      "long-lasting"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 97
+  },
+  {
+    "id": "pearl-ocean-qv1si",
+    "name": "Pearl Ocean",
+    "brand": "Zero To One",
+    "category": "Perfumes",
+    "type": "Unisex",
+    "tagline": "A captivating perfumes perfect for any occasion.",
+    "price": 8400,
+    "originalPrice": 8400,
+    "rating": 3.8,
+    "reviews": 17,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Grapefruit",
+        "Marine Notes"
+      ],
+      "middle": [
+        "Water Lily",
+        "Orchid"
+      ],
+      "base": [
+        "Tobacco",
+        "Vanilla"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "100ml",
+        "price": 8400,
+        "originalPrice": 8400,
+        "stock": 59
+      }
+    ],
+    "image": "/images/lux_perfume_green_1788341246573.jpg",
+    "sku": "ZTO-1002",
+    "tags": [
+      "new-arrival",
+      "oriental"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 37
+  },
+  {
+    "id": "oud-oud-3by5f",
+    "name": "Oud Oud",
+    "brand": "Zero To One",
+    "category": "Perfumes",
+    "type": "Women",
+    "tagline": "A captivating perfumes perfect for any occasion.",
+    "price": 4800,
+    "originalPrice": 4800,
+    "rating": 4.7,
+    "reviews": 442,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Green Apple",
+        "Saffron"
+      ],
+      "middle": [
+        "Orchid",
+        "Freesia"
+      ],
+      "base": [
+        "Oud",
+        "White Woods"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "50ml",
+        "price": 4800,
+        "originalPrice": 4800,
+        "stock": 47
+      }
+    ],
+    "image": "/images/lux_perfume_gold_1788341015227.jpg",
+    "sku": "ZTO-1003",
+    "tags": [
+      "new-arrival",
+      "oriental"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 34
+  },
+  {
+    "id": "crystal-forest-fu7xr",
+    "name": "Crystal Forest",
+    "brand": "Zero To One",
+    "category": "Perfumes",
+    "type": "Unisex",
+    "tagline": "A captivating perfumes perfect for any occasion.",
+    "price": 5500,
+    "originalPrice": 5500,
+    "rating": 4,
+    "reviews": 326,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Mandarin",
+        "Green Apple"
+      ],
+      "middle": [
+        "Jasmine",
+        "Cinnamon"
+      ],
+      "base": [
+        "Sandalwood",
+        "Oud"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "50ml",
+        "price": 5500,
+        "originalPrice": 5500,
+        "stock": 36
+      }
+    ],
+    "image": "/images/elegant_attar_bottle_1788340819742.jpg",
+    "sku": "ZTO-1004",
+    "tags": [
+      "new-arrival",
+      "long-lasting"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 100
+  },
+  {
+    "id": "oud-rose-0yweg",
+    "name": "Oud Rose",
+    "brand": "Zero To One",
+    "category": "Perfumes",
+    "type": "Women",
+    "tagline": "A captivating perfumes perfect for any occasion.",
+    "price": 5900,
+    "originalPrice": 5900,
+    "rating": 4.1,
+    "reviews": 425,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Bergamot",
+        "Mint"
+      ],
+      "middle": [
+        "Orchid",
+        "Jasmine"
+      ],
+      "base": [
+        "Amber",
+        "Sandalwood"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "100ml",
+        "price": 5900,
+        "originalPrice": 5900,
+        "stock": 88
+      }
+    ],
+    "image": "/images/lux_perfume_attar_silver_1788341282939.jpg",
+    "sku": "ZTO-1005",
+    "tags": [
+      "new-arrival",
+      "long-lasting"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 10
+  },
+  {
+    "id": "midnight-noor-7z5ml",
+    "name": "Midnight Noor",
+    "brand": "Zero To One",
+    "category": "Perfumes",
+    "type": "Women",
+    "tagline": "A captivating perfumes perfect for any occasion.",
+    "price": 4800,
+    "originalPrice": 4800,
+    "rating": 3.6,
+    "reviews": 460,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Saffron",
+        "Marine Notes"
+      ],
+      "middle": [
+        "Patchouli",
+        "Water Lily"
+      ],
+      "base": [
+        "Tonka Bean",
+        "Vanilla"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "30ml",
+        "price": 4800,
+        "originalPrice": 4800,
+        "stock": 84
+      }
+    ],
+    "image": "/images/lux_perfume_rose_1788341034384.jpg",
+    "sku": "ZTO-1006",
+    "tags": [
+      "new-arrival",
+      "floral"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 30
+  },
+  {
+    "id": "amber-blossom-bin6g",
+    "name": "Amber Blossom",
+    "brand": "Zero To One",
+    "category": "Perfumes",
+    "type": "Unisex",
+    "tagline": "A captivating perfumes perfect for any occasion.",
+    "price": 5700,
+    "originalPrice": 5700,
+    "rating": 4.7,
+    "reviews": 148,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Peach",
+        "Neroli"
+      ],
+      "middle": [
+        "Patchouli",
+        "Ylang-Ylang"
+      ],
+      "base": [
+        "Ambergris",
+        "Tonka Bean"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "50ml",
+        "price": 5700,
+        "originalPrice": 5700,
+        "stock": 82
+      }
+    ],
+    "image": "/images/luxury_perfume_bottle_1_1788340749010.jpg",
+    "sku": "ZTO-1007",
+    "tags": [
+      "new-arrival",
+      "floral"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 48
+  },
+  {
+    "id": "velvet-wood-boyq0",
+    "name": "Velvet Wood",
+    "brand": "Zero To One",
+    "category": "Perfumes",
+    "type": "Men",
+    "tagline": "A captivating perfumes perfect for any occasion.",
+    "price": 4300,
+    "originalPrice": 4300,
+    "rating": 4.4,
+    "reviews": 272,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Peach",
+        "Neroli"
+      ],
+      "middle": [
+        "Jasmine",
+        "Jasmine"
+      ],
+      "base": [
+        "Oud",
+        "Vanilla"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "50ml",
+        "price": 4300,
+        "originalPrice": 4300,
+        "stock": 36
+      }
+    ],
+    "image": "/images/lux_perfume_black_1788341271304.jpg",
+    "sku": "ZTO-1008",
+    "tags": [
+      "new-arrival",
+      "bestseller"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 84
+  },
+  {
+    "id": "noir-majesty-bwhnl",
+    "name": "Noir Majesty",
+    "brand": "Zero To One",
+    "category": "Perfumes",
+    "type": "Men",
+    "tagline": "A captivating perfumes perfect for any occasion.",
+    "price": 5500,
+    "originalPrice": 5500,
+    "rating": 4.3,
+    "reviews": 95,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Grapefruit",
+        "Bergamot"
+      ],
+      "middle": [
+        "Cinnamon",
+        "Geranium"
+      ],
+      "base": [
+        "Vetiver",
+        "Vanilla"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "30ml",
+        "price": 5500,
+        "originalPrice": 5500,
+        "stock": 88
+      }
+    ],
+    "image": "/images/gifting_perfume_box_1788340831147.jpg",
+    "sku": "ZTO-1009",
+    "tags": [
+      "new-arrival",
+      "oriental"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 89
+  },
+  {
+    "id": "emerald-jasmine-bfxgx",
+    "name": "Emerald Jasmine",
+    "brand": "Zero To One",
+    "category": "Perfumes",
+    "type": "Women",
+    "tagline": "A captivating perfumes perfect for any occasion.",
+    "price": 7900,
+    "originalPrice": 7900,
+    "rating": 3.7,
+    "reviews": 396,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Lemon",
+        "Mint"
+      ],
+      "middle": [
+        "Nutmeg",
+        "Rose"
+      ],
+      "base": [
+        "Amber",
+        "Vanilla"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "50ml",
+        "price": 7900,
+        "originalPrice": 7900,
+        "stock": 15
+      }
+    ],
+    "image": "/images/luxury_oud_perfume_1788340783393.jpg",
+    "sku": "ZTO-1010",
+    "tags": [
+      "new-arrival",
+      "bestseller"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 28
+  },
+  {
+    "id": "aeternum-ocean-gswif",
+    "name": "Aeternum Ocean",
+    "brand": "Zero To One",
+    "category": "Perfumes",
+    "type": "Men",
+    "tagline": "A captivating perfumes perfect for any occasion.",
+    "price": 3300,
+    "originalPrice": 3300,
+    "rating": 3.7,
+    "reviews": 182,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Grapefruit",
+        "Lavender"
+      ],
+      "middle": [
+        "Orchid",
+        "Cinnamon"
+      ],
+      "base": [
+        "Tonka Bean",
+        "Musk"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "100ml",
+        "price": 3300,
+        "originalPrice": 3300,
+        "stock": 87
+      }
+    ],
+    "image": "/images/elegant_attar_bottle_1788340819742.jpg",
+    "sku": "ZTO-1011",
+    "tags": [
+      "new-arrival",
+      "long-lasting"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 80
+  },
+  {
+    "id": "amber-rose-7gpyn",
+    "name": "Amber Rose",
+    "brand": "Zero To One",
+    "category": "Perfumes",
+    "type": "Men",
+    "tagline": "A captivating perfumes perfect for any occasion.",
+    "price": 5200,
+    "originalPrice": 5200,
+    "rating": 4.4,
+    "reviews": 52,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Mandarin",
+        "Neroli"
+      ],
+      "middle": [
+        "Jasmine",
+        "Peony"
+      ],
+      "base": [
+        "Leather",
+        "Sandalwood"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "30ml",
+        "price": 5200,
+        "originalPrice": 5200,
+        "stock": 78
+      }
+    ],
+    "image": "/images/lux_perfume_wax_1788341295831.jpg",
+    "sku": "ZTO-1012",
+    "tags": [
+      "new-arrival",
+      "floral"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 96
+  },
+  {
+    "id": "royal-vanilla-958cf",
+    "name": "Royal Vanilla",
+    "brand": "Zero To One",
+    "category": "Perfumes",
+    "type": "Unisex",
+    "tagline": "A captivating perfumes perfect for any occasion.",
+    "price": 4400,
+    "originalPrice": 4400,
+    "rating": 4.1,
+    "reviews": 99,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Bergamot",
+        "Green Apple"
+      ],
+      "middle": [
+        "Peony",
+        "Jasmine"
+      ],
+      "base": [
+        "Vetiver",
+        "Oud"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "30ml",
+        "price": 4400,
+        "originalPrice": 4400,
+        "stock": 92
+      }
+    ],
+    "image": "/images/elegant_attar_bottle_1788340819742.jpg",
+    "sku": "ZTO-1013",
+    "tags": [
+      "new-arrival",
+      "long-lasting"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 44
+  },
+  {
+    "id": "aeternum-glow-krhcx",
+    "name": "Aeternum Glow",
+    "brand": "Zero To One",
+    "category": "Perfumes",
+    "type": "Women",
+    "tagline": "A captivating perfumes perfect for any occasion.",
+    "price": 6900,
+    "originalPrice": 6900,
+    "rating": 4.7,
+    "reviews": 197,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Cardamom",
+        "Mint"
+      ],
+      "middle": [
+        "Ylang-Ylang",
+        "Peony"
+      ],
+      "base": [
+        "Praline",
+        "Vanilla"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "30ml",
+        "price": 6900,
+        "originalPrice": 6900,
+        "stock": 19
+      }
+    ],
+    "image": "/images/lux_perfume_gift_white_1788341306556.jpg",
+    "sku": "ZTO-1014",
+    "tags": [
+      "new-arrival",
+      "long-lasting"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 13
+  },
+  {
+    "id": "opal-riyasat-f8on0",
+    "name": "Opal Riyasat",
+    "brand": "Zero To One",
+    "category": "Perfume Wax / Attar",
+    "type": "Men",
+    "tagline": "A captivating perfume wax / attar perfect for any occasion.",
+    "price": 3000,
+    "originalPrice": 3000,
+    "rating": 4.3,
+    "reviews": 278,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Peach",
+        "Orange"
+      ],
+      "middle": [
+        "Cedarwood",
+        "Peony"
+      ],
+      "base": [
+        "White Woods",
+        "Leather"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "3ml",
+        "price": 3000,
+        "originalPrice": 3000,
+        "stock": 57
+      }
+    ],
+    "image": "/images/lux_perfume_attar_silver_1788341282939.jpg",
+    "sku": "ZTO-1015",
+    "tags": [
+      "new-arrival",
+      "floral"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 21
+  },
+  {
+    "id": "fleur-oud-387gr",
+    "name": "Fleur Oud",
+    "brand": "Zero To One",
+    "category": "Perfume Wax / Attar",
+    "type": "Unisex",
+    "tagline": "A captivating perfume wax / attar perfect for any occasion.",
+    "price": 1800,
+    "originalPrice": 2169,
+    "rating": 4.9,
+    "reviews": 274,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Mandarin",
+        "Lemon"
+      ],
+      "middle": [
+        "Orchid",
+        "Nutmeg"
+      ],
+      "base": [
+        "Tonka Bean",
+        "Ambergris"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "6ml",
+        "price": 1800,
+        "originalPrice": 2169,
+        "stock": 46
+      }
+    ],
+    "image": "/images/lux_perfume_rose_1788341034384.jpg",
+    "sku": "ZTO-1016",
+    "tags": [
+      "new-arrival",
+      "long-lasting"
+    ],
+    "discount_percentage": 17,
+    "stock_quantity": 97
+  },
+  {
+    "id": "desert-forest-t0xnu",
+    "name": "Desert Forest",
+    "brand": "Zero To One",
+    "category": "Perfume Wax / Attar",
+    "type": "Unisex",
+    "tagline": "A captivating perfume wax / attar perfect for any occasion.",
+    "price": 2100,
+    "originalPrice": 2100,
+    "rating": 4.5,
+    "reviews": 167,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Orange",
+        "Lemon"
+      ],
+      "middle": [
+        "Tuberose",
+        "Nutmeg"
+      ],
+      "base": [
+        "Oakmoss",
+        "Ambergris"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "6ml",
+        "price": 2100,
+        "originalPrice": 2100,
+        "stock": 77
+      }
+    ],
+    "image": "/images/lux_perfume_gold_1788341015227.jpg",
+    "sku": "ZTO-1017",
+    "tags": [
+      "new-arrival",
+      "bestseller"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 24
+  },
+  {
+    "id": "shahi-elixir-uh6w3",
+    "name": "Shahi Elixir",
+    "brand": "Zero To One",
+    "category": "Perfume Wax / Attar",
+    "type": "Unisex",
+    "tagline": "A captivating perfume wax / attar perfect for any occasion.",
+    "price": 1400,
+    "originalPrice": 1400,
+    "rating": 3.9,
+    "reviews": 306,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Mandarin",
+        "Cardamom"
+      ],
+      "middle": [
+        "Freesia",
+        "Peony"
+      ],
+      "base": [
+        "Tobacco",
+        "Oud"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "12ml",
+        "price": 1400,
+        "originalPrice": 1400,
+        "stock": 33
+      }
+    ],
+    "image": "/images/lux_perfume_black_1788341271304.jpg",
+    "sku": "ZTO-1018",
+    "tags": [
+      "new-arrival",
+      "bestseller"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 53
+  },
+  {
+    "id": "mystic-rose-57680",
+    "name": "Mystic Rose",
+    "brand": "Zero To One",
+    "category": "Perfume Wax / Attar",
+    "type": "Women",
+    "tagline": "A captivating perfume wax / attar perfect for any occasion.",
+    "price": 2300,
+    "originalPrice": 2300,
+    "rating": 3.7,
+    "reviews": 436,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Lemon",
+        "Peach"
+      ],
+      "middle": [
+        "Water Lily",
+        "Tuberose"
+      ],
+      "base": [
+        "Tobacco",
+        "Praline"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "12ml",
+        "price": 2300,
+        "originalPrice": 2300,
+        "stock": 41
+      }
+    ],
+    "image": "/images/lux_perfume_green_1788341246573.jpg",
+    "sku": "ZTO-1019",
+    "tags": [
+      "new-arrival",
+      "floral"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 12
+  },
+  {
+    "id": "velvet-petals-dtf1t",
+    "name": "Velvet Petals",
+    "brand": "Zero To One",
+    "category": "Perfume Wax / Attar",
+    "type": "Men",
+    "tagline": "A captivating perfume wax / attar perfect for any occasion.",
+    "price": 1300,
+    "originalPrice": 1300,
+    "rating": 4.6,
+    "reviews": 230,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Cardamom",
+        "Mandarin"
+      ],
+      "middle": [
+        "Cedarwood",
+        "Jasmine"
+      ],
+      "base": [
+        "White Woods",
+        "Oud"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "3ml",
+        "price": 1300,
+        "originalPrice": 1300,
+        "stock": 70
+      }
+    ],
+    "image": "/images/lux_perfume_attar_silver_1788341282939.jpg",
+    "sku": "ZTO-1020",
+    "tags": [
+      "new-arrival",
+      "floral"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 80
+  },
+  {
+    "id": "sapphire-nights-070rz",
+    "name": "Sapphire Nights",
+    "brand": "Zero To One",
+    "category": "Perfume Wax / Attar",
+    "type": "Unisex",
+    "tagline": "A captivating perfume wax / attar perfect for any occasion.",
+    "price": 1300,
+    "originalPrice": 1300,
+    "rating": 4.6,
+    "reviews": 448,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Cardamom",
+        "Lemon"
+      ],
+      "middle": [
+        "Nutmeg",
+        "Jasmine"
+      ],
+      "base": [
+        "Sandalwood",
+        "Musk"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "6ml",
+        "price": 1300,
+        "originalPrice": 1300,
+        "stock": 85
+      }
+    ],
+    "image": "/images/gifting_perfume_box_1788340831147.jpg",
+    "sku": "ZTO-1021",
+    "tags": [
+      "new-arrival",
+      "floral"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 50
+  },
+  {
+    "id": "desert-oud-4l5y1",
+    "name": "Desert Oud",
+    "brand": "Zero To One",
+    "category": "Perfume Wax / Attar",
+    "type": "Men",
+    "tagline": "A captivating perfume wax / attar perfect for any occasion.",
+    "price": 1800,
+    "originalPrice": 2022,
+    "rating": 3.7,
+    "reviews": 332,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Bergamot",
+        "Neroli"
+      ],
+      "middle": [
+        "Cedarwood",
+        "Rose"
+      ],
+      "base": [
+        "White Woods",
+        "Sandalwood"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "12ml",
+        "price": 1800,
+        "originalPrice": 2022,
+        "stock": 66
+      }
+    ],
+    "image": "/images/gifting_perfume_box_1788340831147.jpg",
+    "sku": "ZTO-1022",
+    "tags": [
+      "new-arrival",
+      "bestseller"
+    ],
+    "discount_percentage": 11,
+    "stock_quantity": 69
+  },
+  {
+    "id": "noir-petals-mj8yt",
+    "name": "Noir Petals",
+    "brand": "Zero To One",
+    "category": "Tester Box",
+    "type": "Men",
+    "tagline": "A captivating tester box perfect for any occasion.",
+    "price": 1100,
+    "originalPrice": 1392,
+    "rating": 3.6,
+    "reviews": 106,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Grapefruit",
+        "Mint"
+      ],
+      "middle": [
+        "Rose",
+        "Ylang-Ylang"
+      ],
+      "base": [
+        "Sandalwood",
+        "Ambergris"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "5x3ml",
+        "price": 1100,
+        "originalPrice": 1392,
+        "stock": 41
+      }
+    ],
+    "image": "/images/lux_perfume_gold_1788341015227.jpg",
+    "sku": "ZTO-1023",
+    "tags": [
+      "new-arrival",
+      "bestseller"
+    ],
+    "discount_percentage": 21,
+    "stock_quantity": 84
+  },
+  {
+    "id": "sapphire-wood-8a76n",
+    "name": "Sapphire Wood",
+    "brand": "Zero To One",
+    "category": "Tester Box",
+    "type": "Unisex",
+    "tagline": "A captivating tester box perfect for any occasion.",
+    "price": 600,
+    "originalPrice": 600,
+    "rating": 3.8,
+    "reviews": 433,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Green Apple",
+        "Grapefruit"
+      ],
+      "middle": [
+        "Rose",
+        "Orchid"
+      ],
+      "base": [
+        "Amber",
+        "Leather"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "5x3ml",
+        "price": 600,
+        "originalPrice": 600,
+        "stock": 50
+      }
+    ],
+    "image": "/images/luxury_perfume_bottle_1_1788340749010.jpg",
+    "sku": "ZTO-1024",
+    "tags": [
+      "new-arrival",
+      "oriental"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 52
+  },
+  {
+    "id": "emerald-breeze-xhmjb",
+    "name": "Emerald Breeze",
+    "brand": "Zero To One",
+    "category": "Tester Box",
+    "type": "Unisex",
+    "tagline": "A captivating tester box perfect for any occasion.",
+    "price": 800,
+    "originalPrice": 800,
+    "rating": 3.6,
+    "reviews": 85,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Lavender",
+        "Cardamom"
+      ],
+      "middle": [
+        "Peony",
+        "Ylang-Ylang"
+      ],
+      "base": [
+        "Musk",
+        "Vanilla"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "5x3ml",
+        "price": 800,
+        "originalPrice": 800,
+        "stock": 29
+      }
+    ],
+    "image": "/images/lux_perfume_black_1788341271304.jpg",
+    "sku": "ZTO-1025",
+    "tags": [
+      "new-arrival",
+      "long-lasting"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 68
+  },
+  {
+    "id": "amber-majesty-thnys",
+    "name": "Amber Majesty",
+    "brand": "Zero To One",
+    "category": "Tester Box",
+    "type": "Unisex",
+    "tagline": "A captivating tester box perfect for any occasion.",
+    "price": 1200,
+    "originalPrice": 1200,
+    "rating": 4.5,
+    "reviews": 251,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Lemon",
+        "Mint"
+      ],
+      "middle": [
+        "Water Lily",
+        "Cinnamon"
+      ],
+      "base": [
+        "Ambergris",
+        "Amber"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "5x3ml",
+        "price": 1200,
+        "originalPrice": 1200,
+        "stock": 73
+      }
+    ],
+    "image": "/images/lux_perfume_gold_1788341015227.jpg",
+    "sku": "ZTO-1026",
+    "tags": [
+      "new-arrival",
+      "oriental"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 86
+  },
+  {
+    "id": "fleur-nights-fbqxu",
+    "name": "Fleur Nights",
+    "brand": "Zero To One",
+    "category": "Tester Box",
+    "type": "Men",
+    "tagline": "A captivating tester box perfect for any occasion.",
+    "price": 700,
+    "originalPrice": 700,
+    "rating": 4.5,
+    "reviews": 368,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Cardamom",
+        "Lavender"
+      ],
+      "middle": [
+        "Cinnamon",
+        "Water Lily"
+      ],
+      "base": [
+        "Praline",
+        "Musk"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "5x3ml",
+        "price": 700,
+        "originalPrice": 700,
+        "stock": 84
+      }
+    ],
+    "image": "/images/gifting_perfume_box_1788340831147.jpg",
+    "sku": "ZTO-1027",
+    "tags": [
+      "new-arrival",
+      "oriental"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 100
+  },
+  {
+    "id": "aethel-sultan-h3cqm",
+    "name": "Aethel Sultan",
+    "brand": "Zero To One",
+    "category": "Sample Sets",
+    "type": "Unisex",
+    "tagline": "A captivating sample sets perfect for any occasion.",
+    "price": 1700,
+    "originalPrice": 2267,
+    "rating": 4.3,
+    "reviews": 268,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Bergamot",
+        "Lemon"
+      ],
+      "middle": [
+        "Geranium",
+        "Jasmine"
+      ],
+      "base": [
+        "Leather",
+        "Tobacco"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "3x5ml",
+        "price": 1700,
+        "originalPrice": 2267,
+        "stock": 21
+      }
+    ],
+    "image": "/images/elegant_attar_bottle_1788340819742.jpg",
+    "sku": "ZTO-1028",
+    "tags": [
+      "new-arrival",
+      "bestseller"
+    ],
+    "discount_percentage": 25,
+    "stock_quantity": 83
+  },
+  {
+    "id": "pearl-breeze-tgfzs",
+    "name": "Pearl Breeze",
+    "brand": "Zero To One",
+    "category": "Sample Sets",
+    "type": "Unisex",
+    "tagline": "A captivating sample sets perfect for any occasion.",
+    "price": 600,
+    "originalPrice": 741,
+    "rating": 4.5,
+    "reviews": 414,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Grapefruit",
+        "Neroli"
+      ],
+      "middle": [
+        "Water Lily",
+        "Rose"
+      ],
+      "base": [
+        "Praline",
+        "Musk"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "3x5ml",
+        "price": 600,
+        "originalPrice": 741,
+        "stock": 27
+      }
+    ],
+    "image": "/images/lux_perfume_wax_1788341295831.jpg",
+    "sku": "ZTO-1029",
+    "tags": [
+      "new-arrival",
+      "floral"
+    ],
+    "discount_percentage": 19,
+    "stock_quantity": 65
+  },
+  {
+    "id": "aethel-elixir-ueo77",
+    "name": "Aethel Elixir",
+    "brand": "Zero To One",
+    "category": "Sample Sets",
+    "type": "Unisex",
+    "tagline": "A captivating sample sets perfect for any occasion.",
+    "price": 2000,
+    "originalPrice": 2532,
+    "rating": 4.1,
+    "reviews": 107,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Mandarin",
+        "Saffron"
+      ],
+      "middle": [
+        "Cedarwood",
+        "Tuberose"
+      ],
+      "base": [
+        "Sandalwood",
+        "Tonka Bean"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "3x5ml",
+        "price": 2000,
+        "originalPrice": 2532,
+        "stock": 33
+      }
+    ],
+    "image": "/images/lux_perfume_attar_silver_1788341282939.jpg",
+    "sku": "ZTO-1030",
+    "tags": [
+      "new-arrival",
+      "oriental"
+    ],
+    "discount_percentage": 21,
+    "stock_quantity": 75
+  },
+  {
+    "id": "emerald-petals-uzlfa",
+    "name": "Emerald Petals",
+    "brand": "Zero To One",
+    "category": "Sample Sets",
+    "type": "Men",
+    "tagline": "A captivating sample sets perfect for any occasion.",
+    "price": 1100,
+    "originalPrice": 1100,
+    "rating": 4.5,
+    "reviews": 50,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Saffron",
+        "Lemon"
+      ],
+      "middle": [
+        "Peony",
+        "Freesia"
+      ],
+      "base": [
+        "Tonka Bean",
+        "Vanilla"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "3x5ml",
+        "price": 1100,
+        "originalPrice": 1100,
+        "stock": 52
+      }
+    ],
+    "image": "/images/lux_perfume_white_1788341260242.jpg",
+    "sku": "ZTO-1031",
+    "tags": [
+      "new-arrival",
+      "floral"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 15
+  },
+  {
+    "id": "zeenat-petals-l4vvs",
+    "name": "Zeenat Petals",
+    "brand": "Zero To One",
+    "category": "Sample Sets",
+    "type": "Women",
+    "tagline": "A captivating sample sets perfect for any occasion.",
+    "price": 1400,
+    "originalPrice": 1400,
+    "rating": 4,
+    "reviews": 339,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Mint",
+        "Lemon"
+      ],
+      "middle": [
+        "Geranium",
+        "Water Lily"
+      ],
+      "base": [
+        "Praline",
+        "Musk"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "3x5ml",
+        "price": 1400,
+        "originalPrice": 1400,
+        "stock": 23
+      }
+    ],
+    "image": "/images/lux_perfume_gift_white_1788341306556.jpg",
+    "sku": "ZTO-1032",
+    "tags": [
+      "new-arrival",
+      "bestseller"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 55
+  },
+  {
+    "id": "aeternum-rose-98d6l",
+    "name": "Aeternum Rose",
+    "brand": "Zero To One",
+    "category": "Body Mist",
+    "type": "Men",
+    "tagline": "A captivating body mist perfect for any occasion.",
+    "price": 1700,
+    "originalPrice": 1700,
+    "rating": 5,
+    "reviews": 141,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Marine Notes",
+        "Mint"
+      ],
+      "middle": [
+        "Water Lily",
+        "Orchid"
+      ],
+      "base": [
+        "Musk",
+        "White Woods"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "150ml",
+        "price": 1700,
+        "originalPrice": 1700,
+        "stock": 80
+      }
+    ],
+    "image": "/images/lux_perfume_green_1788341246573.jpg",
+    "sku": "ZTO-1033",
+    "tags": [
+      "new-arrival",
+      "oriental"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 55
+  },
+  {
+    "id": "royal-tears-ypu0q",
+    "name": "Royal Tears",
+    "brand": "Zero To One",
+    "category": "Body Mist",
+    "type": "Unisex",
+    "tagline": "A captivating body mist perfect for any occasion.",
+    "price": 1200,
+    "originalPrice": 1200,
+    "rating": 3.7,
+    "reviews": 211,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Orange",
+        "Peach"
+      ],
+      "middle": [
+        "Tuberose",
+        "Cedarwood"
+      ],
+      "base": [
+        "Tonka Bean",
+        "White Woods"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "200ml",
+        "price": 1200,
+        "originalPrice": 1200,
+        "stock": 54
+      }
+    ],
+    "image": "/images/lux_perfume_blue_1788341047539.jpg",
+    "sku": "ZTO-1034",
+    "tags": [
+      "new-arrival",
+      "long-lasting"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 10
+  },
+  {
+    "id": "velvet-sultan-vflas",
+    "name": "Velvet Sultan",
+    "brand": "Zero To One",
+    "category": "Body Mist",
+    "type": "Unisex",
+    "tagline": "A captivating body mist perfect for any occasion.",
+    "price": 1200,
+    "originalPrice": 1538,
+    "rating": 3.7,
+    "reviews": 152,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Neroli",
+        "Bergamot"
+      ],
+      "middle": [
+        "Tuberose",
+        "Rose"
+      ],
+      "base": [
+        "Leather",
+        "Musk"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "200ml",
+        "price": 1200,
+        "originalPrice": 1538,
+        "stock": 11
+      }
+    ],
+    "image": "/images/lux_perfume_gift_white_1788341306556.jpg",
+    "sku": "ZTO-1035",
+    "tags": [
+      "new-arrival",
+      "bestseller"
+    ],
+    "discount_percentage": 22,
+    "stock_quantity": 20
+  },
+  {
+    "id": "safa-riyasat-j7x6v",
+    "name": "Safa Riyasat",
+    "brand": "Zero To One",
+    "category": "Body Mist",
+    "type": "Women",
+    "tagline": "A captivating body mist perfect for any occasion.",
+    "price": 1600,
+    "originalPrice": 1600,
+    "rating": 4.2,
+    "reviews": 407,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Grapefruit",
+        "Saffron"
+      ],
+      "middle": [
+        "Nutmeg",
+        "Patchouli"
+      ],
+      "base": [
+        "Vanilla",
+        "Amber"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "150ml",
+        "price": 1600,
+        "originalPrice": 1600,
+        "stock": 53
+      }
+    ],
+    "image": "/images/luxury_perfume_bottle_1_1788340749010.jpg",
+    "sku": "ZTO-1036",
+    "tags": [
+      "new-arrival",
+      "floral"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 48
+  },
+  {
+    "id": "velvet-majesty-osdy6",
+    "name": "Velvet Majesty",
+    "brand": "Zero To One",
+    "category": "Body Mist",
+    "type": "Unisex",
+    "tagline": "A captivating body mist perfect for any occasion.",
+    "price": 1800,
+    "originalPrice": 1800,
+    "rating": 4.5,
+    "reviews": 105,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Cardamom",
+        "Neroli"
+      ],
+      "middle": [
+        "Tuberose",
+        "Rose"
+      ],
+      "base": [
+        "Vanilla",
+        "Sandalwood"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "150ml",
+        "price": 1800,
+        "originalPrice": 1800,
+        "stock": 44
+      }
+    ],
+    "image": "/images/luxury_perfume_bottle_1_1788340749010.jpg",
+    "sku": "ZTO-1037",
+    "tags": [
+      "new-arrival",
+      "floral"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 61
+  },
+  {
+    "id": "crystal-spice-50000",
+    "name": "Crystal Spice",
+    "brand": "Zero To One",
+    "category": "Air Care",
+    "type": "Unisex",
+    "tagline": "A captivating air care perfect for any occasion.",
+    "price": 900,
+    "originalPrice": 900,
+    "rating": 3.6,
+    "reviews": 277,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Mandarin",
+        "Green Apple"
+      ],
+      "middle": [
+        "Geranium",
+        "Cinnamon"
+      ],
+      "base": [
+        "White Woods",
+        "Amber"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "250ml",
+        "price": 900,
+        "originalPrice": 900,
+        "stock": 79
+      }
+    ],
+    "image": "/images/lux_perfume_gift_white_1788341306556.jpg",
+    "sku": "ZTO-1038",
+    "tags": [
+      "new-arrival",
+      "oriental"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 25
+  },
+  {
+    "id": "emerald-blossom-zij8u",
+    "name": "Emerald Blossom",
+    "brand": "Zero To One",
+    "category": "Air Care",
+    "type": "Women",
+    "tagline": "A captivating air care perfect for any occasion.",
+    "price": 700,
+    "originalPrice": 700,
+    "rating": 3.7,
+    "reviews": 393,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Lavender",
+        "Bergamot"
+      ],
+      "middle": [
+        "Geranium",
+        "Rose"
+      ],
+      "base": [
+        "Vetiver",
+        "Vetiver"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "250ml",
+        "price": 700,
+        "originalPrice": 700,
+        "stock": 91
+      }
+    ],
+    "image": "/images/luxury_perfume_bottle_1_1788340749010.jpg",
+    "sku": "ZTO-1039",
+    "tags": [
+      "new-arrival",
+      "oriental"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 68
+  },
+  {
+    "id": "noir-forest-ms079",
+    "name": "Noir Forest",
+    "brand": "Zero To One",
+    "category": "Air Care",
+    "type": "Unisex",
+    "tagline": "A captivating air care perfect for any occasion.",
+    "price": 800,
+    "originalPrice": 800,
+    "rating": 4.9,
+    "reviews": 342,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Neroli",
+        "Cardamom"
+      ],
+      "middle": [
+        "Orchid",
+        "Ylang-Ylang"
+      ],
+      "base": [
+        "Praline",
+        "Amber"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "250ml",
+        "price": 800,
+        "originalPrice": 800,
+        "stock": 44
+      }
+    ],
+    "image": "/images/lux_perfume_gift_white_1788341306556.jpg",
+    "sku": "ZTO-1040",
+    "tags": [
+      "new-arrival",
+      "oriental"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 56
+  },
+  {
+    "id": "aurora-oud-vi0hv",
+    "name": "Aurora Oud",
+    "brand": "Zero To One",
+    "category": "Air Care",
+    "type": "Women",
+    "tagline": "A captivating air care perfect for any occasion.",
+    "price": 800,
+    "originalPrice": 800,
+    "rating": 4.2,
+    "reviews": 349,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Peach",
+        "Lavender"
+      ],
+      "middle": [
+        "Ylang-Ylang",
+        "Nutmeg"
+      ],
+      "base": [
+        "Tonka Bean",
+        "Vanilla"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "250ml",
+        "price": 800,
+        "originalPrice": 800,
+        "stock": 27
+      }
+    ],
+    "image": "/images/lux_perfume_rose_1788341034384.jpg",
+    "sku": "ZTO-1041",
+    "tags": [
+      "new-arrival",
+      "bestseller"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 80
+  },
+  {
+    "id": "crystal-breeze-glifc",
+    "name": "Crystal Breeze",
+    "brand": "Zero To One",
+    "category": "Gift Box",
+    "type": "Women",
+    "tagline": "The perfect gift set featuring Crystal Breeze.",
+    "price": 6600,
+    "originalPrice": 6600,
+    "rating": 4,
+    "reviews": 321,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Orange",
+        "Lavender"
+      ],
+      "middle": [
+        "Jasmine",
+        "Nutmeg"
+      ],
+      "base": [
+        "Vanilla",
+        "White Woods"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "One Size",
+        "price": 6600,
+        "originalPrice": 6600,
+        "stock": 50
+      }
+    ],
+    "image": "/images/elegant_attar_bottle_1788340819742.jpg",
+    "sku": "ZTO-1042",
+    "tags": [
+      "new-arrival",
+      "long-lasting"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 15,
+    "bundle_contents": [
+      "50ml Crystal Breeze Perfume",
+      "15ml Attar",
+      "Body Mist"
+    ],
+    "packaging_description": "Premium matte black box with ribbon and magnetic closure.",
+    "occasion_tags": [
+      "Eid",
+      "Wedding",
+      "Anniversary"
+    ]
+  },
+  {
+    "id": "crystal-vanilla-jvram",
+    "name": "Crystal Vanilla",
+    "brand": "Zero To One",
+    "category": "Gift Box",
+    "type": "Women",
+    "tagline": "The perfect gift set featuring Crystal Vanilla.",
+    "price": 10300,
+    "originalPrice": 10300,
+    "rating": 4.6,
+    "reviews": 95,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Pink Pepper",
+        "Orange"
+      ],
+      "middle": [
+        "Peony",
+        "Nutmeg"
+      ],
+      "base": [
+        "Sandalwood",
+        "Oakmoss"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "One Size",
+        "price": 10300,
+        "originalPrice": 10300,
+        "stock": 98
+      }
+    ],
+    "image": "/images/luxury_oud_perfume_1788340783393.jpg",
+    "sku": "ZTO-1043",
+    "tags": [
+      "new-arrival",
+      "bestseller"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 62,
+    "bundle_contents": [
+      "50ml Crystal Vanilla Perfume",
+      "15ml Attar",
+      "Body Mist"
+    ],
+    "packaging_description": "Premium matte black box with ribbon and magnetic closure.",
+    "occasion_tags": [
+      "Eid",
+      "Wedding",
+      "Anniversary"
+    ]
+  },
+  {
+    "id": "opal-sultan-8ifbn",
+    "name": "Opal Sultan",
+    "brand": "Zero To One",
+    "category": "Gift Box",
+    "type": "Women",
+    "tagline": "The perfect gift set featuring Opal Sultan.",
+    "price": 8700,
+    "originalPrice": 8700,
+    "rating": 3.8,
+    "reviews": 13,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Bergamot",
+        "Neroli"
+      ],
+      "middle": [
+        "Ylang-Ylang",
+        "Nutmeg"
+      ],
+      "base": [
+        "Vetiver",
+        "Vanilla"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "One Size",
+        "price": 8700,
+        "originalPrice": 8700,
+        "stock": 81
+      }
+    ],
+    "image": "/images/lux_perfume_white_1788341260242.jpg",
+    "sku": "ZTO-1044",
+    "tags": [
+      "new-arrival",
+      "floral"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 68,
+    "bundle_contents": [
+      "50ml Opal Sultan Perfume",
+      "15ml Attar",
+      "Body Mist"
+    ],
+    "packaging_description": "Premium matte black box with ribbon and magnetic closure.",
+    "occasion_tags": [
+      "Eid",
+      "Wedding",
+      "Anniversary"
+    ]
+  },
+  {
+    "id": "emerald-wood-tx5rx",
+    "name": "Emerald Wood",
+    "brand": "Zero To One",
+    "category": "Gift Box",
+    "type": "Women",
+    "tagline": "The perfect gift set featuring Emerald Wood.",
+    "price": 12000,
+    "originalPrice": 12000,
+    "rating": 3.9,
+    "reviews": 296,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Mint",
+        "Neroli"
+      ],
+      "middle": [
+        "Ylang-Ylang",
+        "Orchid"
+      ],
+      "base": [
+        "Tobacco",
+        "White Woods"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "One Size",
+        "price": 12000,
+        "originalPrice": 12000,
+        "stock": 50
+      }
+    ],
+    "image": "/images/luxury_perfume_bottle_1_1788340749010.jpg",
+    "sku": "ZTO-1045",
+    "tags": [
+      "new-arrival",
+      "bestseller"
+    ],
+    "discount_percentage": 0,
+    "stock_quantity": 88,
+    "bundle_contents": [
+      "50ml Emerald Wood Perfume",
+      "15ml Attar",
+      "Body Mist"
+    ],
+    "packaging_description": "Premium matte black box with ribbon and magnetic closure.",
+    "occasion_tags": [
+      "Eid",
+      "Wedding",
+      "Anniversary"
+    ]
+  },
+  {
+    "id": "aurora-forest-fqoej",
+    "name": "Aurora Forest",
+    "brand": "Zero To One",
+    "category": "Gift Box",
+    "type": "Unisex",
+    "tagline": "The perfect gift set featuring Aurora Forest.",
+    "price": 6900,
+    "originalPrice": 8846,
+    "rating": 4.9,
+    "reviews": 158,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Lemon",
+        "Orange"
+      ],
+      "middle": [
+        "Nutmeg",
+        "Ylang-Ylang"
+      ],
+      "base": [
+        "Oakmoss",
+        "Amber"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "One Size",
+        "price": 6900,
+        "originalPrice": 8846,
+        "stock": 32
+      }
+    ],
+    "image": "/images/luxury_perfume_bottle_1_1788340749010.jpg",
+    "sku": "ZTO-1046",
+    "tags": [
+      "new-arrival",
+      "oriental"
+    ],
+    "discount_percentage": 22,
+    "stock_quantity": 88,
+    "bundle_contents": [
+      "50ml Aurora Forest Perfume",
+      "15ml Attar",
+      "Body Mist"
+    ],
+    "packaging_description": "Premium matte black box with ribbon and magnetic closure.",
+    "occasion_tags": [
+      "Eid",
+      "Wedding",
+      "Anniversary"
+    ]
+  },
+  {
+    "id": "zeenat-breeze-6emt4",
+    "name": "Zeenat Breeze",
+    "brand": "Zero To One",
+    "category": "Gift Box",
+    "type": "Men",
+    "tagline": "The perfect gift set featuring Zeenat Breeze.",
+    "price": 10900,
+    "originalPrice": 12111,
+    "rating": 4.1,
+    "reviews": 70,
+    "baseColor": "#000000",
+    "liquidColor": "#e0c097",
+    "capColor": "#d4af37",
+    "shapes": {
+      "bottle": "rectangular",
+      "cap": "round"
+    },
+    "qualities": {
+      "longevity": "8+ hours",
+      "sillage": "Moderate",
+      "season": "All Seasons"
+    },
+    "scentNotes": {
+      "top": [
+        "Cardamom",
+        "Marine Notes"
+      ],
+      "middle": [
+        "Ylang-Ylang",
+        "Orchid"
+      ],
+      "base": [
+        "Sandalwood",
+        "Musk"
+      ]
+    },
+    "sizeVariants": [
+      {
+        "size": "One Size",
+        "price": 10900,
+        "originalPrice": 12111,
+        "stock": 48
+      }
+    ],
+    "image": "/images/luxury_perfume_bottle_1_1788340749010.jpg",
+    "sku": "ZTO-1047",
+    "tags": [
+      "new-arrival",
+      "bestseller"
+    ],
+    "discount_percentage": 10,
+    "stock_quantity": 44,
+    "bundle_contents": [
+      "50ml Zeenat Breeze Perfume",
+      "15ml Attar",
+      "Body Mist"
+    ],
+    "packaging_description": "Premium matte black box with ribbon and magnetic closure.",
+    "occasion_tags": [
+      "Eid",
+      "Wedding",
+      "Anniversary"
+    ]
+  }
+]

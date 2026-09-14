@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AURA 3D Antigravity Fragrance</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at center, #1a1622 0%, #08060a 100%);
+      color: #f3f3f3;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      overflow: hidden;
+      height: 100vh;
+    }
+    #webgl-canvas { width: 100vw; height: 100vh; display: block; }
+    
+    /* Luxury HUD */
+    .hud-header {
+      position: absolute;
+      top: 30px;
+      left: 40px;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .hud-header h1 {
+      font-family: 'Cinzel', serif, sans-serif;
+      font-size: 26px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #d4af37;
+    }
+    .hud-header p {
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: #8c8599;
+      margin-top: 5px;
+    }
+
+    /* Floating Dock */
+    .control-dock {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 40px;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      z-index: 10;
+    }
+    .dock-btn {
+      background: transparent;
+      border: none;
+      color: #ccc;
+      font-size: 13px;
+      letter-spacing: 1px;
+      cursor: pointer;
+      padding: 8px 14px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+    .dock-btn:hover, .dock-btn.active {
+      background: rgba(212, 175, 55, 0.2);
+      color: #d4af37;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+    }
+    
+    /* Hotspot Badge */
+    .notes-card {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      background: rgba(18, 15, 24, 0.7);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      padding: 20px 24px;
+      border-radius: 16px;
+      max-width: 280px;
+      z-index: 10;
+    }
+    .notes-card h4 { color: #d4af37; font-size: 14px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+    .notes-card p { font-size: 12px; line-height: 1.6; color: #b5adc2; }
+    
+    /* CTA Button */
+    .cta-btn {
+      background: linear-gradient(135deg, #d4af37, #aa820a);
+      color: #0d0b10;
+      font-weight: 700;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      letter-spacing: 1px;
+      transition: transform 0.2s ease;
+    }
+    .cta-btn:hover { transform: scale(1.05); }
+
+    /* Properties Panel */
+    #properties-panel {
+      top: auto;
+      bottom: 120px;
+      right: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+      transition: all 0.5s ease;
+    }
+    #properties-panel.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+
+  <div class="hud-header">
+    <h1 id="perfume-name">AURA N°1</h1>
+    <p id="perfume-tagline">Antigravity 3D Olfactory Engine</p>
+  </div>
+
+  <div class="notes-card">
+    <h4>Scent Architecture</h4>
+    <p id="scent-notes">Top: Bergamot<br/>Heart: Jasmine Sambac<br/>Base: Golden Amber</p>
+    <p style="margin-top: 10px; font-size: 10px; color: #d4af37;">(Click bottle for 3D details)</p>
+  </div>
+
+  <div id="properties-panel" class="notes-card">
+    <h4>3D Properties</h4>
+    <p id="detailed-properties">Longevity: 12 Hours<br/>Sillage: Enormous<br/>Occasion: Evening Wear</p>
+  </div>
+
+  <div class="control-dock">
+    <button class="dock-btn active" onclick="switchVariant('Amber Glow', 0xe08b26, 'Top: Bergamot | Heart: Jasmine | Base: Amber', 'Longevity: 12 Hours | Sillage: Enormous | Occasion: Evening Wear')">Amber Glow</button>
+    <button class="dock-btn" onclick="switchVariant('Midnight Iris', 0x4b287a, 'Top: Pink Pepper | Heart: Black Iris | Base: Patchouli', 'Longevity: 10 Hours | Sillage: Moderate | Occasion: Formal')">Midnight Iris</button>
+    <button class="dock-btn" onclick="switchVariant('Rose Oud', 0xb02a45, 'Top: Damask Rose | Heart: Leather | Base: Agarwood', 'Longevity: 14 Hours | Sillage: Heavy | Occasion: Special Events')">Rose Oud</button>
+    <button class="cta-btn" onclick="triggerSnapExplode()">Toggle Assembly</button>
+  </div>
+
+  <canvas id="webgl-canvas"></canvas>
+
+  <script>
+    // 3D Scene Initialization
+    const canvas = document.getElementById('webgl-canvas');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+    camera.position.set(0, 0, 5);
+
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.maxDistance = 8;
+    controls.minDistance = 2.5;
+
+    // Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+    scene.add(ambientLight);
+
+    const goldPointLight = new THREE.PointLight(0xd4af37, 2, 10);
+    goldPointLight.position.set(2, 3, 2);
+    scene.add(goldPointLight);
+
+    const rimLight = new THREE.DirectionalLight(0x7e68d4, 1.5);
+    rimLight.position.set(-3, -2, -2);
+    scene.add(rimLight);
+
+    // 3D Perfume Assembly Group
+    const perfumeGroup = new THREE.Group();
+    scene.add(perfumeGroup);
+
+    // 1. Perfume Glass Body
+    const glassGeo = new THREE.BoxGeometry(1.2, 1.8, 0.8);
+    const glassMat = new THREE.MeshPhysicalMaterial({
+      color: 0xffffff,
+      transmission: 0.9,
+      opacity: 1,
+      transparent: true,
+      roughness: 0.05,
+      ior: 1.5,
+      metalness: 0.1
+    });
+    const glassBody = new THREE.Mesh(glassGeo, glassMat);
+    perfumeGroup.add(glassBody);
+
+    // 2. Perfume Liquid Inside
+    const liquidGeo = new THREE.BoxGeometry(1.05, 1.5, 0.65);
+    const liquidMat = new THREE.MeshPhysicalMaterial({
+      color: 0xe08b26,
+      transmission: 0.7,
+      transparent: true,
+      roughness: 0.2,
+      ior: 1.33
+    });
+    const liquid = new THREE.Mesh(liquidGeo, liquidMat);
+    liquid.position.y = -0.1;
+    perfumeGroup.add(liquid);
+
+    // 3. Metallic Gold Cap
+    const capGeo = new THREE.CylinderGeometry(0.35, 0.35, 0.6, 32);
+    const capMat = new THREE.MeshStandardMaterial({
+      color: 0xd4af37,
+      metalness: 0.9,
+      roughness: 0.2
+    });
+    const cap = new THREE.Mesh(capGeo, capMat);
+    cap.position.y = 1.2;
+    perfumeGroup.add(cap);
+
+    // 4. Floating Antigravity Ingredient Particles
+    const particlesGeo = new THREE.DodecahedronGeometry(0.04, 0);
+    const particlesMat = new THREE.MeshStandardMaterial({ color: 0xd4af37, roughness: 0.3 });
+    const particleGroup = new THREE.Group();
+
+    for (let i = 0; i < 40; i++) {
+      const p = new THREE.Mesh(particlesGeo, particlesMat);
+      p.position.set(
+        (Math.random() - 0.5) * 4,
+        (Math.random() - 0.5) * 4,
+        (Math.random() - 0.5) * 4
+      );
+      particleGroup.add(p);
+    }
+    scene.add(particleGroup);
+
+    // Animation variables
+    let clock = new THREE.Clock();
+    let isExploded = false;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const elapsedTime = clock.getElapsedTime();
+
+      // Antigravity Sine-wave floating
+      perfumeGroup.position.y = Math.sin(elapsedTime * 1.5) * 0.12;
+      perfumeGroup.rotation.y += 0.003;
+
+      // Orbiting particles
+      particleGroup.rotation.y = elapsedTime * 0.05;
+      particleGroup.rotation.x = Math.sin(elapsedTime * 0.1) * 0.2;
+
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Variant switcher
+    function switchVariant(name, colorHex, notes, details) {
+      liquidMat.color.setHex(colorHex);
+      document.getElementById('scent-notes').innerHTML = notes.replace(/ \| /g, '<br/>');
+      if (details) {
+        document.getElementById('detailed-properties').innerHTML = details.replace(/ \| /g, '<br/>');
+      }
+      
+      const buttons = document.querySelectorAll('.dock-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+    // Raycaster for 3D Click
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+    let isZoomed = false;
+
+    window.addEventListener('click', (event) => {
+      // Don't trigger if clicking buttons
+      if (event.target.tagName === 'BUTTON') return;
+
+      mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+      mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+      raycaster.setFromCamera( mouse, camera );
+      const intersects = raycaster.intersectObjects( perfumeGroup.children );
+
+      const propsPanel = document.getElementById('properties-panel');
+
+      if ( intersects.length > 0 ) {
+        if (!isZoomed) {
+          isZoomed = true;
+          gsap.to(camera.position, {
+            duration: 1.5,
+            x: 0,
+            y: 0,
+            z: 2.8,
+            ease: "power3.inOut"
+          });
+          propsPanel.classList.add('visible');
+        } else {
+          isZoomed = false;
+          gsap.to(camera.position, {
+            duration: 1.5,
+            x: 0,
+            y: 0,
+            z: 5,
+            ease: "power3.inOut"
+          });
+          propsPanel.classList.remove('visible');
+        }
+      }
+    });
+
+    // Toggle Exploded Assembly
+    function triggerSnapExplode() {
+      isExploded = !isExploded;
+      const targetY = isExploded ? 2.0 : 1.2;
+      const glassTargetScale = isExploded ? 1.15 : 1.0;
+
+      // Animate Cap and glass expansion
+      let startY = cap.position.y;
+      let startTime = performance.now();
+      
+      function step(now) {
+        let progress = Math.min((now - startTime) / 400, 1);
+        cap.position.y = startY + (targetY - startY) * progress;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    // Resize handling
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+</body>
+</html>

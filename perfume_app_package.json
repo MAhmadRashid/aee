@@ -1,0 +1,13 @@
+{
+  "name": "aura-3d-perfume-showcase",
+  "version": "1.0.0",
+  "description": "Interactive Antigravity 3D Perfume Web App built on Node.js and Three.js",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
