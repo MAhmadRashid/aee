@@ -5,9 +5,18 @@
     "category": "Perfumes",
     "gender": "Unisex",
     "scent_family": "Oriental",
-    "top_notes": ["Saffron", "Cardamom"],
-    "middle_notes": ["Damask Rose", "Jasmine"],
-    "base_notes": ["Oud", "Sandalwood"],
+    "top_notes": [
+      "Saffron",
+      "Cardamom"
+    ],
+    "middle_notes": [
+      "Damask Rose",
+      "Jasmine"
+    ],
+    "base_notes": [
+      "Oud",
+      "Sandalwood"
+    ],
     "short_description": "A mysterious blend of rich oud and warm spices.",
     "long_description": "Shab-e-Noor captures the essence of a tranquil, moonlit evening. The fragrance opens with a burst of exotic saffron and cardamom, smoothly transitioning into a floral heart of Damask rose. Finally, it settles into a deep, lingering base of majestic oud and sandalwood, creating an unforgettable aura.",
     "size": "100ml",
@@ -24,9 +33,18 @@
     "category": "Perfumes",
     "gender": "Women",
     "scent_family": "Floral",
-    "top_notes": ["Bergamot", "Peach"],
-    "middle_notes": ["Tuberose", "Ylang-Ylang"],
-    "base_notes": ["Vanilla", "White Musk"],
+    "top_notes": [
+      "Bergamot",
+      "Peach"
+    ],
+    "middle_notes": [
+      "Tuberose",
+      "Ylang-Ylang"
+    ],
+    "base_notes": [
+      "Vanilla",
+      "White Musk"
+    ],
     "short_description": "An opulent, lush floral bouquet with a creamy finish.",
     "long_description": "Inspired by the precious emerald, Zamarud Elixir is a celebration of femininity and grace. Bright, sparkling top notes of bergamot intertwine with sweet peach, leading to an intoxicating heart of tuberose. The dry down is a comforting, luxurious embrace of vanilla and white musk.",
     "size": "50ml",
@@ -43,9 +61,18 @@
     "category": "Perfumes",
     "gender": "Men",
     "scent_family": "Woody",
-    "top_notes": ["Black Pepper", "Grapefruit"],
-    "middle_notes": ["Leather", "Cedarwood"],
-    "base_notes": ["Amber", "Vetiver"],
+    "top_notes": [
+      "Black Pepper",
+      "Grapefruit"
+    ],
+    "middle_notes": [
+      "Leather",
+      "Cedarwood"
+    ],
+    "base_notes": [
+      "Amber",
+      "Vetiver"
+    ],
     "short_description": "A bold, sophisticated fragrance for the modern gentleman.",
     "long_description": "Imperial Leather exudes power, confidence, and sheer elegance. The sharp, spicy introduction of black pepper perfectly complements the rich, smoky leather heart. Deep base notes of amber and earthy vetiver ensure a commanding presence that lasts all day.",
     "size": "100ml",
@@ -62,9 +89,18 @@
     "category": "Perfumes",
     "gender": "Women",
     "scent_family": "Fresh",
-    "top_notes": ["Lemon", "Green Leaves"],
-    "middle_notes": ["Peony", "Lotus"],
-    "base_notes": ["Musk", "Cedar"],
+    "top_notes": [
+      "Lemon",
+      "Green Leaves"
+    ],
+    "middle_notes": [
+      "Peony",
+      "Lotus"
+    ],
+    "base_notes": [
+      "Musk",
+      "Cedar"
+    ],
     "short_description": "A vibrant, uplifting scent reminiscent of a spring morning.",
     "long_description": "Gul-e-Bahaar is a breath of fresh air, awakening the senses with zesty lemon and crisp green leaves. The delicate floral heart features peony and lotus, perfectly balanced by a soft, musky base. It is the ultimate everyday scent for the spirited woman.",
     "size": "100ml",
@@ -81,9 +117,18 @@
     "category": "Perfumes",
     "gender": "Men",
     "scent_family": "Oriental",
-    "top_notes": ["Cinnamon", "Nutmeg"],
-    "middle_notes": ["Agarwood (Oud)", "Patchouli"],
-    "base_notes": ["Amber", "Tobacco"],
+    "top_notes": [
+      "Cinnamon",
+      "Nutmeg"
+    ],
+    "middle_notes": [
+      "Agarwood (Oud)",
+      "Patchouli"
+    ],
+    "base_notes": [
+      "Amber",
+      "Tobacco"
+    ],
     "short_description": "The quintessential royal fragrance, smoky and undeniably rich.",
     "long_description": "Crafted for royalty, Sultan's Oud is an intense, unapologetic fragrance. Warm spices greet you instantly, while the heart unveils the true star: premium agarwood. The scent is anchored by robust tobacco and amber, leaving an intoxicating, regal trail.",
     "size": "50ml",
@@ -100,9 +145,19 @@
     "category": "Perfumes",
     "gender": "Unisex",
     "scent_family": "Gourmand",
-    "top_notes": ["Almond", "Coffee"],
-    "middle_notes": ["Jasmine", "Orange Blossom"],
-    "base_notes": ["Vanilla", "Tonka Bean", "Praline"],
+    "top_notes": [
+      "Almond",
+      "Coffee"
+    ],
+    "middle_notes": [
+      "Jasmine",
+      "Orange Blossom"
+    ],
+    "base_notes": [
+      "Vanilla",
+      "Tonka Bean",
+      "Praline"
+    ],
     "short_description": "A deliciously sweet, warm, and addictive fragrance.",
     "long_description": "Velvet Sahara wraps you in a comforting, decadent embrace. The unique opening of bitter almond and roasted coffee melts into a soft floral center. Its true magic lies in the base—a mouth-watering blend of vanilla, praline, and tonka bean that lingers sensually.",
     "size": "100ml",
@@ -119,9 +174,18 @@
     "category": "Perfumes",
     "gender": "Women",
     "scent_family": "Floral",
-    "top_notes": ["Mandarin Orange", "Pear"],
-    "middle_notes": ["Freesia", "Rose"],
-    "base_notes": ["White Woods", "Musk"],
+    "top_notes": [
+      "Mandarin Orange",
+      "Pear"
+    ],
+    "middle_notes": [
+      "Freesia",
+      "Rose"
+    ],
+    "base_notes": [
+      "White Woods",
+      "Musk"
+    ],
     "short_description": "Elegant, graceful, and beautifully delicate.",
     "long_description": "Zeenat Flora is the epitome of timeless elegance. It opens with the joyful brightness of mandarin and juicy pear. The core blooms with romantic freesia and classic rose, drying down to a serene finish of white woods and skin-like musk.",
     "size": "50ml",
@@ -138,9 +202,18 @@
     "category": "Perfumes",
     "gender": "Men",
     "scent_family": "Citrus",
-    "top_notes": ["Bergamot", "Neroli"],
-    "middle_notes": ["Sea Salt", "Rosemary"],
-    "base_notes": ["Cedar", "Musk"],
+    "top_notes": [
+      "Bergamot",
+      "Neroli"
+    ],
+    "middle_notes": [
+      "Sea Salt",
+      "Rosemary"
+    ],
+    "base_notes": [
+      "Cedar",
+      "Musk"
+    ],
     "short_description": "Crisp, cooling, and exceptionally invigorating.",
     "long_description": "Himalayan Breeze is like an icy gust of wind on a hot summer day. Zesty neroli and bergamot provide an immediate burst of energy. The addition of sea salt and aromatic rosemary creates a rugged, fresh profile, rounded out by a clean cedar base.",
     "size": "100ml",
@@ -157,9 +230,18 @@
     "category": "Perfumes",
     "gender": "Unisex",
     "scent_family": "Oriental",
-    "top_notes": ["Pink Pepper", "Bergamot"],
-    "middle_notes": ["Incense", "Labdanum"],
-    "base_notes": ["Ambergris", "Patchouli"],
+    "top_notes": [
+      "Pink Pepper",
+      "Bergamot"
+    ],
+    "middle_notes": [
+      "Incense",
+      "Labdanum"
+    ],
+    "base_notes": [
+      "Ambergris",
+      "Patchouli"
+    ],
     "short_description": "A magnificent, golden amber fragrance with a hint of spice.",
     "long_description": "Amber Riyasat tells a story of ancient empires and unbridled luxury. The sparkling pink pepper top note gives way to a mystical heart of incense. The dry down reveals a masterfully blended, luxurious ambergris and patchouli base that radiates warmth.",
     "size": "100ml",
@@ -176,9 +258,18 @@
     "category": "Perfumes",
     "gender": "Women",
     "scent_family": "Musky",
-    "top_notes": ["Aldehydes", "White Lily"],
-    "middle_notes": ["Jasmine", "Powdery Notes"],
-    "base_notes": ["White Musk", "Sandalwood"],
+    "top_notes": [
+      "Aldehydes",
+      "White Lily"
+    ],
+    "middle_notes": [
+      "Jasmine",
+      "Powdery Notes"
+    ],
+    "base_notes": [
+      "White Musk",
+      "Sandalwood"
+    ],
     "short_description": "Pure, clean, and softly angelic.",
     "long_description": "Rooh-e-Safa represents absolute purity and calmness. It opens with fresh, clean aldehydes and delicate white lily. The fragrance evolves into a comforting powdery jasmine, before settling into an incredibly soft, enduring white musk. Perfect for those who love understated luxury.",
     "size": "50ml",
@@ -195,9 +286,18 @@
     "category": "Perfume Wax / Attar",
     "gender": "Unisex",
     "scent_family": "Floral",
-    "top_notes": ["Taif Rose", "Geranium"],
-    "middle_notes": ["Saffron", "Honey"],
-    "base_notes": ["Oud", "Musk"],
+    "top_notes": [
+      "Taif Rose",
+      "Geranium"
+    ],
+    "middle_notes": [
+      "Saffron",
+      "Honey"
+    ],
+    "base_notes": [
+      "Oud",
+      "Musk"
+    ],
     "short_description": "A highly concentrated, premium royal rose attar.",
     "long_description": "Shahi Gulab Attar is a dense, luxurious oil extract crafted from the finest Taif roses. Infused with a touch of saffron and golden honey, it offers a deep, rich floral experience. A single drop of this potent attar provides an enchanting aura that lasts from dawn to dusk.",
     "size": "12ml",
@@ -214,9 +314,16 @@
     "category": "Perfume Wax / Attar",
     "gender": "Men",
     "scent_family": "Woody",
-    "top_notes": ["Cardamom"],
-    "middle_notes": ["Rosewood"],
-    "base_notes": ["Agarwood", "Sandalwood"],
+    "top_notes": [
+      "Cardamom"
+    ],
+    "middle_notes": [
+      "Rosewood"
+    ],
+    "base_notes": [
+      "Agarwood",
+      "Sandalwood"
+    ],
     "short_description": "A travel-friendly, alcohol-free solid perfume infused with premium oud.",
     "long_description": "Oud Majestic Wax redefines fragrance application. This solid perfume balm melts seamlessly into the skin, releasing a captivating, deep woody scent. Highly portable and entirely alcohol-free, it is the perfect companion for the modern man on the go.",
     "size": "15g",
@@ -233,9 +340,18 @@
     "category": "Perfume Wax / Attar",
     "gender": "Men",
     "scent_family": "Musky",
-    "top_notes": ["Lavender", "Lemon"],
-    "middle_notes": ["Jasmine", "Spices"],
-    "base_notes": ["Black Musk", "Oakmoss"],
+    "top_notes": [
+      "Lavender",
+      "Lemon"
+    ],
+    "middle_notes": [
+      "Jasmine",
+      "Spices"
+    ],
+    "base_notes": [
+      "Black Musk",
+      "Oakmoss"
+    ],
     "short_description": "A distinctly masculine, deep black musk attar.",
     "long_description": "Musk Al-Rijal is a tribute to classic, rugged masculinity. Opening with an unexpected fresh burst of lavender, it quickly transitions into a heavily spiced heart. The defining feature is its base of pure, untamed black musk that commands attention and respect.",
     "size": "12ml",
@@ -252,9 +368,18 @@
     "category": "Perfume Wax / Attar",
     "gender": "Women",
     "scent_family": "Floral",
-    "top_notes": ["Green Apple", "Peach"],
-    "middle_notes": ["Sambac Jasmine", "Lily of the Valley"],
-    "base_notes": ["Vanilla", "White Musk"],
+    "top_notes": [
+      "Green Apple",
+      "Peach"
+    ],
+    "middle_notes": [
+      "Sambac Jasmine",
+      "Lily of the Valley"
+    ],
+    "base_notes": [
+      "Vanilla",
+      "White Musk"
+    ],
     "short_description": "A beautifully scented, skin-nourishing solid jasmine perfume.",
     "long_description": "Jasmine Pearl Wax offers a delicate, intimate fragrance experience. The rich, creamy base of the wax holds the exquisite scent of Sambac jasmine in perfect harmony with sweet peach. It softens the skin while leaving a captivating, floral whisper.",
     "size": "15g",
@@ -271,9 +396,15 @@
     "category": "Sample Sets",
     "gender": "Unisex",
     "scent_family": "Woody",
-    "top_notes": ["Varies"],
-    "middle_notes": ["Varies"],
-    "base_notes": ["Varies"],
+    "top_notes": [
+      "Varies"
+    ],
+    "middle_notes": [
+      "Varies"
+    ],
+    "base_notes": [
+      "Varies"
+    ],
     "short_description": "A curated collection of our 5 best-selling unisex fragrances.",
     "long_description": "Not sure which scent suits you best? The Heritage Discovery Set includes five 5ml vials of our most celebrated unisex fragrances, ranging from deep ouds to fresh citrus. It's the perfect introduction to the Zero To One luxury collection or a thoughtful gift for a loved one.",
     "size": "5x5ml",
@@ -290,9 +421,15 @@
     "category": "Sample Sets",
     "gender": "Women",
     "scent_family": "Floral",
-    "top_notes": ["Varies"],
-    "middle_notes": ["Varies"],
-    "base_notes": ["Varies"],
+    "top_notes": [
+      "Varies"
+    ],
+    "middle_notes": [
+      "Varies"
+    ],
+    "base_notes": [
+      "Varies"
+    ],
     "short_description": "Three breathtaking floral scents designed for your special day.",
     "long_description": "The Bridal Fragrance Wardrobe is a luxurious sample set featuring three exquisitely romantic scents. Carefully curated to take a bride from her daytime ceremonies to the evening reception, each 5ml spray bottle is packed with intense, memorable floral and musky notes.",
     "size": "3x5ml",
@@ -309,9 +446,15 @@
     "category": "Sample Sets",
     "gender": "Men",
     "scent_family": "Oriental",
-    "top_notes": ["Varies"],
-    "middle_notes": ["Varies"],
-    "base_notes": ["Varies"],
+    "top_notes": [
+      "Varies"
+    ],
+    "middle_notes": [
+      "Varies"
+    ],
+    "base_notes": [
+      "Varies"
+    ],
     "short_description": "Four commanding men's fragrances for the modern executive.",
     "long_description": "The Gentleman's Edit is designed for the man of distinction. Featuring four 5ml luxury samples of our premium woody, oriental, and leather-based perfumes. It provides versatility for the office, formal dinners, and casual weekends.",
     "size": "4x5ml",
@@ -328,9 +471,18 @@
     "category": "Body Mist",
     "gender": "Unisex",
     "scent_family": "Fresh",
-    "top_notes": ["Marine Notes", "Mint"],
-    "middle_notes": ["Water Lily", "Lavender"],
-    "base_notes": ["White Cedar", "Musk"],
+    "top_notes": [
+      "Marine Notes",
+      "Mint"
+    ],
+    "middle_notes": [
+      "Water Lily",
+      "Lavender"
+    ],
+    "base_notes": [
+      "White Cedar",
+      "Musk"
+    ],
     "short_description": "A light, refreshing mist that feels like a cool ocean spray.",
     "long_description": "Perfect for intense summer heat, Ocean Breeze Body Mist is an instant refresher. The aquatic marine notes and cooling mint instantly revitalize the senses. Light enough to be sprayed generously throughout the day, leaving a clean, subtle trail.",
     "size": "150ml",
@@ -347,9 +499,18 @@
     "category": "Body Mist",
     "gender": "Women",
     "scent_family": "Gourmand",
-    "top_notes": ["Strawberry", "Coconut Water"],
-    "middle_notes": ["Pink Peony", "Jasmine"],
-    "base_notes": ["Cotton Candy", "Vanilla"],
+    "top_notes": [
+      "Strawberry",
+      "Coconut Water"
+    ],
+    "middle_notes": [
+      "Pink Peony",
+      "Jasmine"
+    ],
+    "base_notes": [
+      "Cotton Candy",
+      "Vanilla"
+    ],
     "short_description": "A playful, sweet, and incredibly charming daily mist.",
     "long_description": "Sweet Blossom is a joyous celebration of youth and charm. Bursting with the sweetness of ripe strawberries and refreshing coconut water, it settles into a delightful cotton candy and vanilla base. Ideal for after-shower freshness or a quick midday pick-me-up.",
     "size": "150ml",
@@ -366,9 +527,18 @@
     "category": "Body Mist",
     "gender": "Men",
     "scent_family": "Woody",
-    "top_notes": ["Bergamot", "Black Pepper"],
-    "middle_notes": ["Cardamom", "Geranium"],
-    "base_notes": ["Sandalwood", "Tonka Bean"],
+    "top_notes": [
+      "Bergamot",
+      "Black Pepper"
+    ],
+    "middle_notes": [
+      "Cardamom",
+      "Geranium"
+    ],
+    "base_notes": [
+      "Sandalwood",
+      "Tonka Bean"
+    ],
     "short_description": "A deep, alluring mist for post-gym or evening freshness.",
     "long_description": "Unlike traditional heavy colognes, Midnight Spice offers a lighter, highly breathable alternative. It combines the warm spice of cardamom with fresh bergamot. It's the perfect grooming essential to keep in your gym bag or car for instant sophistication.",
     "size": "150ml",
@@ -385,9 +555,16 @@
     "category": "Air Care / Home Fragrance",
     "gender": "Unisex",
     "scent_family": "Oriental",
-    "top_notes": ["Rosewood"],
-    "middle_notes": ["Agarwood (Oud)"],
-    "base_notes": ["Amber", "Sandalwood"],
+    "top_notes": [
+      "Rosewood"
+    ],
+    "middle_notes": [
+      "Agarwood (Oud)"
+    ],
+    "base_notes": [
+      "Amber",
+      "Sandalwood"
+    ],
     "short_description": "Transform your home with the luxurious, lingering scent of royal oud.",
     "long_description": "The Majestic Oud Reed Diffuser brings the opulent atmosphere of a Middle Eastern palace right into your living room. Formulated with premium fragrance oils, the thick black rattan reeds continuously diffuse a warm, inviting woody aroma. Beautifully designed to double as an elegant decor piece.",
     "size": "120ml",
@@ -404,9 +581,15 @@
     "category": "Air Care / Home Fragrance",
     "gender": "Unisex",
     "scent_family": "Floral",
-    "top_notes": ["Fresh Citrus"],
-    "middle_notes": ["Night-Blooming Jasmine"],
-    "base_notes": ["White Musk"],
+    "top_notes": [
+      "Fresh Citrus"
+    ],
+    "middle_notes": [
+      "Night-Blooming Jasmine"
+    ],
+    "base_notes": [
+      "White Musk"
+    ],
     "short_description": "Instantly refresh your space with the calming scent of jasmine.",
     "long_description": "Elevate your surroundings instantly with the Serene Jasmine Room Spray. A single spritz transforms any room, neutralizing unwanted odors and replacing them with a crisp, blooming floral scent. Perfect for bedrooms, guest spaces, or creating a relaxing spa-like ambiance at home.",
     "size": "250ml",

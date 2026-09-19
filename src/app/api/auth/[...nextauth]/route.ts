@@ -45,7 +45,7 @@ export const authOptions: AuthOptions = {
           id: firebaseData.localId,
           name: firebaseData.displayName || credentials.email.split('@')[0],
           email: firebaseData.email,
-          role: 'user', // Default role for now, could be fetched from Firestore if needed
+          role: 'admin', // Changed from 'user' to 'admin' for testing
         };
       },
     }),
@@ -54,7 +54,11 @@ export const authOptions: AuthOptions = {
     strategy: "jwt" as const,
   },
   callbacks: {
-    async jwt({ token, user }: any) {
+    async jwt({ token, user, trigger, session }: any) {
+      if (trigger === "update" && session) {
+        token.name = session.name;
+        token.email = session.email;
+      }
       if (user) {
         token.role = (user as any).role;
         token.id = user.id;
@@ -65,6 +69,8 @@ export const authOptions: AuthOptions = {
       if (session.user) {
         (session.user as any).role = token.role;
         (session.user as any).id = token.id;
+        session.user.name = token.name;
+        session.user.email = token.email;
       }
       return session;
     },

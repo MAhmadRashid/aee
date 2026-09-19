@@ -89,7 +89,7 @@
           "size": "Set",
           "price": 18500,
           "originalPrice": 22000,
-          "stock": 5
+          "stock": 100
         }
       ],
       "image": "/images/gift_red_box.jpg"
@@ -136,7 +136,7 @@
           "size": "Set",
           "price": 16000,
           "originalPrice": 19500,
-          "stock": 8
+          "stock": 100
         }
       ],
       "image": "/images/gift_green_box.jpg"
@@ -570,13 +570,13 @@
           "size": "50ml",
           "price": 12783,
           "originalPrice": 16915,
-          "stock": 9
+          "stock": 100
         },
         {
           "size": "100ml",
           "price": 17529,
           "originalPrice": 22933,
-          "stock": 3
+          "stock": 100
         }
       ],
       "image": "https://images.unsplash.com/photo-1608528577891-eb055944f2e7?q=80&w=600&auto=format&fit=crop"

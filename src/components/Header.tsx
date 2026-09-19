@@ -25,32 +25,32 @@ export function Header() {
     { 
       id: 'midnight-gold', 
       name: 'Royal Sapphire', 
-      colors: ['#040914', '#0A1121', '#D4AF37'] 
+      colors: ['#02040A', '#070B14', '#D4AF37'] 
     },
     { 
-      id: 'rose-quartz', 
-      name: 'Rose Noir', 
-      colors: ['#0A0708', '#120D0F', '#C89B9B'] 
+      id: 'obsidian-silver', 
+      name: 'Obsidian Platinum', 
+      colors: ['#050505', '#0E0E0E', '#E5E4E2'] 
     },
     { 
-      id: 'emerald-onyx', 
-      name: 'Emerald Onyx', 
-      colors: ['#040D09', '#081711', '#C5A869'] 
+      id: 'amber-oud', 
+      name: 'Amber Oud', 
+      colors: ['#0A0604', '#120A06', '#C87D46'] 
     }
   ];
 
   return (
     <>
-      <div className="w-full sticky top-0 z-[100] bg-[var(--color-surface)]/95 backdrop-blur-lg border-b border-[var(--color-border)] transition-all duration-300">
+      <header className="w-full sticky top-0 z-[100] bg-neutral-950/90 backdrop-blur-md border-b border-white/10 transition-all duration-300">
         {/* Top Announcement Bar */}
-        <div className="w-full bg-[var(--color-background)]/50 text-[var(--color-text)]/90 text-[9px] py-1.5 px-6 flex justify-between items-center font-bold tracking-[0.2em] uppercase border-b border-[var(--color-border)]">
+        <div className="w-full bg-black/50 text-neutral-400 text-[9px] py-1.5 px-6 flex justify-between items-center font-bold tracking-[0.2em] uppercase border-b border-white/5">
           <div className="flex-1 hidden md:block"></div>
           <div className="text-center flex-1">Welcome to Anti-Gravity Elegance</div>
           <div className="flex-1 flex justify-end">
             <select 
               value={currencyCode} 
               onChange={(e) => changeCurrency(e.target.value)}
-              className="bg-transparent text-[var(--color-text)]/90 border-none outline-none cursor-pointer font-bold tracking-[0.1em] py-0 m-0 leading-none"
+              className="bg-transparent text-neutral-400 border-none outline-none cursor-pointer font-bold tracking-[0.1em] py-0 m-0 leading-none"
             >
               <option value="PKR" className="text-black">PKR</option>
               <option value="USD" className="text-black">USD</option>
@@ -61,139 +61,129 @@ export function Header() {
           </div>
         </div>
 
-        {/* Main Header */}
-        <header className="w-full bg-transparent transition-all duration-300">
-          <div className="max-w-[1600px] mx-auto px-6 py-5 flex items-center justify-between">
-            {/* Search (Left) */}
-            <div className="flex-1 flex items-center">
-              <div className="relative w-48 sm:w-64 flex items-center border-b border-[var(--color-border)] pb-1 focus-within:border-[var(--color-text)] transition-colors">
-                <button 
-                  onClick={() => {
-                    if (searchQuery.trim()) {
-                      router.push(`/shop?search=${encodeURIComponent(searchQuery.trim())}`);
-                    }
-                  }}
-                  className="p-1 group"
-                >
-                  <Search className="w-4 h-4 text-[var(--color-text-muted)] group-hover:text-[var(--color-text)] transition-colors" />
-                </button>
-                <input 
-                  type="text" 
-                  placeholder="Search" 
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' && searchQuery.trim()) {
-                      router.push(`/shop?search=${encodeURIComponent(searchQuery.trim())}`);
-                    }
-                  }}
-                  className="w-full bg-transparent text-[var(--color-text)] text-[10px] font-bold uppercase tracking-[0.2em] pl-2 focus:outline-none placeholder:text-[var(--color-text-muted)]"
-                />
-              </div>
+        {/* Top Utility Bar */}
+        <div className="max-w-[1600px] mx-auto px-6 py-4 flex items-center justify-between">
+          {/* Search (Left) */}
+          <div className="flex-1">
+            <div className="relative w-48 sm:w-64 flex items-center border-b border-white/20 pb-1 focus-within:border-white transition-colors">
+              <button 
+                onClick={() => {
+                  if (searchQuery.trim()) {
+                    router.push(`/shop?search=${encodeURIComponent(searchQuery.trim())}`);
+                  }
+                }}
+                className="p-1 group flex items-center gap-2 text-xs uppercase tracking-widest text-neutral-400 hover:text-white transition-colors"
+              >
+                <Search className="w-4 h-4" />
+              </button>
+              <input 
+                type="text" 
+                placeholder="Search" 
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && searchQuery.trim()) {
+                    router.push(`/shop?search=${encodeURIComponent(searchQuery.trim())}`);
+                  }
+                }}
+                className="w-full bg-transparent text-white text-[10px] font-bold uppercase tracking-[0.2em] pl-2 focus:outline-none placeholder:text-neutral-500"
+              />
             </div>
+          </div>
 
-            <div className="flex-1 flex justify-center items-center">
-              <Link href="/">
-                <h1 className="font-serif text-3xl sm:text-4xl font-light tracking-[0.4em] text-center hover:opacity-80 transition cursor-pointer text-[var(--color-text)] leading-none pt-1">
-                  ZERO TO ONE
-                </h1>
-              </Link>
-            </div>
+          {/* Main Brand Logo */}
+          <div className="text-center flex-1">
+            <Link href="/">
+              <h1 className="font-serif text-2xl md:text-3xl tracking-[0.3em] uppercase text-white hover:opacity-90 transition-opacity">
+                ZERO TO ONE
+              </h1>
+            </Link>
+          </div>
 
-            {/* Icons (Right) */}
-            <div className="flex-1 flex justify-end items-center space-x-6 text-[10px] font-bold tracking-[0.2em] uppercase text-[var(--color-text)]">
-              
-              {/* Theme Toggle */}
-              <div className="relative">
+          {/* Right Actions */}
+          <div className="flex-1 flex items-center justify-end gap-6 text-xs uppercase tracking-wider text-neutral-300">
+            {/* Theme Toggle */}
+            <div className="relative">
                 <button 
                   onClick={() => setShowThemeMenu(!showThemeMenu)} 
-                  className="flex items-center space-x-2 hover:text-[var(--color-accent)] transition"
+                  className="hover:text-amber-200 transition-colors hidden sm:flex items-center gap-1.5"
                 >
-                  {theme === 'midnight-gold' ? <Moon className="w-[18px] h-[18px]" /> : theme === 'emerald-onyx' ? <Tag className="w-[18px] h-[18px]" /> : theme === 'rose-quartz' ? <Sparkles className="w-[18px] h-[18px]" /> : <Sun className="w-[18px] h-[18px]" />}
-                  <span className="hidden sm:inline">Theme</span>
+                  {theme === 'midnight-gold' ? <Moon className="w-[14px] h-[14px]" /> : theme === 'amber-oud' ? <Tag className="w-[14px] h-[14px]" /> : theme === 'obsidian-silver' ? <Sparkles className="w-[14px] h-[14px]" /> : <Sun className="w-[14px] h-[14px]" />}
+                  <span>Theme</span>
                 </button>
-                
-                <AnimatePresence>
-                  {showThemeMenu && (
-                    <motion.div 
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      className="absolute right-0 mt-6 w-56 bg-[var(--color-surface)]/95 backdrop-blur-xl border border-[var(--color-border)] shadow-2xl z-50 p-2 rounded-sm"
-                    >
-                      {themes.map(t => (
-                        <button 
-                          key={t.id}
-                          onClick={() => { setTheme(t.id as any); setShowThemeMenu(false); }}
-                          className={`w-full flex items-center px-4 py-3 text-left hover:bg-[var(--color-background)] transition ${theme === t.id ? 'font-black text-[var(--color-accent)]' : 'text-[var(--color-text)]'}`}
-                        >
-                          <div className="flex space-x-1 mr-3 border border-[var(--color-border)] rounded-full overflow-hidden w-6 h-4">
-                             <div style={{ backgroundColor: t.colors[0] }} className="w-1/3 h-full" />
-                             <div style={{ backgroundColor: t.colors[1] }} className="w-1/3 h-full" />
-                             <div style={{ backgroundColor: t.colors[2] }} className="w-1/3 h-full" />
-                          </div>
-                          <span className="text-[10px] tracking-[0.1em] uppercase">{t.name}</span>
-                        </button>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
-              <Link href="/account" className="flex items-center space-x-2 hover:text-[var(--color-accent)] transition">
-                <User className="w-[18px] h-[18px]" />
-                <span className="hidden sm:inline">Account</span>
-              </Link>
-
-              <button onClick={() => setIsCartOpen(true)} className="flex items-center space-x-2 hover:text-[var(--color-accent)] transition relative">
-                <ShoppingBag className="w-[18px] h-[18px]" />
-                <span className="hidden sm:inline">Cart</span>
-                {cartCount > 0 && (
-                  <span className="ml-1 w-5 h-5 bg-[#C5A059] text-[9px] font-bold rounded-full flex items-center justify-center text-white">
-                    {cartCount}
-                  </span>
+              
+              <AnimatePresence>
+                {showThemeMenu && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    className="absolute right-0 mt-6 w-56 bg-neutral-900/95 backdrop-blur-xl border border-white/10 shadow-2xl z-50 p-2 rounded-sm"
+                  >
+                    {themes.map(t => (
+                      <button 
+                        key={t.id}
+                        onClick={() => { setTheme(t.id as any); setShowThemeMenu(false); }}
+                        className={`w-full flex items-center px-4 py-3 text-left hover:bg-white/5 transition ${theme === t.id ? 'font-black text-[#D4AF37]' : 'text-neutral-300'}`}
+                      >
+                        <div className="flex space-x-1 mr-3 border border-white/10 rounded-full overflow-hidden w-6 h-4">
+                           <div style={{ backgroundColor: t.colors[0] }} className="w-1/3 h-full" />
+                           <div style={{ backgroundColor: t.colors[1] }} className="w-1/3 h-full" />
+                           <div style={{ backgroundColor: t.colors[2] }} className="w-1/3 h-full" />
+                        </div>
+                        <span className="text-[10px] tracking-[0.1em] uppercase">{t.name}</span>
+                      </button>
+                    ))}
+                  </motion.div>
                 )}
-              </button>
+              </AnimatePresence>
             </div>
-          </div>
-        </header>
 
-        {/* Sub-Navigation Bar */}
-        <nav className="w-full bg-[var(--color-background)] backdrop-blur-md transition-colors duration-500 border-t border-[var(--color-border)] shadow-sm hidden md:block py-3">
-          <div className="max-w-[1600px] mx-auto flex justify-center items-center space-x-8 text-[12px] font-bold tracking-[0.05em] uppercase text-center whitespace-nowrap">
-            <Link href="/" className={`flex items-center transition ${pathname === '/' ? 'text-[var(--color-accent)]' : 'text-[var(--color-text)]/90 hover:text-[var(--color-accent)]'}`}>
-              <Home className="w-3 h-3 mr-1" /> HOME
+            <Link href="/account" className="hover:text-amber-200 transition-colors hidden sm:block">
+              Account
             </Link>
-            <Link href="/shop" className={`flex items-center transition ${pathname.startsWith('/shop') ? 'text-[var(--color-accent)]' : 'text-[var(--color-text)]/90 hover:text-[var(--color-accent)]'}`}>
-              SHOP <ChevronDown className="w-3 h-3 ml-1" />
-            </Link>
-            <Link href="/fragrance-finder" className={`transition ${pathname.startsWith('/fragrance-finder') ? 'text-[var(--color-accent)]' : 'text-[var(--color-text)]/90 hover:text-[var(--color-accent)]'}`}>
-              FRAGRANCE FINDER
-            </Link>
-            <Link href="/custom-box" className={`transition ${pathname.startsWith('/custom-box') ? 'text-[var(--color-accent)]' : 'text-[var(--color-text)]/90 hover:text-[var(--color-accent)]'}`}>
-              BUILD A BOX
-            </Link>
-            <Link href="/category/gifting-packages" className={`transition ${pathname === '/category/gifting-packages' ? 'text-[var(--color-accent)]' : 'text-[var(--color-text)]/90 hover:text-[var(--color-accent)]'}`}>
-              GIFTING PACKAGES
-            </Link>
-            <Link href="/category/oud" className={`transition ${pathname === '/category/oud' ? 'text-[var(--color-accent)]' : 'text-[var(--color-text)]/90 hover:text-[var(--color-accent)]'}`}>
-              OUD
-            </Link>
-            <Link href="/category/attar" className={`transition ${pathname === '/category/attar' ? 'text-[var(--color-accent)]' : 'text-[var(--color-text)]/90 hover:text-[var(--color-accent)]'}`}>
-              ATTAR
-            </Link>
-            <Link href="/loyalty" className={`flex items-center transition ${pathname.startsWith('/loyalty') ? 'text-[var(--color-accent)]' : 'text-[var(--color-text)]/90 hover:text-[var(--color-accent)]'}`}>
-              LOYALTY <ChevronDown className="w-3 h-3 ml-1" />
-            </Link>
-            <Link href="/contact" className={`flex items-center transition ${pathname.startsWith('/contact') ? 'text-[var(--color-accent)]' : 'text-[var(--color-text)]/90 hover:text-[var(--color-accent)]'}`}>
-              CONTACT <ChevronDown className="w-3 h-3 ml-1" />
-            </Link>
-            <Link href="/store-locator" className={`flex items-center transition ${pathname.startsWith('/store-locator') ? 'text-[var(--color-accent)]' : 'text-[var(--color-text)]/90 hover:text-[var(--color-accent)]'}`}>
-              STORE LOCATOR
-            </Link>
+
+            <button onClick={() => setIsCartOpen(true)} className="flex items-center gap-1.5 hover:text-amber-200 transition-colors">
+              <span>Cart</span>
+              <span className="bg-amber-400/20 text-amber-200 text-[10px] px-1.5 py-0.5 rounded-full border border-amber-400/30">
+                {cartCount}
+              </span>
+            </button>
           </div>
+        </div>
+
+        {/* Navigation Menu Bar */}
+        <nav className="border-t border-white/5 bg-black/40 py-3 hidden md:block">
+          <ul className="flex items-center justify-center gap-8 text-[11px] uppercase tracking-[0.2em] font-medium text-neutral-300">
+            <li><Link href="/" className={pathname === '/' ? 'text-amber-300' : 'hover:text-white transition-colors'}>Home</Link></li>
+            <li><Link href="/shop" className={pathname.startsWith('/shop') ? 'text-amber-300' : 'hover:text-white transition-colors'}>Shop</Link></li>
+            <li><Link href="/fragrance-finder" className={pathname.startsWith('/fragrance-finder') ? 'text-amber-300' : 'hover:text-white transition-colors'}>Fragrance Finder</Link></li>
+            <li><Link href="/custom-box" className={pathname.startsWith('/custom-box') ? 'text-amber-300' : 'hover:text-white transition-colors'}>Build a Box</Link></li>
+            
+            <li className="relative group">
+              <span className={`cursor-pointer ${pathname.startsWith('/category') ? 'text-amber-300' : 'hover:text-white transition-colors'}`}>
+                Collections
+              </span>
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 w-48">
+                <div className="bg-neutral-950 border border-white/10 shadow-xl rounded-sm overflow-hidden flex flex-col py-2">
+                  <Link href="/category/oud" className="px-4 py-2.5 text-[11px] hover:bg-white/5 hover:text-amber-300 transition-colors text-left text-neutral-300">
+                    OUD
+                  </Link>
+                  <Link href="/category/attar" className="px-4 py-2.5 text-[11px] hover:bg-white/5 hover:text-amber-300 transition-colors text-left text-neutral-300">
+                    ATTAR
+                  </Link>
+                  <Link href="/category/gifting-packages" className="px-4 py-2.5 text-[11px] hover:bg-white/5 hover:text-amber-300 transition-colors text-left text-neutral-300">
+                    GIFTING PACKAGES
+                  </Link>
+                </div>
+              </div>
+            </li>
+            
+            <li><Link href="/loyalty" className={pathname.startsWith('/loyalty') ? 'text-amber-300' : 'hover:text-white transition-colors'}>Loyalty</Link></li>
+            <li><Link href="/contact" className={pathname.startsWith('/contact') ? 'text-amber-300' : 'hover:text-white transition-colors'}>Contact</Link></li>
+          </ul>
         </nav>
-      </div>
+      </header>
 
       {/* Slide-out Cart */}
       <AnimatePresence>

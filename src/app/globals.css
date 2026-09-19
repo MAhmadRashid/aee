@@ -8,6 +8,8 @@
   --color-accent: var(--color-accent);
   --color-border: var(--color-border);
   --color-sale: var(--color-sale);
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
   
   --font-serif: var(--font-serif-theme, 'Playfair Display', serif);
   --font-sans: var(--font-sans-theme, 'Inter', sans-serif);
@@ -15,33 +17,39 @@
 
 @layer base {
   :root, [data-theme="midnight-gold"] {
-    --color-background: #040914; /* Deepest Navy Blue */
-    --color-surface: #0A1121; /* Rich Midnight Blue */
-    --color-primary: #F0F4F8; /* Soft White */
-    --color-secondary: #8A9BB3; /* Slate Blue-Grey */
-    --color-accent: #D4AF37; /* Royal Gold */
-    --color-border: #16243D; /* Subtle Navy Border */
-    --color-sale: #D23B44; /* Elegant Red */
+    --color-background: #02040A; /* Ultra deep void navy */
+    --color-surface: #070B14; /* Deep rich navy */
+    --color-primary: #FFFFFF; /* Pure white */
+    --color-secondary: #8E9BAE; /* Cool platinum grey */
+    --color-accent: #D4AF37; /* Metallic Gold */
+    --color-border: #131B2A; /* Subtle navy border */
+    --color-sale: #991B1B; /* Deep crimson */
+    --color-text: #F8FAFC; 
+    --color-text-muted: #94A3B8;
   }
 
-  [data-theme="rose-quartz"] {
-    --color-background: #0A0708; /* Very deep warm black */
-    --color-surface: #120D0F; /* Lifted warm charcoal */
-    --color-primary: #F7E9E8; /* Soft warm white */
-    --color-secondary: #9E888D; /* Muted rose-grey */
-    --color-accent: #C89B9B; /* Premium Rose Gold */
-    --color-border: #2A1C20; /* Deep burgundy-charcoal border */
-    --color-sale: #D23B44;
+  [data-theme="obsidian-silver"] {
+    --color-background: #050505; /* True black */
+    --color-surface: #0E0E0E; /* Deep charcoal */
+    --color-primary: #FFFFFF; 
+    --color-secondary: #A3A3A3; /* Neutral silver-grey */
+    --color-accent: #E5E4E2; /* Platinum / Silver */
+    --color-border: #1C1C1C; /* Dark grey border */
+    --color-sale: #7F1D1D;
+    --color-text: #FAFAFA;
+    --color-text-muted: #737373;
   }
 
-  [data-theme="emerald-onyx"] {
-    --color-background: #040D09; /* Deepest forest green */
-    --color-surface: #081711; /* Rich dark emerald */
-    --color-primary: #F0F5F1; /* Minty ivory */
-    --color-secondary: #8B9E95; /* Sage silver */
-    --color-accent: #C5A869; /* Antique Gold */
-    --color-border: #152A20; /* Emerald border */
-    --color-sale: #E63946;
+  [data-theme="amber-oud"] {
+    --color-background: #0A0604; /* Espresso black */
+    --color-surface: #120A06; /* Dark mocha */
+    --color-primary: #FDFBF7; /* Warm ivory */
+    --color-secondary: #A89083; /* Taupe grey */
+    --color-accent: #C87D46; /* Burnished Copper / Amber */
+    --color-border: #24140D; /* Warm dark brown border */
+    --color-sale: #943021;
+    --color-text: #F5EFEB;
+    --color-text-muted: #A89B92;
   }
 
   /* Scrollbar hide utility for carousels */

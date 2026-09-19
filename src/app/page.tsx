@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { perfumes as staticPerfumes } from '../data/perfumes';
 import { useCurrency } from '../hooks/useCurrency';
 import { useCart } from '../context/CartContext';
 import Image from 'next/image';
@@ -22,19 +21,19 @@ export default function Home() {
   const { cartItems, cartCount, removeFromCart, updateQuantity } = useCart();
   const { theme, setTheme } = useTheme();
   
-  // Use state to store products. Initialize with static data as fallback.
-  const [perfumes, setPerfumes] = useState<any[]>(staticPerfumes);
+  const [perfumes, setPerfumes] = useState<any[]>([]);
+  const [isLoadingProducts, setIsLoadingProducts] = useState(true);
 
   useEffect(() => {
-    // Attempt to fetch live products from the API
     fetch('/api/products')
       .then(res => res.json())
       .then(data => {
-        if (data.success && data.data && data.data.length > 0) {
+        if (data.success && data.data) {
           setPerfumes(data.data);
         }
       })
-      .catch(err => console.error("Failed to fetch live products, using static fallback:", err));
+      .catch(err => console.error("Failed to fetch live products:", err))
+      .finally(() => setIsLoadingProducts(false));
   }, []);
 
   const premiumPerfumes = perfumes.filter(p => p.category === 'Premium Perfumes').slice(0, 10);
@@ -119,7 +118,7 @@ export default function Home() {
           className="absolute bottom-12 md:bottom-20 left-1/2 -translate-x-1/2 z-30 w-full flex justify-center"
         >
           <Link href="#new-arrivals">
-            <button className="bg-[#0a0a0a] hover:bg-[var(--color-primary)] text-white hover:text-[var(--color-background)] border border-[#C5A059]/80 hover:border-[var(--color-primary)] text-[10px] md:text-[12px] uppercase font-bold tracking-[0.3em] px-10 md:px-12 py-4 transition-all duration-500 shadow-xl whitespace-nowrap">
+            <button className="inline-block px-8 md:px-12 py-3.5 md:py-4 border border-amber-200/40 text-amber-100 text-[10px] md:text-[12px] uppercase tracking-[0.25em] transition-all duration-300 hover:bg-amber-100 hover:text-black hover:border-amber-100 backdrop-blur-sm shadow-xl whitespace-nowrap">
               Shop Collection
             </button>
           </Link>
@@ -132,31 +131,31 @@ export default function Home() {
         {[
           { 
             title: 'Premium Perfumes', 
-            slug: 'Premium Perfumes',
+            slug: 'premium-perfumes',
             img: '/images/categories/premium_perfumes.jpg', 
             tags: 'Exclusive • High-End • Signature'
           },
           { 
             title: 'Classic Perfumes', 
-            slug: 'Classic Perfumes',
+            slug: 'classic-perfumes',
             img: '/images/categories/classic_perfumes.jpg',
             tags: 'Everyday elegance • Simple • Refined' 
           },
           { 
             title: 'The Oud Collection', 
-            slug: 'Oud',
+            slug: 'oud',
             img: '/images/categories/oud_collection.jpg', 
             tags: 'Rich • Smoky • Luxurious'
           },
           { 
             title: 'Perfume Wax and Attar', 
-            slug: 'Attar',
+            slug: 'perfume-wax-attar',
             img: '/images/categories/perfume_wax.jpg', 
             tags: 'Alcohol-free • Concentrated • Historic'
           },
           { 
             title: 'Luxury Gift Boxes', 
-            slug: 'Gift Box',
+            slug: 'gift-boxes',
             img: '/images/categories/luxury_gift_boxes.jpg', 
             tags: 'The perfect present • Premium unboxing'
           },
@@ -168,7 +167,7 @@ export default function Home() {
           },
           {
             title: 'Sample Sets',
-            slug: 'Sample Sets',
+            slug: 'sample-sets',
             img: '/images/categories/sample_sets.jpg',
             tags: 'Discover your signature scent'
           }
@@ -250,7 +249,7 @@ export default function Home() {
           </div>
           
           {premiumPerfumes.length > 0 ? (
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-12">
               {premiumPerfumes.slice(0, 5).map((perfume: any) => (
                 <div key={perfume.id} className="w-full">
                   <ProductCard perfume={perfume} />
@@ -295,7 +294,7 @@ export default function Home() {
           </div>
           
           {classicPerfumes.length > 0 ? (
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-12">
               {classicPerfumes.slice(0, 5).map((perfume: any) => (
                 <div key={perfume.id} className="w-full">
                   <ProductCard perfume={perfume} />
@@ -340,7 +339,7 @@ export default function Home() {
           </div>
           
           {oudCollection.length > 0 ? (
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-12">
               {oudCollection.slice(0, 5).map((perfume: any) => (
                 <div key={perfume.id} className="w-full">
                   <ProductCard perfume={perfume} />
@@ -385,7 +384,7 @@ export default function Home() {
           </div>
           
           {sampleSets.length > 0 ? (
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-12">
               {sampleSets.slice(0, 5).map((perfume: any) => (
                 <div key={perfume.id} className="w-full">
                   <ProductCard perfume={perfume} />
@@ -430,7 +429,7 @@ export default function Home() {
           </div>
           
           {traditionalAttars.length > 0 ? (
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-12">
               {traditionalAttars.slice(0, 5).map((perfume: any) => (
                 <div key={perfume.id} className="w-full">
                   <ProductCard perfume={perfume} />
@@ -473,7 +472,7 @@ export default function Home() {
           </div>
           
           {luxuryGiftBoxes.length > 0 ? (
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-12">
               {luxuryGiftBoxes.slice(0, 5).map((perfume: any) => (
                 <div key={perfume.id} className="w-full">
                   <ProductCard perfume={perfume} />
@@ -516,7 +515,7 @@ export default function Home() {
           </div>
           
           {under3000.length > 0 ? (
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-12">
               {under3000.slice(0, 5).map((perfume: any) => (
                 <div key={perfume.id} className="w-full">
                   <ProductCard perfume={perfume} />
@@ -537,17 +536,20 @@ export default function Home() {
             alt="Luxurious Sanctuary" 
             className="w-full h-full object-cover opacity-60 mix-blend-overlay"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-background)] via-[var(--color-background)]/80 to-[var(--color-background)]/30 backdrop-blur-[2px]"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
         </div>
 
         <div className="max-w-[1600px] mx-auto px-8 relative z-10 flex flex-col lg:flex-row items-center gap-12">
           {/* Text Content */}
-          <div className="lg:w-1/3 flex flex-col justify-center">
+          <div className="lg:w-1/3 flex flex-col justify-center relative z-10 text-center lg:text-left">
+            <span className="text-xs uppercase tracking-[0.3em] text-amber-300/90 font-medium mb-3 block">
+              Anti-Gravity Elegance
+            </span>
             <motion.h2 
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-serif text-[var(--color-text)] uppercase tracking-widest leading-tight mb-4"
+              className="text-4xl md:text-5xl font-serif text-white font-light uppercase tracking-widest leading-tight mb-4"
             >
               Transform<br />Your<br />Sanctuary
             </motion.h2>
@@ -556,7 +558,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-[var(--color-text-muted)] italic font-serif text-lg mb-8 max-w-sm"
+              className="text-neutral-300 italic font-serif text-lg mb-8 max-w-sm mx-auto lg:mx-0"
             >
               Elevate your space with our exclusive range of room sprays and diffusers. Set the perfect mood for relaxation, focus, or welcoming guests.
             </motion.p>
@@ -566,9 +568,8 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              <Link href="/category/home-space-fragrances" className="inline-flex items-center text-xs font-bold text-[var(--color-background)] bg-[var(--color-text)] px-8 py-4 uppercase tracking-[0.2em] hover:bg-[var(--color-accent)] hover:text-black transition-colors rounded-sm shadow-xl">
+              <Link href="/category/home-space-fragrances" className="inline-block px-8 py-3.5 border border-amber-200/40 text-amber-100 text-xs uppercase tracking-[0.25em] transition-all duration-300 hover:bg-amber-100 hover:text-black hover:border-amber-100 backdrop-blur-sm">
                 Explore The Experience
-                <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
             </motion.div>
           </div>
@@ -733,7 +734,7 @@ export default function Home() {
       <a 
         href="https://wa.me/923000000000"
         className="fixed bg-[#25D366] text-white p-3 rounded-full shadow-2xl hover:scale-110 transition-transform z-50 flex items-center justify-center"
-        style={{ bottom: 24, right: 24 }}
+        style={{ bottom: 40, right: 40 }}
       >
         <Phone fill="currentColor" className="w-7 h-7" />
       </a>

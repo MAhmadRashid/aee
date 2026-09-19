@@ -1,22 +1,68 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { User, Package, Heart, Settings, LogOut, ChevronLeft } from 'lucide-react';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
 export default function AccountPage() {
-  const { data: session, status } = useSession();
+  const { data: session, status, update } = useSession();
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [error, setError] = useState('');
 
+  const [activeTab, setActiveTab] = useState('profile');
+  
+  const [editName, setEditName] = useState('');
+  const [editEmail, setEditEmail] = useState('');
+  const [isUpdating, setIsUpdating] = useState(false);
+  const [updateMsg, setUpdateMsg] = useState({ text: '', type: '' });
+
+  useEffect(() => {
+    if (session?.user) {
+      setEditName(session.user.name || '');
+      setEditEmail(session.user.email || '');
+    }
+  }, [session]);
+
   if (status === "loading") {
     return <div className="min-h-screen bg-[var(--color-background)] flex items-center justify-center text-[var(--color-text)]">Loading...</div>;
   }
 
+  const handleUpdateProfile = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsUpdating(true);
+    setUpdateMsg({ text: '', type: '' });
+    
+    try {
+      const res = await fetch('/api/auth/update', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          uid: (session?.user as any)?.id,
+          name: editName,
+          email: editEmail
+        })
+      });
+      const data = await res.json();
+      
+      if (data.success) {
+        await update({ name: editName, email: editEmail });
+        setUpdateMsg({ text: 'Profile updated successfully!', type: 'success' });
+        setTimeout(() => setUpdateMsg({ text: '', type: '' }), 3000);
+      } else {
+        setUpdateMsg({ text: data.message || 'Update failed', type: 'error' });
+      }
+    } catch (err) {
+      setUpdateMsg({ text: 'Something went wrong', type: 'error' });
+    } finally {
+      setIsUpdating(false);
+    }
+  };
+
+  // ... (keeping handleAuth the same)
   const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
@@ -95,53 +141,72 @@ export default function AccountPage() {
 
   return (
     <main className="min-h-screen bg-[var(--color-background)] text-[var(--color-text)] font-sans">
-      <header className="w-full bg-[var(--color-surface)] text-[var(--color-primary)] py-4 px-8 flex justify-between items-center border-b border-[var(--color-border)]">
-        <Link href="/" className="flex items-center text-xs font-bold uppercase tracking-widest hover:opacity-70 transition">
-          <ChevronLeft className="w-4 h-4 mr-1" /> Back to Store
-        </Link>
-        <h1 className="text-xl font-black tracking-widest text-center">ZERO TO ONE</h1>
-        <div className="w-24"></div> {/* Spacer for centering */}
-      </header>
-
-      <div className="max-w-4xl mx-auto py-16 px-6">
-        <h2 className="text-3xl font-serif text-[var(--color-text)] mb-8">Welcome, {session.user?.name}</h2>
+      <div className="max-w-6xl mx-auto py-20 px-6 lg:px-12">
+        <h2 className="text-3xl lg:text-4xl font-serif text-[var(--color-text)] mb-10 text-center md:text-left">Welcome, {session.user?.name}</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Sidebar */}
           <div className="md:col-span-1 space-y-2">
-            <button className="w-full flex items-center space-x-3 bg-[var(--color-surface)] text-[var(--color-text)] p-4 rounded border border-[var(--color-border)] font-bold">
-              <User className="w-5 h-5 text-[var(--color-accent)]" />
+            <button 
+              onClick={() => setActiveTab('profile')} 
+              className={`w-full flex items-center space-x-3 p-4 rounded font-bold transition ${activeTab === 'profile' ? 'bg-[var(--color-surface)] text-[var(--color-text)] border border-[var(--color-border)]' : 'text-[var(--color-text-muted)] hover:bg-[var(--color-surface)]'}`}
+            >
+              <User className={`w-5 h-5 ${activeTab === 'profile' ? 'text-[var(--color-accent)]' : ''}`} />
               <span>Profile</span>
             </button>
-            <button className="w-full flex items-center space-x-3 text-[var(--color-text-muted)] p-4 rounded hover:bg-[var(--color-surface)] transition">
-              <Package className="w-5 h-5" />
+            <button 
+              onClick={() => setActiveTab('orders')} 
+              className={`w-full flex items-center space-x-3 p-4 rounded font-bold transition ${activeTab === 'orders' ? 'bg-[var(--color-surface)] text-[var(--color-text)] border border-[var(--color-border)]' : 'text-[var(--color-text-muted)] hover:bg-[var(--color-surface)]'}`}
+            >
+              <Package className={`w-5 h-5 ${activeTab === 'orders' ? 'text-[var(--color-accent)]' : ''}`} />
               <span>Orders</span>
             </button>
-            <button onClick={() => signOut()} className="w-full flex items-center space-x-3 text-red-500 p-4 rounded hover:bg-red-50 transition">
+            <button onClick={() => signOut()} className="w-full flex items-center space-x-3 text-red-500 p-4 rounded hover:bg-red-50/10 hover:text-red-400 transition font-bold mt-8 border border-transparent hover:border-red-500/20">
               <LogOut className="w-5 h-5" />
               <span>Log Out</span>
             </button>
           </div>
 
           {/* Main Content */}
-          <div className="md:col-span-3 bg-[var(--color-surface)] border border-[var(--color-border)] rounded p-8 shadow-sm">
-            <h3 className="text-xl font-black uppercase tracking-widest mb-6">Profile Details</h3>
+          <div className="md:col-span-3 bg-[var(--color-surface)] border border-[var(--color-border)] rounded p-8 shadow-sm min-h-[400px]">
+            {activeTab === 'profile' && (
+              <div className="animate-fade-in-up">
+                <h3 className="text-xl font-black uppercase tracking-widest mb-6">Profile Details</h3>
+                
+                <form onSubmit={handleUpdateProfile} className="space-y-6">
+                  {updateMsg.text && (
+                    <div className={`p-3 rounded text-sm text-center ${updateMsg.type === 'error' ? 'bg-red-500/10 text-red-500 border border-red-500' : 'bg-green-500/10 text-green-500 border border-green-500'}`}>
+                      {updateMsg.text}
+                    </div>
+                  )}
+                  
+                  <div>
+                    <label className="block text-[10px] uppercase font-bold tracking-widest text-[var(--color-text-muted)] mb-2">Full Name</label>
+                    <input type="text" value={editName} onChange={e => setEditName(e.target.value)} required className="w-full bg-[var(--color-background)] border border-[var(--color-border)] rounded p-3 text-sm focus:outline-none focus:border-[var(--color-text)] transition text-[var(--color-text)]" />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-[10px] uppercase font-bold tracking-widest text-[var(--color-text-muted)] mb-2">Email Address</label>
+                    <input type="email" value={editEmail} onChange={e => setEditEmail(e.target.value)} required className="w-full bg-[var(--color-background)] border border-[var(--color-border)] rounded p-3 text-sm focus:outline-none focus:border-[var(--color-text)] transition text-[var(--color-text)]" />
+                  </div>
+                  
+                  <button type="submit" disabled={isUpdating} className={`bg-[var(--color-primary)] text-[var(--color-background)] font-bold uppercase tracking-widest text-xs px-8 py-3 rounded mt-4 transition hover:opacity-90 ${isUpdating ? 'opacity-50 cursor-not-allowed' : ''}`}>
+                    {isUpdating ? 'Saving...' : 'Save Changes'}
+                  </button>
+                </form>
+              </div>
+            )}
             
-            <div className="space-y-6">
-              <div>
-                <label className="block text-[10px] uppercase font-bold tracking-widest text-[var(--color-text-muted)] mb-2">Full Name</label>
-                <input type="text" readOnly value={session.user?.name || ''} className="w-full bg-[var(--color-background)] border border-[var(--color-border)] rounded p-3 text-sm focus:outline-none text-[var(--color-text-muted)] cursor-not-allowed" />
+            {activeTab === 'orders' && (
+              <div className="animate-fade-in-up">
+                <h3 className="text-xl font-black uppercase tracking-widest mb-6">Order History</h3>
+                <div className="flex flex-col items-center justify-center text-center py-16 opacity-60">
+                  <Package className="w-16 h-16 mb-4 text-[var(--color-text-muted)]" />
+                  <p className="text-[12px] uppercase tracking-widest font-bold">No orders found yet</p>
+                  <Link href="/shop" className="mt-6 text-[10px] uppercase tracking-[0.2em] font-bold text-[var(--color-accent)] hover:underline underline-offset-4">Continue Shopping</Link>
+                </div>
               </div>
-              
-              <div>
-                <label className="block text-[10px] uppercase font-bold tracking-widest text-[var(--color-text-muted)] mb-2">Email Address</label>
-                <input type="email" readOnly value={session.user?.email || ''} className="w-full bg-[var(--color-background)] border border-[var(--color-border)] rounded p-3 text-sm focus:outline-none text-[var(--color-text-muted)] cursor-not-allowed" />
-              </div>
-              
-              <button disabled className="bg-[var(--color-primary)] opacity-50 text-[var(--color-background)] font-bold uppercase tracking-widest text-xs px-8 py-3 rounded mt-4 cursor-not-allowed">
-                Synced from Database
-              </button>
-            </div>
+            )}
           </div>
         </div>
       </div>

@@ -3,7 +3,6 @@
 import { use, useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { perfumes as staticPerfumes } from '../../../data/perfumes';
 import { useCurrency } from '../../../hooks/useCurrency';
 import { useCart } from '../../../context/CartContext';
 import { ChevronLeft, ShoppingBag, MessageCircle, MapPin, Check, Wind, Droplets, Leaf, ChevronDown, ChevronUp } from 'lucide-react';
@@ -11,13 +10,9 @@ import { ChevronLeft, ShoppingBag, MessageCircle, MapPin, Check, Wind, Droplets,
 export default function PerfumeDetail({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = use(params);
   
-  // Use state for perfume data
-  const [perfume, setPerfume] = useState<any>(
-    staticPerfumes.find(p => p.id === resolvedParams.id)
-  );
+  const [perfume, setPerfume] = useState<any>(null);
 
   useEffect(() => {
-    // Attempt to fetch the live product from the API
     fetch(`/api/products`)
       .then(res => res.json())
       .then(data => {
@@ -28,7 +23,7 @@ export default function PerfumeDetail({ params }: { params: Promise<{ id: string
           }
         }
       })
-      .catch(err => console.error("Failed to fetch live product, using static fallback:", err));
+      .catch(err => console.error("Failed to fetch live product:", err));
   }, [resolvedParams.id]);
 
   const { formatPrice, isLoading } = useCurrency();
@@ -97,7 +92,7 @@ export default function PerfumeDetail({ params }: { params: Promise<{ id: string
         </Link>
       </header>
 
-      <div className="flex flex-col lg:flex-row min-h-screen pt-24 lg:pt-0">
+      <div className="flex flex-col lg:flex-row min-h-screen pt-24 lg:pt-24">
         {/* Left Side: Stunning 2D Image Hero (50%) */}
         <div className="w-full lg:w-[50%] relative flex items-center justify-center p-6 lg:p-20 bg-[var(--color-surface)]/30 border-r border-[var(--color-border)]/50 min-h-[50vh] lg:min-h-screen">
            {/* Subtle glow behind image */}
@@ -126,7 +121,7 @@ export default function PerfumeDetail({ params }: { params: Promise<{ id: string
                 {perfume.brand}
               </div>
             )}
-            <h1 className="text-4xl lg:text-6xl font-serif italic tracking-wide mb-4 text-[var(--color-primary)] drop-shadow-sm leading-tight">
+            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-serif italic tracking-wide mb-4 text-[var(--color-primary)] drop-shadow-sm leading-tight break-words">
               {perfume.name}
             </h1>
             <div className="uppercase text-[10px] font-bold tracking-[0.2em] text-[var(--color-accent)]">
@@ -139,15 +134,15 @@ export default function PerfumeDetail({ params }: { params: Promise<{ id: string
               {isLoading ? '...' : formatPrice(currentPrice)}
             </span>
             {originalPrice && originalPrice > currentPrice && (
-              <span className="text-lg text-[var(--color-text-muted)] line-through tracking-widest mb-1">
+              <span className="text-xl text-[var(--color-text-muted)] opacity-80 line-through tracking-widest mb-1">
                 {formatPrice(originalPrice)}
               </span>
             )}
           </div>
           
           {/* Star Rating & Reviews */}
-          <div className="flex items-center space-x-2 mb-10 animate-fade-in-up" style={{ animationDelay: '0.15s' }}>
-            <div className="flex text-[var(--color-accent)]">
+          <div className="flex items-center space-x-2 mb-10 animate-fade-in-up opacity-100" style={{ animationDelay: '0.15s' }}>
+            <div className="flex text-[var(--color-accent)] font-black">
               {[1, 2, 3, 4, 5].map((star) => (
                 <svg key={star} className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />

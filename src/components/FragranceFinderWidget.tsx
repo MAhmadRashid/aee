@@ -60,7 +60,7 @@ export function FragranceFinderWidget() {
           Select the mood that speaks to you, and we'll reveal the perfect fragrance to match your energy.
         </motion.p>
         
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 w-full">
           {options.map((opt, i) => (
             <motion.button
               key={opt.id}
@@ -70,12 +70,15 @@ export function FragranceFinderWidget() {
               transition={{ delay: 0.3 + (i * 0.1) }}
               onClick={() => handleSelect(opt.id)}
               disabled={selectedVibe !== null}
-              className={`flex flex-col items-center justify-center p-6 rounded-2xl border transition-all duration-300 ${opt.color} ${selectedVibe === opt.id ? 'ring-2 ring-[var(--color-accent)] scale-105' : selectedVibe !== null ? 'opacity-50 grayscale' : 'hover:-translate-y-2'}`}
+              className={`relative overflow-hidden flex flex-col items-center justify-center aspect-[4/5] p-6 rounded-sm border transition-all duration-500 bg-neutral-950/40 backdrop-blur-md ${opt.color} ${selectedVibe === opt.id ? 'border-[#D4AF37] shadow-[0_0_20px_rgba(212,175,55,0.2)] scale-105' : selectedVibe !== null ? 'opacity-30 grayscale' : 'border-white/10 hover:border-white/30 hover:scale-[1.03] hover:bg-neutral-900/60'}`}
             >
-              <div className="mb-4 text-white">
-                {opt.icon}
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60 pointer-events-none" />
+              <div className="relative z-10 flex flex-col items-center">
+                <div className="mb-6 p-4 rounded-full border border-white/10 bg-white/5 text-white backdrop-blur-sm">
+                  {opt.icon}
+                </div>
+                <span className="text-[11px] uppercase font-bold tracking-[0.2em] text-white">{opt.name}</span>
               </div>
-              <span className="text-xs uppercase font-bold tracking-widest text-white">{opt.name}</span>
             </motion.button>
           ))}
         </div>

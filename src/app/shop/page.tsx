@@ -2,7 +2,6 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Footer } from '../../components/Footer';
-import { perfumes as staticPerfumes } from '../../data/perfumes';
 import ProductCard from '../../components/ProductCard';
 import Link from 'next/link';
 import { ArrowRight, Filter } from 'lucide-react';
@@ -11,7 +10,7 @@ import { motion } from 'framer-motion';
 type FilterOption = 'All' | 'Summer Scents' | 'Winter / Oud Special' | 'Date Night' | 'Office Wear';
 
 function ShopContent() {
-  const [perfumes, setPerfumes] = useState<any[]>(staticPerfumes);
+  const [perfumes, setPerfumes] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get('search')?.toLowerCase() || '';
@@ -21,11 +20,11 @@ function ShopContent() {
     fetch('/api/products')
       .then(res => res.json())
       .then(data => {
-        if (data.success && data.data && data.data.length > 0) {
+        if (data.success && data.data) {
           setPerfumes(data.data);
         }
       })
-      .catch(err => console.error("Failed to fetch live products, using static fallback:", err))
+      .catch(err => console.error("Failed to fetch live products:", err))
       .finally(() => setLoading(false));
   }, []);
 
@@ -156,7 +155,7 @@ function ShopContent() {
                   </Link>
                 </div>
                 
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-12">
                   {categoryProducts.map(perfume => (
                     <div key={perfume.id} className="w-full">
                       <ProductCard perfume={perfume} />
@@ -168,7 +167,7 @@ function ShopContent() {
           );
         })}
       </div>
-    </main>
+    </div>
   );
 }
 

@@ -1,7 +1,9 @@
-import { perfumes } from '../../../data/perfumes';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import CategoryClient from './CategoryClient';
+import { db } from '@/lib/firebase-admin';
+
+export const dynamic = 'force-dynamic';
 
 const categoryMap: { [key: string]: string } = {
   'premium-perfumes': 'Premium Perfumes',
@@ -17,6 +19,7 @@ const categoryMap: { [key: string]: string } = {
   'oud': 'Oud',
   'attar': 'Perfume Wax / Attar',
   'gift-box': 'Gift Box',
+  'gift-boxes': 'Gift Box',
   'gifting-packages': 'Gift Box',
   'tester-box': 'Tester Box',
   'tester-boxes': 'Tester Box',
@@ -53,16 +56,34 @@ export default async function CategoryPage({ params }: { params: Params }) {
     notFound();
   }
 
-  let categoryProducts;
-  if (slug === 'under-2000') {
-    categoryProducts = perfumes.filter(p => p.price < 2000);
-  } else if (slug === 'under-3000') {
-    categoryProducts = perfumes.filter(p => p.price <= 3000);
-  } else {
-    categoryProducts = perfumes.filter(p => p.category === categoryName);
+  let categoryProducts: any[] = [];
+  try {
+    let productsRef: any = db.collection('products');
+    if (slug !== 'under-2000' && slug !== 'under-3000') {
+      productsRef = productsRef.where('category', '==', categoryName);
+    }
+    
+    const snapshot = await productsRef.get();
+    snapshot.forEach((doc: any) => {
+      const data = doc.data();
+      // Apply client-side filtering for custom price categories if needed
+      if (slug === 'under-2000' && data.price >= 2000) return;
+      if (slug === 'under-3000' && data.price > 3000) return;
+      // Serialize Firestore timestamps to ISO strings or delete them
+      const serializedData: any = { ...data };
+      if (serializedData.createdAt && typeof serializedData.createdAt.toDate === 'function') {
+        serializedData.createdAt = serializedData.createdAt.toDate().toISOString();
+      }
+      if (serializedData.updatedAt && typeof serializedData.updatedAt.toDate === 'function') {
+        serializedData.updatedAt = serializedData.updatedAt.toDate().toISOString();
+      }
+      
+      categoryProducts.push({ id: doc.id, ...serializedData });
+    });
+  } catch (error) {
+    console.error("Error fetching category products:", error);
   }
 
-  // Force recompile to pick up latest perfumes.ts
   return (
     <CategoryClient 
       categoryName={categoryName} 

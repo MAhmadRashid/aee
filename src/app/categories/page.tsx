@@ -9,43 +9,43 @@ import { motion } from 'framer-motion';
 const CATEGORIES = [
   { 
     title: 'Premium Perfumes', 
-    slug: 'Premium Perfumes',
-    img: '/images/luxury_perfume_bottle_1_1788340749010.jpg', 
+    slug: 'premium-perfumes',
+    img: '/images/categories/premium_perfumes.jpg', 
     tags: 'Exclusive • High-End • Signature'
   },
   { 
     title: 'Classic Perfumes', 
-    slug: 'Classic Perfumes',
-    img: '/images/lux_perfume_white_1788341260242.jpg',
+    slug: 'classic-perfumes',
+    img: '/images/categories/classic_perfumes.jpg',
     tags: 'Everyday elegance • Simple • Refined' 
   },
   { 
     title: 'The Oud Collection', 
-    slug: 'Oud',
-    img: '/images/luxury_oud_perfume_1788340783393.jpg', 
+    slug: 'oud',
+    img: '/images/categories/oud_collection.jpg', 
     tags: 'Rich • Smoky • Luxurious'
   },
   { 
     title: 'Perfume Wax and Attar', 
-    slug: 'Attar',
-    img: '/images/elegant_attar_bottle_1788340819742.jpg', 
+    slug: 'perfume-wax-attar',
+    img: '/images/categories/perfume_wax.jpg', 
     tags: 'Alcohol-free • Concentrated • Historic'
   },
   { 
     title: 'Home & Space Fragrances', 
     slug: 'home-space-fragrances',
-    img: '/images/velvet_orchid.jpg', 
+    img: '/images/categories/home_space_fragrances.jpg', 
     tags: 'Elevate your space'
   },
   {
     title: 'Sample Sets',
-    slug: 'Sample Sets',
-    img: '/images/sample_set_grid_1.jpg',
+    slug: 'sample-sets',
+    img: '/images/categories/sample_sets.jpg',
     tags: 'Discover your signature scent'
   },
   { 
     title: 'Luxury Gift Boxes', 
-    slug: 'Gift Box',
+    slug: 'gift-boxes',
     img: '/images/gift_blue_box_1788335469264.jpg', 
     tags: 'The perfect present • Premium unboxing'
   }

@@ -169,7 +169,7 @@ export default function CategoryClient({
       <section className="max-w-[1600px] mx-auto py-16 px-8 relative z-10">
         {sortedProducts.length > 0 ? (
           <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 lg:gap-12"
             layout
           >
             <AnimatePresence>

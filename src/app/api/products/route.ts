@@ -10,14 +10,6 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const category = searchParams.get('category');
     
-    if (process.env.NODE_ENV === 'development') {
-      let fallback = fallbackPerfumes;
-      if (category && category !== 'All') {
-        fallback = fallback.filter(p => p.category === category);
-      }
-      return NextResponse.json({ success: true, data: fallback }, { status: 200 });
-    }
-
     let productsRef: any = db.collection('products');
     
     if (category && category !== 'All') {

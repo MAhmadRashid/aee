@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-export type ThemeType = 'midnight-gold' | 'rose-quartz' | 'emerald-onyx';
+export type ThemeType = 'midnight-gold' | 'obsidian-silver' | 'amber-oud';
 
 interface ThemeContextType {
   theme: ThemeType;
@@ -18,7 +18,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // Check local storage first for immediate UI render (to avoid flash)
     const savedTheme = localStorage.getItem('site_theme') as ThemeType;
-    if (savedTheme && ['midnight-gold', 'rose-quartz', 'emerald-onyx'].includes(savedTheme)) {
+    if (savedTheme && ['midnight-gold', 'obsidian-silver', 'amber-oud'].includes(savedTheme)) {
       applyTheme(savedTheme);
     } else {
       applyTheme('midnight-gold');
