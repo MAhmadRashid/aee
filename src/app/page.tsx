@@ -115,15 +115,30 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4 }}
           style={{ opacity: heroOpacity }}
-          className="absolute bottom-12 md:bottom-20 left-1/2 -translate-x-1/2 z-30 w-full flex justify-center"
+          className="absolute bottom-12 md:bottom-20 left-1/2 -translate-x-1/2 z-30 w-full px-4 flex flex-col md:flex-row justify-center items-center gap-4"
         >
-          <Link href="#new-arrivals">
-            <button className="inline-block px-8 md:px-12 py-3.5 md:py-4 border border-amber-200/40 text-amber-100 text-[10px] md:text-[12px] uppercase tracking-[0.25em] transition-all duration-300 hover:bg-amber-100 hover:text-black hover:border-amber-100 backdrop-blur-sm shadow-xl whitespace-nowrap">
+          <Link href="/fragrance-finder">
+            <button className="w-[280px] md:w-auto inline-block px-8 md:px-10 py-3.5 md:py-4 border border-amber-200/40 bg-black/40 text-amber-100 text-[10px] md:text-[11px] uppercase tracking-[0.2em] transition-all duration-300 hover:bg-amber-100 hover:text-black hover:border-amber-100 backdrop-blur-md shadow-xl whitespace-nowrap font-bold">
+              Find Your Scent
+            </button>
+          </Link>
+          <Link href="#category-blocks">
+            <button className="w-[280px] md:w-auto inline-block px-8 md:px-12 py-3.5 md:py-4 border border-amber-200 text-black bg-amber-100 text-[10px] md:text-[12px] uppercase tracking-[0.25em] transition-all duration-300 hover:bg-transparent hover:text-amber-100 hover:border-amber-100 backdrop-blur-md shadow-xl whitespace-nowrap font-black">
               Shop Collection
+            </button>
+          </Link>
+          <Link href="/custom-box">
+            <button className="w-[280px] md:w-auto inline-block px-8 md:px-10 py-3.5 md:py-4 border border-amber-200/40 bg-black/40 text-amber-100 text-[10px] md:text-[11px] uppercase tracking-[0.2em] transition-all duration-300 hover:bg-amber-100 hover:text-black hover:border-amber-100 backdrop-blur-md shadow-xl whitespace-nowrap font-bold">
+              Build a Box
             </button>
           </Link>
         </motion.div>
       </section>
+
+      {/* FRAGRANCE FINDER PROMINENT */}
+      <div className="w-full">
+        <FragranceFinderWidget />
+      </div>
 
       
       {/* CATEGORY BLOCK GRID (6 CARDS) */}
@@ -217,7 +232,7 @@ export default function Home() {
         ))}
       </section>
 
-      <FragranceFinderWidget />
+
 
       <section id="premium-perfumes" className="w-full bg-[var(--color-surface)] py-24 px-8 border-y border-[var(--color-border)]">
         <div className="max-w-[1600px] mx-auto">
