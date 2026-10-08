@@ -10,6 +10,7 @@ import { ArrowRight, Phone, Mail, MapPin } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
 import { FragranceFinderWidget } from '../components/FragranceFinderWidget';
 import { EmptyCategoryState } from '../components/EmptyCategoryState';
+import { TrustBadges } from '../components/TrustBadges';
 import FloatingParticles from '../components/FloatingParticles';
 import { Canvas } from '@react-three/fiber';
 import { motion, useMotionValue, useTransform, AnimatePresence, useScroll } from 'framer-motion';
@@ -134,6 +135,9 @@ export default function Home() {
           </Link>
         </motion.div>
       </section>
+
+      {/* TRUST BADGES BAR */}
+      <TrustBadges />
 
       {/* FRAGRANCE FINDER PROMINENT */}
       <div className="w-full">

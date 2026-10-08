@@ -36,29 +36,36 @@ export default function CheckoutPage() {
     e.preventDefault();
     setIsProcessing(true);
     
-    // Simulate API request to save order
-    setTimeout(async () => {
-      // Trigger email API in background
-      try {
-        await fetch('/api/send-order-email', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            orderNumber: `#ZTO-${Math.floor(Math.random() * 100000)}`,
-            email: shippingDetails.email,
-            name: shippingDetails.fullName,
-            total,
-            paymentMethod
-          })
-        });
-      } catch (err) {
-        console.error("Email send failed", err);
+    try {
+      const orderNumber = `#ZTO-${Math.floor(Math.random() * 100000)}`;
+      const res = await fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          orderNumber,
+          shippingDetails,
+          cartItems,
+          subtotal,
+          shippingCost,
+          giftWrapCost,
+          total,
+          paymentMethod,
+          gifting
+        })
+      });
+
+      if (res.ok) {
+        setOrderPlaced(true);
+        // Normally clear cart here: e.g. setCartItems([]) 
+      } else {
+        alert("There was an issue processing your order. Please try again.");
       }
-      
+    } catch (err) {
+      console.error("Order save failed", err);
+      alert("Failed to connect to the server.");
+    } finally {
       setIsProcessing(false);
-      setOrderPlaced(true);
-      // In a real app we would clear cart and save to backend
-    }, 2000);
+    }
   };
 
   if (orderPlaced) {

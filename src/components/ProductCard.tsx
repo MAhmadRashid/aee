@@ -3,8 +3,8 @@
 import React, { useState, MouseEvent } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { Heart, ShoppingBag } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Heart, ShoppingBag, Eye, X } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../hooks/useCurrency';
 
@@ -12,10 +12,9 @@ function ProductCard({ perfume }: { perfume: any }) {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
+  const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
   const { addToCart, setIsCartOpen } = useCart();
   const { formatPrice } = useCurrency();
-
-
 
   // Compute pricing and stock from size variants if available
   const hasVariants = perfume.sizeVariants && perfume.sizeVariants.length > 0;
@@ -62,11 +61,30 @@ function ProductCard({ perfume }: { perfume: any }) {
   
   const { rating, reviewsCount } = perfume.rating ? { rating: perfume.rating, reviewsCount: perfume.reviews } : generateRating(perfume.id);
 
+  const handleQuickView = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsQuickViewOpen(true);
+  };
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if(totalStock > 0) {
+      addToCart({ id: perfume.id, name: perfume.name, price: startingPrice, variant: hasVariants ? perfume.sizeVariants[0].size : undefined, image: perfume.image || perfume.image_url });
+      setIsAdded(true);
+      setTimeout(() => setIsAdded(false), 2000);
+      setIsCartOpen(true);
+      setIsQuickViewOpen(false);
+    }
+  };
+
   return (
+    <>
     <Link href={`/perfume/${perfume.id}`} className="block group">
       <motion.div 
-        className="flex flex-col cursor-pointer bg-neutral-950/40 backdrop-blur-sm relative border border-white/5 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 ease-out group"
-        whileHover={{ y: -4 }}
+        className="flex flex-col cursor-pointer bg-neutral-950/60 backdrop-blur-md relative border border-white/5 rounded-2xl overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_40px_rgba(212,175,55,0.15)] hover:border-[#D4AF37]/30 transition-all duration-500 ease-out group"
+        whileHover={{ y: -6, scale: 1.02 }}
       >
         <div className="aspect-[4/5] w-full bg-transparent relative overflow-hidden flex items-center justify-center">
           
@@ -98,18 +116,29 @@ function ProductCard({ perfume }: { perfume: any }) {
             />
           </div>
 
+          {/* Quick View Button on Hover */}
+          <div className="absolute inset-0 z-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+            <button 
+              onClick={handleQuickView}
+              className="pointer-events-auto flex items-center justify-center space-x-2 bg-black/80 backdrop-blur-md text-white border border-[#D4AF37]/50 px-6 py-3 rounded-full translate-y-4 group-hover:translate-y-0 transition-all duration-500 hover:bg-[#D4AF37] hover:text-black hover:scale-105"
+            >
+              <Eye className="w-4 h-4" />
+              <span className="text-[10px] uppercase tracking-widest font-bold">Quick View</span>
+            </button>
+          </div>
+
           {/* Badges Container */}
           <div className="absolute top-3 left-3 z-40 flex flex-col items-start space-y-2">
              {/* Sale Badge */}
              {discountPercentage > 0 && (
-               <div style={{ background: 'rgba(0, 0, 0, 0.6)', border: '1px solid rgba(212, 175, 55, 0.4)', color: '#D4AF37', fontSize: '0.7rem', letterSpacing: '0.1em' }} className="px-3 py-1 uppercase font-bold rounded-sm backdrop-blur-md">
+               <div style={{ background: 'rgba(0, 0, 0, 0.6)', border: '1px solid rgba(212, 175, 55, 0.4)', color: '#D4AF37', fontSize: '0.7rem', letterSpacing: '0.1em' }} className="px-3 py-1 uppercase font-bold rounded-sm backdrop-blur-md shadow-lg">
                  SALE -{discountPercentage}%
                </div>
              )}
              
              {/* Stock Badge */}
              {stockStatus !== 'In Stock' && (
-                <div style={{ background: 'rgba(0, 0, 0, 0.6)', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#a3a3a3', fontSize: '0.7rem', letterSpacing: '0.1em' }} className="px-3 py-1 uppercase font-bold rounded-sm backdrop-blur-md">
+                <div style={{ background: 'rgba(0, 0, 0, 0.6)', border: '1px solid rgba(255, 255, 255, 0.1)', color: '#a3a3a3', fontSize: '0.7rem', letterSpacing: '0.1em' }} className="px-3 py-1 uppercase font-bold rounded-sm backdrop-blur-md shadow-lg">
                   {stockStatus}
                 </div>
              )}
@@ -122,12 +151,12 @@ function ProductCard({ perfume }: { perfume: any }) {
           <div className="w-full flex flex-col items-center justify-start flex-1">
             <div className="min-h-[1.5rem] flex flex-col justify-end mb-1">
               {perfume.brand && (
-                 <p className="text-[11px] text-[var(--color-text-muted)] font-sans uppercase tracking-[0.3em] font-bold m-0">
+                 <p className="text-[11px] text-[#D4AF37] font-sans uppercase tracking-[0.3em] font-bold m-0">
                    {perfume.brand}
                  </p>
               )}
             </div>
-            <h3 className="font-serif text-lg md:text-xl text-[var(--color-text)] font-semibold line-clamp-2 min-h-[3.5rem] w-full mb-1 group-hover:text-[var(--color-primary)] transition-colors duration-300">
+            <h3 className="font-serif text-lg md:text-xl text-[var(--color-text)] font-semibold line-clamp-2 min-h-[3.5rem] w-full mb-1 group-hover:text-[#D4AF37] transition-colors duration-300">
               {perfume.name}
             </h3>
             <div className="flex items-center justify-center mb-3 px-2">
@@ -167,22 +196,13 @@ function ProductCard({ perfume }: { perfume: any }) {
           <div className="w-full mt-auto pt-2">
             <button 
               disabled={totalStock === 0 || isAdded}
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                if(totalStock > 0) {
-                  addToCart({ id: perfume.id, name: perfume.name, price: startingPrice, variant: hasVariants ? perfume.sizeVariants[0].size : undefined, image: perfume.image || perfume.image_url });
-                  setIsAdded(true);
-                  setTimeout(() => setIsAdded(false), 2000);
-                  setIsCartOpen(true);
-                }
-              }}
+              onClick={handleAddToCart}
               className={`w-full py-3 text-[11px] uppercase font-bold tracking-[0.15em] rounded-sm transition-all duration-300 ${
                 totalStock === 0 
                   ? 'border border-white/5 text-neutral-600 bg-neutral-900/30 cursor-not-allowed' 
                   : isAdded
-                    ? 'border border-[#D4AF37] bg-[#D4AF37] text-white'
-                    : 'border border-white/20 text-white bg-transparent hover:bg-white hover:text-black hover:border-white'
+                    ? 'border border-[#D4AF37] bg-[#D4AF37] text-black shadow-[0_0_20px_rgba(212,175,55,0.4)]'
+                    : 'border border-white/20 text-white bg-black/40 hover:bg-[#D4AF37] hover:text-black hover:border-[#D4AF37] hover:shadow-[0_0_15px_rgba(212,175,55,0.3)]'
               }`}
             >
               {totalStock === 0 ? 'Sold Out' : isAdded ? '✓ Added' : 'Add To Cart'}
@@ -192,6 +212,123 @@ function ProductCard({ perfume }: { perfume: any }) {
         </div>
       </motion.div>
     </Link>
+
+    {/* Quick View Modal */}
+    <AnimatePresence>
+      {isQuickViewOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
+          {/* Backdrop */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); setIsQuickViewOpen(false); }}
+            className="absolute inset-0 bg-black/80 backdrop-blur-md cursor-pointer"
+          />
+
+          {/* Modal Content */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
+            className="relative w-full max-w-4xl bg-neutral-950 border border-white/10 rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col md:flex-row z-10"
+          >
+            {/* Close Button */}
+            <button 
+              onClick={(e) => { e.preventDefault(); e.stopPropagation(); setIsQuickViewOpen(false); }}
+              className="absolute top-4 right-4 z-50 p-2 bg-black/50 hover:bg-[#D4AF37] text-white hover:text-black rounded-full backdrop-blur-md transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* Left Image Area */}
+            <div className="w-full md:w-1/2 relative bg-gradient-to-br from-neutral-900 to-black aspect-square md:aspect-auto border-b md:border-b-0 md:border-r border-white/5 flex items-center justify-center p-8">
+               <div className="absolute inset-0 bg-[#D4AF37]/5 mix-blend-overlay pointer-events-none" />
+               <div className="relative w-full h-full max-h-[400px]">
+                 <Image 
+                   src={imageUrl} 
+                   alt={perfume.name}
+                   fill
+                   className="object-contain drop-shadow-2xl"
+                 />
+               </div>
+            </div>
+
+            {/* Right Details Area */}
+            <div className="w-full md:w-1/2 p-8 md:p-10 flex flex-col justify-center bg-black/40">
+              <span className="text-[10px] uppercase tracking-[0.3em] text-[#D4AF37] font-bold mb-3 block">
+                {perfume.category}
+              </span>
+              <h2 className="text-3xl md:text-4xl font-serif text-white mb-2 leading-tight">
+                {perfume.name}
+              </h2>
+              
+              <div className="flex items-center space-x-3 text-lg tracking-wide font-sans mb-6">
+                <span className="text-white font-bold">
+                  {formatPrice(startingPrice)}
+                </span>
+                {startingOriginalPrice > startingPrice && (
+                  <span className="text-neutral-500 line-through text-sm">
+                    {formatPrice(startingOriginalPrice)}
+                  </span>
+                )}
+              </div>
+
+              <p className="text-sm text-neutral-400 font-sans leading-relaxed mb-8 line-clamp-3">
+                {perfume.description || "A masterfully crafted fragrance capturing the essence of luxury. Experience deep, evolving notes that linger throughout the day."}
+              </p>
+
+              {/* Fragrance Notes */}
+              <div className="space-y-4 mb-8">
+                <div className="flex items-start">
+                  <span className="w-16 text-[9px] uppercase tracking-widest text-neutral-500 font-bold mt-1">Top</span>
+                  <p className="flex-1 text-sm text-neutral-200">
+                    {perfume.notes?.top?.join(', ') || 'Citrus, Bergamot, Pink Pepper'}
+                  </p>
+                </div>
+                <div className="flex items-start border-t border-white/5 pt-4">
+                  <span className="w-16 text-[9px] uppercase tracking-widest text-neutral-500 font-bold mt-1">Heart</span>
+                  <p className="flex-1 text-sm text-neutral-200">
+                    {perfume.notes?.middle?.join(', ') || 'Rose, Jasmine, Spices'}
+                  </p>
+                </div>
+                <div className="flex items-start border-t border-white/5 pt-4">
+                  <span className="w-16 text-[9px] uppercase tracking-widest text-neutral-500 font-bold mt-1">Base</span>
+                  <p className="flex-1 text-sm text-neutral-200">
+                    {perfume.notes?.base?.join(', ') || 'Oud, Amber, Musk, Vanilla'}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 mt-auto">
+                <button 
+                  disabled={totalStock === 0 || isAdded}
+                  onClick={handleAddToCart}
+                  className={`flex-1 py-4 text-[11px] uppercase font-bold tracking-[0.2em] rounded-sm transition-all duration-300 ${
+                    totalStock === 0 
+                      ? 'bg-neutral-800 text-neutral-500 cursor-not-allowed' 
+                      : isAdded
+                        ? 'bg-[#D4AF37] text-black'
+                        : 'bg-white text-black hover:bg-[#D4AF37] hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]'
+                  }`}
+                >
+                  {totalStock === 0 ? 'Out of Stock' : isAdded ? 'Added to Cart ✓' : 'Add To Cart'}
+                </button>
+                <Link 
+                  href={`/perfume/${perfume.id}`}
+                  className="px-6 py-4 flex items-center justify-center border border-white/20 text-white hover:border-white text-[10px] uppercase font-bold tracking-widest rounded-sm transition-colors"
+                >
+                  Full Details
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
+    </>
   );
 }
 

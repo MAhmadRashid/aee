@@ -5,12 +5,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useCurrency } from '../../../hooks/useCurrency';
 import { useCart } from '../../../context/CartContext';
-import { ChevronLeft, ShoppingBag, MessageCircle, MapPin, Check, Wind, Droplets, Leaf, ChevronDown, ChevronUp } from 'lucide-react';
+import ProductCard from '../../../components/ProductCard';
+import { ChevronLeft, ShoppingBag, MessageCircle, MapPin, Check, Wind, Droplets, Leaf, ChevronDown, ChevronUp, History } from 'lucide-react';
 
 export default function PerfumeDetail({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = use(params);
   
   const [perfume, setPerfume] = useState<any>(null);
+  const [recentProducts, setRecentProducts] = useState<any[]>([]);
 
   useEffect(() => {
     fetch(`/api/products`)
@@ -20,6 +22,23 @@ export default function PerfumeDetail({ params }: { params: Promise<{ id: string
           const livePerfume = data.data.find((p: any) => p.id === resolvedParams.id || p.slug === resolvedParams.id);
           if (livePerfume) {
             setPerfume(livePerfume);
+            
+            // Save to recently viewed
+            try {
+              let viewed = JSON.parse(localStorage.getItem('recentlyViewed') || '[]');
+              viewed = viewed.filter((id: string) => id !== livePerfume.id);
+              viewed.unshift(livePerfume.id);
+              if (viewed.length > 5) viewed = viewed.slice(0, 5);
+              localStorage.setItem('recentlyViewed', JSON.stringify(viewed));
+              
+              // Load recently viewed
+              const recent = data.data.filter((p: any) => viewed.includes(p.id) && p.id !== livePerfume.id);
+              // Sort by view order
+              recent.sort((a: any, b: any) => viewed.indexOf(a.id) - viewed.indexOf(b.id));
+              setRecentProducts(recent);
+            } catch (e) {
+              console.error("Local storage error", e);
+            }
           }
         }
       })
@@ -213,34 +232,53 @@ export default function PerfumeDetail({ params }: { params: Promise<{ id: string
                     {activeAccordion === 'notes' ? <ChevronUp className="w-4 h-4 text-[var(--color-accent)]" /> : <ChevronDown className="w-4 h-4 text-[var(--color-text-muted)]" />}
                   </button>
                   {activeAccordion === 'notes' && (
-                    <div className="p-6 pt-0 border-t border-[var(--color-border)]/30">
-                      <div className="grid grid-cols-1 gap-6 pt-4">
-                        <div className="flex flex-col">
-                          <span className="text-[9px] font-bold uppercase tracking-[0.25em] text-[var(--color-accent)] mb-2 flex items-center">
-                            <Wind className="w-3 h-3 mr-2" /> Top Notes
-                          </span>
-                          <p className="text-sm text-[var(--color-text)] font-serif italic ml-5">
-                            {perfume.scentNotes.top.join(' • ')}
-                          </p>
+                    <div className="p-8 pt-4 border-t border-[var(--color-border)]/30">
+                      <div className="flex flex-col items-center gap-8 relative pb-4">
+                        {/* Connecting Line */}
+                        <div className="absolute top-8 bottom-8 w-[1px] bg-gradient-to-b from-[var(--color-accent)] via-[var(--color-text-muted)] to-[var(--color-border)] opacity-30 z-0"></div>
+                        
+                        {/* Top Notes */}
+                        <div className="flex flex-col items-center text-center relative z-10 w-full max-w-[200px]">
+                          <div className="w-10 h-10 rounded-full bg-[var(--color-surface)] border border-[var(--color-accent)] flex items-center justify-center mb-3 shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+                            <Wind className="w-4 h-4 text-[var(--color-accent)]" />
+                          </div>
+                          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[var(--color-accent)] mb-1">Top Notes</span>
+                          <span className="text-[9px] uppercase text-[var(--color-text-muted)] mb-2 block">First 15 mins</span>
+                          <div className="flex flex-wrap justify-center gap-2">
+                            {perfume.scentNotes.top.map((n: string) => (
+                              <span key={n} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-serif text-[var(--color-text)]">{n}</span>
+                            ))}
+                          </div>
                         </div>
-                        <div className="w-full h-[1px] bg-[var(--color-border)]/30"></div>
-                        <div className="flex flex-col">
-                          <span className="text-[9px] font-bold uppercase tracking-[0.25em] text-[var(--color-accent)] mb-2 flex items-center">
-                            <Droplets className="w-3 h-3 mr-2" /> Heart Notes
-                          </span>
-                          <p className="text-sm text-[var(--color-text)] font-serif italic ml-5">
-                            {perfume.scentNotes.middle.join(' • ')}
-                          </p>
+                        
+                        {/* Heart Notes */}
+                        <div className="flex flex-col items-center text-center relative z-10 w-full max-w-[240px]">
+                          <div className="w-10 h-10 rounded-full bg-[var(--color-surface)] border border-[var(--color-text-muted)] flex items-center justify-center mb-3">
+                            <Droplets className="w-4 h-4 text-[var(--color-text-muted)]" />
+                          </div>
+                          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[var(--color-text-muted)] mb-1">Heart Notes</span>
+                          <span className="text-[9px] uppercase text-[var(--color-text-muted)]/70 mb-2 block">2-4 Hours</span>
+                          <div className="flex flex-wrap justify-center gap-2">
+                            {perfume.scentNotes.middle.map((n: string) => (
+                              <span key={n} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-serif text-[var(--color-text)]">{n}</span>
+                            ))}
+                          </div>
                         </div>
-                        <div className="w-full h-[1px] bg-[var(--color-border)]/30"></div>
-                        <div className="flex flex-col">
-                          <span className="text-[9px] font-bold uppercase tracking-[0.25em] text-[var(--color-accent)] mb-2 flex items-center">
-                            <Leaf className="w-3 h-3 mr-2" /> Base Notes
-                          </span>
-                          <p className="text-sm text-[var(--color-text)] font-serif italic ml-5">
-                            {perfume.scentNotes.base.join(' • ')}
-                          </p>
+                        
+                        {/* Base Notes */}
+                        <div className="flex flex-col items-center text-center relative z-10 w-full max-w-[280px]">
+                          <div className="w-10 h-10 rounded-full bg-[var(--color-surface)] border border-white/20 flex items-center justify-center mb-3">
+                            <Leaf className="w-4 h-4 text-white/50" />
+                          </div>
+                          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/70 mb-1">Base Notes</span>
+                          <span className="text-[9px] uppercase text-white/40 mb-2 block">4+ Hours</span>
+                          <div className="flex flex-wrap justify-center gap-2">
+                            {perfume.scentNotes.base.map((n: string) => (
+                              <span key={n} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-serif text-[var(--color-text)]">{n}</span>
+                            ))}
+                          </div>
                         </div>
+                        
                       </div>
                     </div>
                   )}
@@ -298,6 +336,25 @@ export default function PerfumeDetail({ params }: { params: Promise<{ id: string
 
         </div>
       </div>
+
+      {/* Recently Viewed Products */}
+      {recentProducts.length > 0 && (
+        <section className="w-full py-20 px-6 lg:px-12 bg-[var(--color-surface)]/20 border-t border-[var(--color-border)]/30">
+          <div className="max-w-[1600px] mx-auto">
+            <div className="flex items-center gap-3 mb-10">
+              <History className="w-5 h-5 text-[var(--color-accent)]" />
+              <h2 className="text-xl md:text-2xl font-serif text-[var(--color-text)] uppercase tracking-widest">Recently Viewed</h2>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 md:gap-8">
+              {recentProducts.map(p => (
+                <div key={p.id}>
+                  <ProductCard perfume={p} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Mobile Sticky Add to Cart Footer */}
       <div className="lg:hidden fixed bottom-0 left-0 w-full z-50 p-4 bg-[var(--color-background)] border-t border-[var(--color-border)]/50">
