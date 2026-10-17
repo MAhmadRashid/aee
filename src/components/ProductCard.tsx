@@ -13,6 +13,7 @@ function ProductCard({ perfume }: { perfume: any }) {
   const [imageError, setImageError] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
   const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const { addToCart, setIsCartOpen } = useCart();
   const { formatPrice } = useCurrency();
 
@@ -85,6 +86,7 @@ function ProductCard({ perfume }: { perfume: any }) {
       <motion.div 
         className="flex flex-col cursor-pointer bg-neutral-950/60 backdrop-blur-md relative border border-white/5 rounded-2xl overflow-hidden shadow-[0_4px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_40px_rgba(212,175,55,0.15)] hover:border-[#D4AF37]/30 transition-all duration-500 ease-out group"
         whileHover={{ y: -6, scale: 1.02 }}
+        onMouseEnter={() => setIsHovered(true)}
       >
         <div className="aspect-[4/5] w-full bg-transparent relative overflow-hidden flex items-center justify-center">
           
@@ -105,15 +107,17 @@ function ProductCard({ perfume }: { perfume: any }) {
               onError={() => { setImageError(true); setImageLoaded(true); }}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 20vw"
             />
-            {/* Secondary Image for Hover Effect */}
-            <Image 
-              src={perfume.image_secondary || imageUrl} // Fallback to primary image if secondary doesn't exist, but we apply a filter or slight zoom to simulate it
-              alt={`${perfume.name} alternative`}
-              fill
-              loading="lazy"
-              className={`object-contain p-4 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] scale-110 opacity-0 group-hover:scale-105 group-hover:opacity-100 absolute inset-0 ${!perfume.image_secondary ? 'brightness-75 contrast-125' : ''}`}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 20vw"
-            />
+            {/* Secondary Image for Hover Effect (Loaded on demand upon hover) */}
+            {isHovered && (
+              <Image 
+                src={perfume.image_secondary || imageUrl}
+                alt={`${perfume.name} alternative`}
+                fill
+                loading="lazy"
+                className={`object-contain p-4 transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] scale-110 opacity-0 group-hover:scale-105 group-hover:opacity-100 absolute inset-0 ${!perfume.image_secondary ? 'brightness-75 contrast-125' : ''}`}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 20vw"
+              />
+            )}
           </div>
 
           {/* Quick View Button on Hover */}

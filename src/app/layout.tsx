@@ -4,8 +4,8 @@ import "./globals.css";
 import { Providers } from "../components/Providers";
 import { ConditionalLayout } from "../components/ConditionalLayout";
 
-const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-sans" });
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-serif" });
+const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
+const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-serif", display: "swap" });
 
 export const metadata: Metadata = {
   title: "Zero to One | Luxury Fragrance Collection",
@@ -19,6 +19,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://res.cloudinary.com" />
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+      </head>
       <body 
         suppressHydrationWarning
         className={`${montserrat.variable} ${playfair.variable} font-sans antialiased`}

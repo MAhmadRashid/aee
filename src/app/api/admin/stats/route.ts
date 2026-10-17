@@ -53,12 +53,19 @@ export async function GET() {
     console.warn("Stats fallback:", err);
   }
 
-  return NextResponse.json({
-    success: true,
-    productCount,
-    categoryCount,
-    userCount,
-    totalRevenue,
-    isLiveDb,
-  });
+  return NextResponse.json(
+    {
+      success: true,
+      productCount,
+      categoryCount,
+      userCount,
+      totalRevenue,
+      isLiveDb,
+    },
+    {
+      headers: {
+        'Cache-Control': 'public, s-maxage=30, stale-while-revalidate=120',
+      },
+    }
+  );
 }

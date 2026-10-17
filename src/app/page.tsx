@@ -5,17 +5,23 @@ import { useCurrency } from '../hooks/useCurrency';
 import { useCart } from '../context/CartContext';
 import Image from 'next/image';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { ArrowRight, Phone, Mail, MapPin } from 'lucide-react';
-
 import ProductCard from '../components/ProductCard';
-import { FragranceFinderWidget } from '../components/FragranceFinderWidget';
 import { EmptyCategoryState } from '../components/EmptyCategoryState';
 import { TrustBadges } from '../components/TrustBadges';
-import FloatingParticles from '../components/FloatingParticles';
-import { Canvas } from '@react-three/fiber';
 import { motion, useMotionValue, useTransform, AnimatePresence, useScroll } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 import Tilt from 'react-parallax-tilt';
+
+const HeroParticles = dynamic(() => import('../components/HeroParticles'), {
+  ssr: false,
+});
+
+const FragranceFinderWidget = dynamic(
+  () => import('../components/FragranceFinderWidget').then(mod => mod.FragranceFinderWidget),
+  { ssr: false }
+);
 
 import { perfumes as initialPerfumes } from '../data/perfumes';
 
@@ -89,11 +95,9 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-background)]/40 via-black/20 to-[var(--color-background)]/80 z-0" />
         
-        {/* Floating Particles for Anti-Gravity Effect */}
+        {/* Floating Particles for Anti-Gravity Effect (Loaded lazily without blocking initial page paint) */}
         <div className="absolute inset-0 z-10 pointer-events-none mix-blend-screen opacity-50">
-          <Canvas camera={{ position: [0, 0, 5] }}>
-            <FloatingParticles count={40} />
-          </Canvas>
+          <HeroParticles />
         </div>
         
         <motion.div 

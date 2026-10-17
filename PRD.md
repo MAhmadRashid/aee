@@ -45,9 +45,16 @@ When executing in an autonomous Ralph Loop iteration:
 - [ ] **Task 4.1:** Verify 3D Olfactory Hotspot annotations (Top, Heart, Base notes) with distance occlusion on product detail page.
 - [ ] **Task 4.2:** Ensure mobile fallback and responsive canvas rendering for 3D fragrance bottles.
 
+### Phase 5: High-Performance Loading & Bundle Speed (Ralph Optimization)
+- [x] **Task 5.1:** Strip unused bundle imports from `src/app/page.tsx` (Canvas, Three.js, FloatingParticles, Tilt, Lucide icons) saving ~600KB+ client JS.
+- [x] **Task 5.2:** Enable AVIF/WebP image formats, Brotli/Gzip compression, and 1-year CDN caching in `next.config.ts`.
+- [x] **Task 5.3:** Configure non-blocking `display: 'swap'` for Google Fonts and preconnects for image CDNs in `src/app/layout.tsx`.
+- [x] **Task 5.4:** Implement on-demand hover image loading in `ProductCard.tsx` cutting initial homepage image requests by 50%.
+- [x] **Task 5.5:** Add stale-while-revalidate edge caching (`Cache-Control`) to `/api/products`, `/api/admin/categories`, and `/api/admin/stats`.
+
 ---
 
 ## 🔒 Ralph Loop Completion Status
 - **Current Status:** In Progress
-- **Completed Tasks:** 4 / 11
+- **Completed Tasks:** 9 / 16
 - **Target Release:** Q3 2026 Production

@@ -33,13 +33,19 @@ export async function GET() {
     }
 
     if (categories.length === 0) {
-      return NextResponse.json(DEFAULT_CATEGORIES);
+      return NextResponse.json(DEFAULT_CATEGORIES, {
+        headers: { 'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=1800' }
+      });
     }
 
-    return NextResponse.json(categories);
+    return NextResponse.json(categories, {
+      headers: { 'Cache-Control': 'public, s-maxage=120, stale-while-revalidate=600' }
+    });
   } catch (error) {
     console.error('Failed to fetch categories:', error);
-    return NextResponse.json(DEFAULT_CATEGORIES);
+    return NextResponse.json(DEFAULT_CATEGORIES, {
+      headers: { 'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=1800' }
+    });
   }
 }
 
