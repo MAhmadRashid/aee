@@ -1,9 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
 import { Package, Tag, Users, DollarSign, TrendingUp, Activity, BarChart3, ArrowUpRight, Sparkles, ShoppingBag } from 'lucide-react';
-import { db } from '../../lib/firebase-admin';
-import { perfumes } from '../../data/perfumes';
-import RevenueChart from '../../components/admin/RevenueChart';
+import { db } from '@/lib/firebase-admin';
+import { perfumes } from '@/data/perfumes';
+import RevenueChart from '@/components/admin/RevenueChart';
+
+export const dynamic = 'force-dynamic';
 
 export default async function AdminDashboard() {
   let productCount = perfumes.length; // 91 curated boutique fragrances
