@@ -41,6 +41,7 @@
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "react-parallax-tilt": "^1.7.337",
+    "recharts": "^2.15.1",
     "three": "^0.185.1"
   },
   "devDependencies": {
