@@ -5,9 +5,9 @@ export function middleware(request: NextRequest) {
   const host = request.headers.get('host') || '';
   const { pathname } = request.nextUrl;
 
-  // Dedicated routing for Admin Panel when running on Port 3001
-  if (host.includes(':3001')) {
-    // If opening root URL (http://localhost:3001/), redirect directly to /admin
+  // Dedicated routing for Admin Panel when running on Port 3001 or admin subdomain
+  if (host.includes(':3001') || host.startsWith('admin.') || host.startsWith('admin-')) {
+    // If opening root URL, redirect directly to /admin
     if (pathname === '/') {
       return NextResponse.redirect(new URL('/admin', request.url));
     }
