@@ -7,11 +7,13 @@ import Link from 'next/link';
 import { ArrowRight, Filter } from 'lucide-react';
 import { motion } from 'framer-motion';
 
+import { perfumes as initialPerfumes } from '../../data/perfumes';
+
 type FilterOption = 'All' | 'Summer Scents' | 'Winter / Oud Special' | 'Date Night' | 'Office Wear';
 
 function ShopContent() {
-  const [perfumes, setPerfumes] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [perfumes, setPerfumes] = useState<any[]>(initialPerfumes);
+  const [loading, setLoading] = useState(false);
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get('search')?.toLowerCase() || '';
   const [activeFilter, setActiveFilter] = useState<FilterOption>('All');
@@ -28,15 +30,23 @@ function ShopContent() {
       .finally(() => setLoading(false));
   }, []);
 
-  const categoryOrder = [
+  const preferredOrder = [
     'Premium Perfumes', 
     'Classic Perfumes',
     'Oud', 
     'Perfume Wax / Attar', 
     'Sample Sets', 
+    'Tester Box',
     'Body Mist', 
+    'Car Diffusers / Car Perfumes',
     'Home & Space Fragrances', 
     'Gift Box'
+  ];
+
+  const presentCategories = Array.from(new Set(perfumes.map(p => p.category).filter(Boolean)));
+  const categoryOrder = [
+    ...preferredOrder.filter(c => presentCategories.includes(c)),
+    ...presentCategories.filter(c => !preferredOrder.includes(c))
   ];
 
   const filterOptions: FilterOption[] = ['All', 'Summer Scents', 'Winter / Oud Special', 'Date Night', 'Office Wear'];
@@ -132,7 +142,7 @@ function ShopContent() {
           
           if (categoryProducts.length === 0) return null;
           
-          const slug = category.toLowerCase().replace(/ /g, '-').replace(/\//g, '').replace(/--/g, '-');
+          const slug = category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
           
           return (
             <section key={category} className={`w-full py-24 px-8 ${idx !== 0 ? 'border-t border-[var(--color-border)]' : ''}`}>

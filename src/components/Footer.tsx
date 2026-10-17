@@ -89,10 +89,10 @@ export function Footer() {
               </h4>
               <ul className="space-y-4">
                 <li>
-                  <a href="#" className="flex items-start text-zinc-400 hover:text-white transition-colors duration-200 text-sm">
+                  <Link href="/store-locator" className="flex items-start text-zinc-400 hover:text-white transition-colors duration-200 text-sm">
                     <MapPin className="w-4 h-4 mr-3 mt-0.5 shrink-0" />
                     <span className="leading-relaxed">Shop No. G-21 Ground Floor, Millennium Mall, Karachi</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a href="https://wa.me/923000000000" target="_blank" rel="noopener noreferrer" className="flex items-center text-zinc-400 hover:text-white transition-colors duration-200 text-sm">

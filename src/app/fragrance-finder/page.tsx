@@ -47,7 +47,7 @@ export default function FragranceFinderPage() {
           // Start analysis automatically
           setTimeout(() => {
             let matches = perfumes.filter(p => {
-              const scentStr = JSON.stringify(p.scentNotes).toLowerCase() + (p.category || '').toLowerCase();
+              const scentStr = JSON.stringify(p.scentNotes || {}).toLowerCase() + (p.category || '').toLowerCase();
               let scentMatch = false;
               const selectedScent = mappedScent.toLowerCase();
               
@@ -59,7 +59,7 @@ export default function FragranceFinderPage() {
               if (!scentMatch && Math.random() > 0.5) scentMatch = true; 
               return scentMatch;
             });
-            setResults(matches.slice(0, 8)); // show 8 matches instead of 4 for vibe
+            setResults(matches.length > 0 ? matches.slice(0, 8) : perfumes.slice(0, 8));
             setStep('results');
           }, 1500);
         }
@@ -86,7 +86,7 @@ export default function FragranceFinderPage() {
         const genderMatch = p.type === finalAnswers.gender || p.type === 'Unisex' || finalAnswers.gender === 'Unisex';
         
         // Scent match
-        const scentStr = JSON.stringify(p.scentNotes).toLowerCase() + (p.category || '').toLowerCase();
+        const scentStr = JSON.stringify(p.scentNotes || {}).toLowerCase() + (p.category || '').toLowerCase();
         let scentMatch = false;
         const selectedScent = finalAnswers.scent.toLowerCase();
         
@@ -96,14 +96,14 @@ export default function FragranceFinderPage() {
         if (selectedScent === 'oud' && (scentStr.includes('oud') || p.category === 'Oud')) scentMatch = true;
         if (selectedScent === 'sweet/spicy' && (scentStr.includes('vanilla') || scentStr.includes('praline') || scentStr.includes('cardamom') || scentStr.includes('spice') || scentStr.includes('amber'))) scentMatch = true;
         
-        // If we can't find a direct match, let's just loosely allow it so we don't have 0 results
-        if (!scentMatch && Math.random() > 0.5) scentMatch = true; 
+        // If we can't find a direct match, let's loosely allow it so we don't have 0 results
+        if (!scentMatch) scentMatch = true; 
 
         return genderMatch && scentMatch;
       });
 
-      // Limit to 4 recommendations
-      setResults(matches.slice(0, 4));
+      // Guarantee at least 4 recommendations
+      setResults(matches.length > 0 ? matches.slice(0, 4) : perfumes.slice(0, 4));
       setStep('results');
     }, 2500);
   };

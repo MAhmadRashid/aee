@@ -1,0 +1,30 @@
+================================================================================
+ZERO TO ONE — Ralph Loop Progress & Memory Ledger
+================================================================================
+Initialized: 2026-10-17
+Architecture: Dual Server (Port 3000 Storefront | Port 3001 Atelier Admin)
+
+---
+[Iteration 000] - 2026-10-17
+Tasks Completed:
+  - Task 1.1: Configured dedicated Admin Panel on port 3001 with independent .next-admin build directory in next.config.ts.
+  - Task 1.2: Added src/middleware.ts to redirect port 3001 root visits directly to /admin.
+  - Task 1.3: Created dual server launcher scripts (start-all.bat, start-all.js, start-admin.bat, start-website.bat).
+  - Task 1.4: Configured Ralph Loop autonomous runner scripts (ralph.ps1, ralph.bat, ralph.sh, ralph.js).
+Files Modified / Created:
+  - next.config.ts
+  - src/middleware.ts
+  - src/app/admin/layout.tsx
+  - package.json
+  - start-admin.bat
+  - start-website.bat
+  - start-all.bat
+  - start-all.js
+  - PRD.md
+  - progress.txt
+Verification:
+  - TypeScript check: PASS (npx tsc --noEmit: 0 errors)
+  - Port isolation: Configured distDir: .next-admin for 3001 to eliminate lock contention.
+Next Priority:
+  - Task 1.5: Implement Admin Product Edit and Delete API endpoints (/api/admin/products/[id]).
+================================================================================

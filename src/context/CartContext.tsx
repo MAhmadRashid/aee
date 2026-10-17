@@ -16,6 +16,7 @@ type CartContextType = {
   addToCart: (item: Omit<CartItem, 'quantity'>) => void;
   removeFromCart: (id: number | string) => void;
   updateQuantity: (id: number | string, quantity: number) => void;
+  clearCart: () => void;
   cartCount: number;
   isCartOpen: boolean;
   setIsCartOpen: (isOpen: boolean) => void;
@@ -30,13 +31,21 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     setIsMounted(true);
-    const saved = localStorage.getItem('zerotoone_cart');
-    if (saved) setCartItems(JSON.parse(saved));
+    try {
+      const saved = localStorage.getItem('zerotoone_cart');
+      if (saved) setCartItems(JSON.parse(saved));
+    } catch (e) {
+      console.error('Failed to parse cart from localStorage:', e);
+    }
   }, []);
 
   useEffect(() => {
     if (isMounted) {
-      localStorage.setItem('zerotoone_cart', JSON.stringify(cartItems));
+      try {
+        localStorage.setItem('zerotoone_cart', JSON.stringify(cartItems));
+      } catch (e) {
+        console.error('Failed to save cart to localStorage:', e);
+      }
     }
   }, [cartItems, isMounted]);
 
@@ -63,10 +72,21 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     setCartItems(prev => prev.map(p => p.id === id ? { ...p, quantity } : p));
   };
 
+  const clearCart = () => {
+    setCartItems([]);
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.removeItem('zerotoone_cart');
+      } catch (e) {
+        console.error('Failed to remove cart from localStorage:', e);
+      }
+    }
+  };
+
   const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, updateQuantity, cartCount, isCartOpen, setIsCartOpen }}>
+    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, updateQuantity, clearCart, cartCount, isCartOpen, setIsCartOpen }}>
       {children}
     </CartContext.Provider>
   );

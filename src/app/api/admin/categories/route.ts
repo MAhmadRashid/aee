@@ -4,20 +4,42 @@ import { FieldValue } from 'firebase-admin/firestore';
 
 export const dynamic = 'force-dynamic';
 
+const DEFAULT_CATEGORIES = [
+  { id: 'cat-premium', name: 'Premium Perfumes', description: 'Exclusive High-End Signature Fragrances' },
+  { id: 'cat-classic', name: 'Classic Perfumes', description: 'Everyday elegance and refined scents' },
+  { id: 'cat-oud', name: 'Oud', description: 'Rich, Smoky, and Luxurious Arabic Oud' },
+  { id: 'cat-attar', name: 'Perfume Wax / Attar', description: 'Concentrated alcohol-free pure oils' },
+  { id: 'cat-sample', name: 'Sample Sets', description: 'Discovery sets to explore signature scents' },
+  { id: 'cat-tester', name: 'Tester Box', description: 'Curated sets to try before you buy' },
+  { id: 'cat-mist', name: 'Body Mist', description: 'Refreshing all-day subtle indulgence' },
+  { id: 'cat-home', name: 'Home & Space Fragrances', description: 'Room sprays, diffusers, and ambiance enhancers' },
+  { id: 'cat-car', name: 'Car Diffusers / Car Perfumes', description: 'Luxury fragrances for your journeys' },
+  { id: 'cat-gift', name: 'Gift Box', description: 'Exquisite gifting packaging for special moments' },
+];
+
 export async function GET() {
   try {
-    if (!db || Object.keys(db).length === 0) {
-      return NextResponse.json([]);
+    let categories: any[] = [];
+
+    if (db && Object.keys(db).length > 0) {
+      try {
+        const snapshot = await db.collection('categories').orderBy('createdAt', 'desc').get();
+        snapshot.forEach((doc: any) => {
+          categories.push({ id: doc.id, ...doc.data() });
+        });
+      } catch (err) {
+        console.warn('Firestore categories query failed, using defaults:', err);
+      }
     }
-    const snapshot = await db.collection('categories').orderBy('createdAt', 'desc').get();
-    const categories: any[] = [];
-    snapshot.forEach((doc: any) => {
-      categories.push({ id: doc.id, ...doc.data() });
-    });
+
+    if (categories.length === 0) {
+      return NextResponse.json(DEFAULT_CATEGORIES);
+    }
+
     return NextResponse.json(categories);
   } catch (error) {
-    console.error('Failed to fetch categories', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    console.error('Failed to fetch categories:', error);
+    return NextResponse.json(DEFAULT_CATEGORIES);
   }
 }
 
@@ -25,7 +47,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     if (!db || Object.keys(db).length === 0) {
-      return NextResponse.json({ success: true, id: `mock-id` }, { status: 201 });
+      return NextResponse.json({ success: true, id: `cat-${Date.now()}` }, { status: 201 });
     }
     
     const docRef = await db.collection('categories').add({

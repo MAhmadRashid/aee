@@ -1,13 +1,31 @@
 'use client';
 import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
-import { Edit, Trash2, Plus, PackageOpen, Search, ChevronLeft, ChevronRight } from 'lucide-react';
+import Image from 'next/image';
+import { Edit, Trash2, Plus, PackageOpen, Search, ChevronLeft, ChevronRight, Filter, AlertTriangle, CheckCircle2 } from 'lucide-react';
+
+const CATEGORIES = [
+  'All Collections',
+  'Classic Perfumes',
+  'Premium Perfumes',
+  'Oud',
+  'Tester Box',
+  'Sample Sets',
+  'Body Mist',
+  'Gift Box',
+  'Perfume Wax / Attar',
+  'Car Diffusers / Car Perfumes',
+  'Home & Space Fragrances'
+];
 
 export default function AdminProductsPage() {
   const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All Collections');
   const [currentPage, setCurrentPage] = useState(1);
+  const [deleteCandidate, setDeleteCandidate] = useState<any | null>(null);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
   const itemsPerPage = 10;
 
   useEffect(() => {
@@ -28,26 +46,43 @@ export default function AdminProductsPage() {
     }
   };
 
-  const deleteProduct = async (id: string) => {
-    if (!confirm('Are you sure you want to delete this product?')) return;
+  const confirmDeleteProduct = async () => {
+    if (!deleteCandidate) return;
+    const id = deleteCandidate._id || deleteCandidate.id;
     
     try {
       const res = await fetch(`/api/admin/products/${id}`, { method: 'DELETE' });
       if (res.ok) {
-        setProducts(products.filter((p: any) => p._id !== id));
+        setProducts(prev => prev.filter((p: any) => (p._id || p.id) !== id));
+        showToast(`"${deleteCandidate.name}" has been removed from the boutique catalog.`);
       }
     } catch (error) {
       console.error('Failed to delete product', error);
+      showToast('Error removing product.');
+    } finally {
+      setDeleteCandidate(null);
     }
   };
 
+  const showToast = (msg: string) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 4000);
+  };
+
   const filteredProducts = useMemo(() => {
-    return products.filter((p: any) => 
-      (p.name && p.name.toLowerCase().includes(searchQuery.toLowerCase())) ||
-      (p.category && p.category.toLowerCase().includes(searchQuery.toLowerCase())) ||
-      (p.sku && p.sku.toLowerCase().includes(searchQuery.toLowerCase()))
-    );
-  }, [products, searchQuery]);
+    return products.filter((p: any) => {
+      const matchesSearch = 
+        (p.name && p.name.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (p.category && p.category.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (p.sku && p.sku.toLowerCase().includes(searchQuery.toLowerCase()));
+
+      const matchesCat = 
+        selectedCategory === 'All Collections' || 
+        (p.category && p.category.toLowerCase() === selectedCategory.toLowerCase());
+
+      return matchesSearch && matchesCat;
+    });
+  }, [products, searchQuery, selectedCategory]);
 
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
   const paginatedProducts = filteredProducts.slice(
@@ -56,126 +91,224 @@ export default function AdminProductsPage() {
   );
 
   return (
-    <div className="space-y-10 pt-4 pb-12 w-full max-w-[100vw] overflow-x-hidden">
+    <div className="space-y-8 pt-4 pb-12 w-full max-w-[100vw] overflow-x-hidden">
+      {/* Toast Notification */}
+      {toastMessage && (
+        <div className="fixed top-6 right-6 z-50 bg-[#141414] border border-[#D4AF37]/40 text-white px-5 py-3 rounded-lg shadow-2xl flex items-center gap-3 animate-in fade-in slide-in-from-top-4 duration-300">
+          <CheckCircle2 className="w-5 h-5 text-[#D4AF37]" />
+          <span className="text-xs font-sans tracking-wide">{toastMessage}</span>
+        </div>
+      )}
+
+      {/* Delete Confirmation Modal */}
+      {deleteCandidate && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="bg-[#141414] border border-white/10 rounded-2xl p-6 md:p-8 max-w-md w-full shadow-2xl space-y-6">
+            <div className="flex items-center gap-3 text-amber-400">
+              <div className="p-3 bg-amber-500/10 rounded-full">
+                <AlertTriangle className="w-6 h-6" />
+              </div>
+              <h3 className="font-serif text-lg text-white">De-list Fragrance?</h3>
+            </div>
+            <p className="text-xs text-neutral-400 leading-relaxed">
+              Are you sure you wish to remove <span className="text-white font-semibold">{deleteCandidate.name}</span> from the active boutique catalog?
+            </p>
+            <div className="flex justify-end gap-3 pt-2">
+              <button 
+                onClick={() => setDeleteCandidate(null)}
+                className="px-4 py-2.5 rounded-lg border border-white/10 text-xs text-neutral-300 hover:bg-white/5 transition"
+              >
+                Cancel
+              </button>
+              <button 
+                onClick={confirmDeleteProduct}
+                className="px-5 py-2.5 rounded-lg bg-red-600 hover:bg-red-700 text-xs font-bold text-white uppercase tracking-wider transition"
+              >
+                Confirm Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <header className="mb-6 flex flex-col sm:flex-row sm:justify-between sm:items-end gap-6">
         <div>
-          <h1 className="text-4xl md:text-5xl font-serif italic tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#fcdca0] mb-2 drop-shadow-md">Inventory</h1>
-          <p className="text-[11px] uppercase tracking-[0.25em] text-neutral-500">Manage your boutique products</p>
+          <h1 className="text-4xl md:text-5xl font-serif italic tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#fcdca0] mb-2 drop-shadow-md">
+            Artisanal Inventory
+          </h1>
+          <p className="text-[11px] uppercase tracking-[0.25em] text-neutral-400">
+            Total {products.length} Fragrances across 10 Luxury Collections
+          </p>
         </div>
         <Link 
           href="/admin/products/new" 
-          className="bg-gradient-to-r from-[#D4AF37] to-[#C29B57] text-black px-8 py-3.5 rounded-lg flex items-center justify-center hover:brightness-110 shadow-[0_4px_20px_rgba(212,175,55,0.25)] hover:shadow-[0_8px_30px_rgba(212,175,55,0.4)] transition-all duration-300 text-[10px] uppercase font-bold tracking-[0.2em] transform hover:-translate-y-0.5"
+          className="bg-gradient-to-r from-[#D4AF37] to-[#C29B57] text-black px-6 py-3.5 rounded-lg flex items-center justify-center hover:brightness-110 shadow-[0_4px_20px_rgba(212,175,55,0.25)] hover:shadow-[0_8px_30px_rgba(212,175,55,0.4)] transition-all duration-300 text-[10px] uppercase font-bold tracking-[0.2em] transform hover:-translate-y-0.5"
         >
-          <Plus className="w-4 h-4 mr-2" strokeWidth={2.5} /> Add Product
+          <Plus className="w-4 h-4 mr-2" strokeWidth={2.5} /> Add Fragrance
         </Link>
       </header>
 
-      {/* Search Bar */}
-      <div className="relative w-full md:max-w-md mb-4">
-        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-          <Search className="h-4 w-4 text-neutral-500" />
+      {/* Filter and Search Controls */}
+      <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
+        <div className="relative flex-1 max-w-md">
+          <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+            <Search className="h-4 w-4 text-neutral-500" />
+          </div>
+          <input
+            type="text"
+            placeholder="Search by fragrance title, collection, or SKU..."
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              setCurrentPage(1);
+            }}
+            className="w-full bg-[#121212] border border-white/10 rounded-lg pl-11 pr-4 py-3 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-[#D4AF37] transition-colors"
+          />
         </div>
-        <input
-          type="text"
-          placeholder="Search by name, category, or SKU..."
-          value={searchQuery}
-          onChange={(e) => {
-            setSearchQuery(e.target.value);
-            setCurrentPage(1); // Reset to first page on search
-          }}
-          className="w-full bg-[#121212] border border-white/10 rounded-lg pl-11 pr-4 py-3 text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-[#D4AF37] transition-colors"
-        />
+
+        <div className="flex items-center gap-2">
+          <Filter className="w-4 h-4 text-[#D4AF37] shrink-0" />
+          <select
+            value={selectedCategory}
+            onChange={(e) => {
+              setSelectedCategory(e.target.value);
+              setCurrentPage(1);
+            }}
+            className="bg-[#121212] border border-white/10 rounded-lg px-4 py-3 text-xs text-neutral-200 focus:outline-none focus:border-[#D4AF37] transition-colors cursor-pointer"
+          >
+            {CATEGORIES.map(cat => (
+              <option key={cat} value={cat} className="bg-[#181818] text-white">
+                {cat}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       <div className="bg-[#121212] backdrop-blur-xl rounded-2xl border border-white/5 shadow-[0_8px_40px_rgb(0,0,0,0.4)] overflow-hidden w-full relative">
-        {/* Ambient Glow */}
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#D4AF37]/5 rounded-full blur-[100px] pointer-events-none" />
 
         <div className="overflow-x-auto custom-scrollbar relative z-10 w-full">
-          <table className="w-full text-left border-collapse min-w-[700px]">
+          <table className="w-full text-left border-collapse min-w-[760px]">
             <thead>
               <tr className="bg-black/40 border-b border-white/5 text-[10px] uppercase tracking-[0.25em] font-bold text-neutral-400">
-                <th className="p-6 pl-8 font-sans">Product Name</th>
-                <th className="p-6 font-sans">SKU</th>
-                <th className="p-6 font-sans">Collection</th>
-                <th className="p-6 font-sans">Price</th>
-                <th className="p-6 font-sans">Stock</th>
-                <th className="p-6 pr-8 text-right font-sans">Actions</th>
+                <th className="p-5 pl-6 font-sans">Product</th>
+                <th className="p-5 font-sans">Collection</th>
+                <th className="p-5 font-sans">Retail Price</th>
+                <th className="p-5 font-sans">Inventory</th>
+                <th className="p-5 pr-6 text-right font-sans">Controls</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5">
               {loading ? (
-                // Skeleton Rows
                 Array.from({ length: itemsPerPage }).map((_, idx) => (
                   <tr key={idx} className="animate-pulse">
-                    <td className="p-6 pl-8"><div className="w-48 h-5 bg-white/10 rounded-sm"></div></td>
-                    <td className="p-6"><div className="w-16 h-4 bg-white/5 rounded-sm"></div></td>
-                    <td className="p-6"><div className="w-24 h-4 bg-white/5 rounded-sm"></div></td>
-                    <td className="p-6"><div className="w-20 h-4 bg-white/5 rounded-sm"></div></td>
-                    <td className="p-6"><div className="w-12 h-4 bg-white/5 rounded-sm"></div></td>
-                    <td className="p-6 pr-8 flex justify-end space-x-4">
-                      <div className="w-5 h-5 bg-white/5 rounded"></div>
-                      <div className="w-5 h-5 bg-white/5 rounded"></div>
+                    <td className="p-5 pl-6 flex items-center gap-4">
+                      <div className="w-12 h-12 bg-white/10 rounded-lg"></div>
+                      <div className="space-y-2">
+                        <div className="w-40 h-4 bg-white/10 rounded-sm"></div>
+                        <div className="w-20 h-3 bg-white/5 rounded-sm"></div>
+                      </div>
+                    </td>
+                    <td className="p-5"><div className="w-24 h-4 bg-white/5 rounded-sm"></div></td>
+                    <td className="p-5"><div className="w-20 h-4 bg-white/5 rounded-sm"></div></td>
+                    <td className="p-5"><div className="w-16 h-4 bg-white/5 rounded-sm"></div></td>
+                    <td className="p-5 pr-6 flex justify-end space-x-3">
+                      <div className="w-6 h-6 bg-white/5 rounded"></div>
+                      <div className="w-6 h-6 bg-white/5 rounded"></div>
                     </td>
                   </tr>
                 ))
               ) : filteredProducts.length === 0 ? (
-                // Empty State Design
                 <tr>
-                  <td colSpan={6} className="p-0">
-                    <div className="flex flex-col items-center justify-center py-32 px-6 text-center">
-                      <div className="w-20 h-20 bg-[#D4AF37]/10 rounded-full flex items-center justify-center border border-[#D4AF37]/20 mb-6 shadow-inner">
-                        <PackageOpen className="w-8 h-8 text-[#D4AF37] opacity-80" strokeWidth={1.5} />
+                  <td colSpan={5} className="p-0">
+                    <div className="flex flex-col items-center justify-center py-24 px-6 text-center">
+                      <div className="w-16 h-16 bg-[#D4AF37]/10 rounded-full flex items-center justify-center border border-[#D4AF37]/20 mb-4 shadow-inner">
+                        <PackageOpen className="w-7 h-7 text-[#D4AF37] opacity-80" strokeWidth={1.5} />
                       </div>
-                      <h3 className="text-xl font-serif text-white mb-3">No inventory items added yet.</h3>
-                      <p className="text-xs text-neutral-500 max-w-sm leading-relaxed mb-8">
-                        Begin curating your collection by adding your first signature fragrance to the boutique.
+                      <h3 className="text-lg font-serif text-white mb-2">No fragrances found.</h3>
+                      <p className="text-xs text-neutral-400 max-w-sm mb-6">
+                        No products match your active search and category filter.
                       </p>
-                      <Link 
-                        href="/admin/products/new" 
-                        className="border border-[#D4AF37]/50 text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black px-6 py-3 rounded-lg text-[10px] uppercase font-bold tracking-widest transition-all duration-300 shadow-[0_0_15px_rgba(212,175,55,0.1)] hover:shadow-[0_0_20px_rgba(212,175,55,0.3)]"
+                      <button 
+                        onClick={() => { setSearchQuery(''); setSelectedCategory('All Collections'); }}
+                        className="text-xs uppercase tracking-widest text-[#D4AF37] underline"
                       >
-                        Add Your First Product
-                      </Link>
+                        Reset All Filters
+                      </button>
                     </div>
                   </td>
                 </tr>
               ) : (
-                paginatedProducts.map((product: any) => (
-                  <tr key={product._id || product.id} className="hover:bg-white/5 transition-colors duration-300 group">
-                    <td className="p-6 pl-8">
-                      <span className="font-serif text-lg text-neutral-200 group-hover:text-white transition-colors">{product.name}</span>
-                    </td>
-                    <td className="p-6">
-                      <span className="text-xs font-mono text-neutral-500">{product.sku || 'N/A'}</span>
-                    </td>
-                    <td className="p-6">
-                      <span className="text-[10px] uppercase tracking-widest text-[#D4AF37] bg-[#D4AF37]/10 border border-[#D4AF37]/20 px-3 py-1.5 rounded-md">
-                        {product.category || 'Uncategorized'}
-                      </span>
-                    </td>
-                    <td className="p-6 font-sans text-sm tracking-wider text-neutral-300">
-                      Rs. {product.price?.toLocaleString()}
-                    </td>
-                    <td className="p-6">
-                      {product.stock_quantity > 0 ? (
-                        <span className="text-xs font-bold text-emerald-500">In Stock ({product.stock_quantity})</span>
-                      ) : (
-                        <span className="text-xs font-bold text-red-500">Out of Stock</span>
-                      )}
-                    </td>
-                    <td className="p-6 pr-8">
-                      <div className="flex items-center justify-end space-x-5 opacity-70 group-hover:opacity-100 transition-opacity">
-                        <Link href={`/admin/products/edit/${product._id || product.id}`} className="text-neutral-400 hover:text-[#D4AF37] transition-colors p-2 hover:bg-[#D4AF37]/10 rounded-lg">
-                          <Edit className="w-4 h-4" />
-                        </Link>
-                        <button onClick={() => deleteProduct(product._id || product.id)} className="text-neutral-400 hover:text-red-500 transition-colors p-2 hover:bg-red-500/10 rounded-lg">
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))
+                paginatedProducts.map((product: any) => {
+                  const stock = product.stock ?? product.stock_quantity ?? 50;
+                  const imageSrc = product.image || product.image_url || '/perfumes/1.webp';
+                  const isAvailable = stock > 0;
+
+                  return (
+                    <tr key={product._id || product.id} className="hover:bg-white/5 transition-colors duration-200 group">
+                      <td className="p-5 pl-6">
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-14 bg-black border border-white/10 rounded-md relative overflow-hidden shrink-0">
+                            <Image 
+                              src={imageSrc} 
+                              alt={product.name} 
+                              fill 
+                              className="object-cover group-hover:scale-105 transition-transform duration-300" 
+                            />
+                          </div>
+                          <div>
+                            <span className="font-serif text-sm font-medium text-neutral-200 group-hover:text-white transition-colors block">
+                              {product.name}
+                            </span>
+                            <span className="text-[10px] font-mono text-neutral-500 uppercase">
+                              SKU: {product.sku || (product.id ? String(product.id).slice(0, 10) : 'ZTO')}
+                            </span>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="p-5">
+                        <span className="text-[10px] uppercase tracking-wider text-[#D4AF37] bg-[#D4AF37]/10 border border-[#D4AF37]/20 px-2.5 py-1 rounded-sm whitespace-nowrap">
+                          {product.category || 'Fine Fragrance'}
+                        </span>
+                      </td>
+                      <td className="p-5 font-mono text-xs tracking-wider text-neutral-200 font-semibold">
+                        Rs. {(product.price || 0).toLocaleString()}
+                      </td>
+                      <td className="p-5">
+                        {isAvailable ? (
+                          <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-emerald-400">
+                            <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                            <span>In Stock ({stock})</span>
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-red-400">
+                            <span className="w-2 h-2 rounded-full bg-red-400"></span>
+                            <span>Out of Stock</span>
+                          </span>
+                        )}
+                      </td>
+                      <td className="p-5 pr-6">
+                        <div className="flex items-center justify-end space-x-2">
+                          <Link 
+                            href={`/admin/products/edit/${product._id || product.id}`} 
+                            className="text-neutral-400 hover:text-[#D4AF37] p-2 hover:bg-[#D4AF37]/10 rounded-md transition-colors"
+                            title="Edit Fragrance"
+                          >
+                            <Edit className="w-4 h-4" />
+                          </Link>
+                          <button 
+                            onClick={() => setDeleteCandidate(product)} 
+                            className="text-neutral-400 hover:text-red-400 p-2 hover:bg-red-500/10 rounded-md transition-colors cursor-pointer"
+                            title="De-list Product"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })
               )}
             </tbody>
           </table>
@@ -184,7 +317,7 @@ export default function AdminProductsPage() {
         {/* Pagination Controls */}
         {!loading && totalPages > 1 && (
           <div className="border-t border-white/5 p-4 flex items-center justify-between">
-            <span className="text-xs text-neutral-500 font-sans ml-4">
+            <span className="text-xs text-neutral-400 font-sans ml-4">
               Showing {(currentPage - 1) * itemsPerPage + 1} to {Math.min(currentPage * itemsPerPage, filteredProducts.length)} of {filteredProducts.length} entries
             </span>
             <div className="flex space-x-2 mr-4">

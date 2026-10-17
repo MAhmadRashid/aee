@@ -11,18 +11,23 @@ export async function GET() {
     }
 
     const categoriesToSeed = [
-      { name: "Classic Perfumes", description: "Timeless and elegant fragrances." },
-      { name: "Premium Perfumes", description: "High-end luxury collection." },
-      { name: "Oud", description: "Rich, deep, and traditional agarwood." },
-      { name: "Attar", description: "Pure, non-alcoholic concentrated perfume oils." },
-      { name: "Tester Box", description: "Sample collections to try before you buy." }
+      { name: "Premium Perfumes", description: "Exclusive high-end luxury fragrances." },
+      { name: "Classic Perfumes", description: "Timeless and everyday elegant fragrances." },
+      { name: "Oud", description: "Rich, deep, and traditional agarwood collection." },
+      { name: "Perfume Wax / Attar", description: "Pure, non-alcoholic concentrated perfume oils." },
+      { name: "Sample Sets", description: "Discovery sets to explore signature scents." },
+      { name: "Tester Box", description: "Curated sample collections to try before you buy." },
+      { name: "Body Mist", description: "Light and refreshing daily body fragrances." },
+      { name: "Car Diffusers / Car Perfumes", description: "Luxury ambient scents for your journeys." },
+      { name: "Home & Space Fragrances", description: "Room sprays and diffusers to elevate your home." },
+      { name: "Gift Box", description: "Luxury gift sets and bespoke fragrance packaging." }
     ];
 
     const batch = db.batch();
     const categoriesRef = db.collection('categories');
 
     for (const cat of categoriesToSeed) {
-      const docId = cat.name.toLowerCase().replace(/\s+/g, '-');
+      const docId = cat.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
       const docRef = categoriesRef.doc(docId);
       
       batch.set(docRef, {
@@ -34,7 +39,7 @@ export async function GET() {
 
     await batch.commit();
 
-    return NextResponse.json({ success: true, message: `Seeded categories to Firebase!` });
+    return NextResponse.json({ success: true, message: `Seeded all 10 boutique categories to Firebase!` });
   } catch (error: any) {
     console.error('Seed error:', error);
     return NextResponse.json({ error: error.message }, { status: 500 });

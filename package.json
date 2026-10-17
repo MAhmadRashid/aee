@@ -4,7 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "admin": "next dev -p 3001",
     "dev:admin": "next dev -p 3001",
+    "start:admin": "next start -p 3001",
+    "dev:all": "node start-all.js",
+    "ralph": "node ralph.js",
+    "ralph:ps": "powershell -NoProfile -ExecutionPolicy Bypass -File ./ralph.ps1",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

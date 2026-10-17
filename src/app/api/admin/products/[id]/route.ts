@@ -1,8 +1,10 @@
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth/next';
-import { authOptions } from '../../../auth/[...nextauth]/route';
-import { db } from '../../../../../lib/firebase-admin';
+import { authOptions } from '@/lib/auth';
+import { db } from '@/lib/firebase-admin';
 import { FieldValue } from 'firebase-admin/firestore';
+
+export const dynamic = 'force-dynamic';
 
 export async function PUT(request: Request, { params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = await params;
@@ -10,6 +12,10 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
     const session = await getServerSession(authOptions);
     if (!session || (session.user as any)?.role !== 'admin') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    if (!db || Object.keys(db).length === 0) {
+      return NextResponse.json({ error: 'Database not initialized' }, { status: 500 });
     }
 
     const body = await request.json();
@@ -37,6 +43,10 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
     const session = await getServerSession(authOptions);
     if (!session || (session.user as any)?.role !== 'admin') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    if (!db || Object.keys(db).length === 0) {
+      return NextResponse.json({ error: 'Database not initialized' }, { status: 500 });
     }
 
     const docRef = db.collection('products').doc(resolvedParams.id);

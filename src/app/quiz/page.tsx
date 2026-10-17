@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import Link from 'next/link';
 
 export default function QuizPage() {
   const [step, setStep] = useState(0);
@@ -37,9 +38,11 @@ export default function QuizPage() {
           <>
             <h2 className="font-serif text-4xl mb-4 text-[#C5A059]">Your Signature Scent is Ready</h2>
             <p className="text-[var(--color-text-muted)] mb-8">Based on your answers, we have found your perfect match.</p>
-            <button className="bg-black text-white px-8 py-4 uppercase tracking-[0.2em] font-bold border border-white hover:bg-white hover:text-black transition">
-              Reveal Perfume
-            </button>
+            <Link href="/shop" className="inline-block">
+              <button className="bg-[#D4AF37] text-black px-8 py-4 uppercase tracking-[0.2em] font-bold hover:bg-white hover:text-black transition shadow-[0_0_20px_rgba(212,175,55,0.3)]">
+                Discover Your Fragrance
+              </button>
+            </Link>
           </>
         )}
       </div>

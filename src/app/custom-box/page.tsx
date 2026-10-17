@@ -10,7 +10,7 @@ import Image from 'next/image';
 type SelectionStep = 'perfume' | 'attar' | 'mist' | 'summary';
 
 export default function CustomBoxPage() {
-  const { addToCart } = useCart();
+  const { addToCart, setIsCartOpen } = useCart();
   const { formatPrice } = useCurrency();
   const [step, setStep] = useState<SelectionStep>('perfume');
   
@@ -63,9 +63,7 @@ export default function CustomBoxPage() {
       image: selections.perfume.image || selections.perfume.image_url
     });
 
-    // Reset or redirect
-    alert("Custom Box Added to Cart!");
-    window.location.href = '/shop';
+    setIsCartOpen(true);
   };
 
   return (

@@ -17,13 +17,15 @@ import { motion, useMotionValue, useTransform, AnimatePresence, useScroll } from
 import { useTheme } from '../context/ThemeContext';
 import Tilt from 'react-parallax-tilt';
 
+import { perfumes as initialPerfumes } from '../data/perfumes';
+
 export default function Home() {
   const { formatPrice, isLoading, currencyCode, changeCurrency } = useCurrency();
   const { cartItems, cartCount, removeFromCart, updateQuantity } = useCart();
   const { theme, setTheme } = useTheme();
   
-  const [perfumes, setPerfumes] = useState<any[]>([]);
-  const [isLoadingProducts, setIsLoadingProducts] = useState(true);
+  const [perfumes, setPerfumes] = useState<any[]>(initialPerfumes);
+  const [isLoadingProducts, setIsLoadingProducts] = useState(false);
 
   useEffect(() => {
     fetch('/api/products')

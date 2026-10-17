@@ -17,9 +17,38 @@ export async function GET() {
 
     snapshot.forEach((doc: any) => {
       const data = doc.data();
-      // If stock is 0 or undefined or low, set it to 100
+      const updates: any = {};
+      let needsUpdate = false;
+
+      // Update both stock and stock_quantity
+      if (!data.stock || data.stock < 10) {
+        updates.stock = 100;
+        needsUpdate = true;
+      }
       if (!data.stock_quantity || data.stock_quantity < 10) {
-        batch.update(doc.ref, { stock_quantity: 100 });
+        updates.stock_quantity = 100;
+        needsUpdate = true;
+      }
+
+      // Check and update sizeVariants stock if present
+      if (Array.isArray(data.sizeVariants) && data.sizeVariants.length > 0) {
+        let variantsChanged = false;
+        const updatedVariants = data.sizeVariants.map((v: any) => {
+          if (!v.stock || v.stock < 10) {
+            variantsChanged = true;
+            return { ...v, stock: 100 };
+          }
+          return v;
+        });
+
+        if (variantsChanged) {
+          updates.sizeVariants = updatedVariants;
+          needsUpdate = true;
+        }
+      }
+
+      if (needsUpdate) {
+        batch.update(doc.ref, updates);
         updatedCount++;
       }
     });
@@ -28,7 +57,10 @@ export async function GET() {
       await batch.commit();
     }
 
-    return NextResponse.json({ success: true, message: `Updated ${updatedCount} products to have 100 stock.` });
+    return NextResponse.json({ 
+      success: true, 
+      message: `Updated ${updatedCount} products to have active inventory stock (100 units).` 
+    });
   } catch (error: any) {
     console.error('Stock fix error:', error);
     return NextResponse.json({ error: error.message }, { status: 500 });

@@ -1,11 +1,9 @@
 import React from 'react';
-import { Header } from '../../components/Header';
-import { Footer } from '../../components/Footer';
 import { Gift, Star, Award } from 'lucide-react';
 
 export default function LoyaltyPage() {
   return (
-    <div className="min-h-screen bg-[var(--color-background)]">
+    <main className="min-h-screen bg-[var(--color-background)]">
       <div className="max-w-[1200px] mx-auto px-6 py-20 min-h-[70vh]">
         <div className="text-center mb-16">
           <h1 className="font-serif text-5xl mb-6 text-[var(--color-text)]">Zero To One Rewards</h1>

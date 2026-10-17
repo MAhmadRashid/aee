@@ -13,6 +13,7 @@ export default function PerfumeDetail({ params }: { params: Promise<{ id: string
   
   const [perfume, setPerfume] = useState<any>(null);
   const [recentProducts, setRecentProducts] = useState<any[]>([]);
+  const [loadingProduct, setLoadingProduct] = useState(true);
 
   useEffect(() => {
     fetch(`/api/products`)
@@ -42,7 +43,8 @@ export default function PerfumeDetail({ params }: { params: Promise<{ id: string
           }
         }
       })
-      .catch(err => console.error("Failed to fetch live product:", err));
+      .catch(err => console.error("Failed to fetch live product:", err))
+      .finally(() => setLoadingProduct(false));
   }, [resolvedParams.id]);
 
   const { formatPrice, isLoading } = useCurrency();
@@ -64,7 +66,7 @@ export default function PerfumeDetail({ params }: { params: Promise<{ id: string
   const originalPrice = selectedVariant ? selectedVariant.originalPrice : perfume?.originalPrice;
   const stock = selectedVariant ? selectedVariant.stock : (perfume?.stock ?? 15);
   
-  const rawImageUrl = perfume?.image || perfume?.image_url || 'https://image.pollinations.ai/prompt/minimal%20grey%20perfume%20placeholder?nologo=true&seed=0';
+  const rawImageUrl = perfume?.image || perfume?.image_url || '/perfumes/1.webp';
   const imageUrl = rawImageUrl.startsWith('/') ? rawImageUrl.split('?')[0] : rawImageUrl;
   
   const handleAddToCart = () => {
@@ -82,12 +84,28 @@ export default function PerfumeDetail({ params }: { params: Promise<{ id: string
     }
   };
 
-  if (!perfume) return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-[var(--color-background)]">
-      <div className="w-8 h-8 border-4 border-[var(--color-primary)] border-t-transparent rounded-full animate-spin mb-4"></div>
-      <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--color-text-muted)]">Loading Collection</p>
-    </div>
-  );
+  if (loadingProduct) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[var(--color-background)]">
+        <div className="w-8 h-8 border-4 border-[var(--color-primary)] border-t-transparent rounded-full animate-spin mb-4"></div>
+        <p className="text-[10px] uppercase tracking-[0.2em] text-[var(--color-text-muted)]">Loading Collection</p>
+      </div>
+    );
+  }
+
+  if (!perfume) {
+    return (
+      <main className="min-h-screen flex flex-col items-center justify-center bg-[var(--color-background)] text-[var(--color-text)] px-6">
+        <h1 className="text-3xl font-serif mb-4">Fragrance Not Found</h1>
+        <p className="text-[var(--color-text-muted)] mb-8 text-center max-w-md text-sm">
+          The requested fragrance could not be located in our current collection.
+        </p>
+        <Link href="/shop" className="px-8 py-3 bg-[var(--color-primary)] text-[var(--color-background)] text-xs font-bold uppercase tracking-widest rounded hover:opacity-90 transition">
+          Return to Boutique
+        </Link>
+      </main>
+    );
+  }
   
   let stockStatus = 'In Stock';
   if (stock === 0) stockStatus = 'Out of Stock';
@@ -100,15 +118,18 @@ export default function PerfumeDetail({ params }: { params: Promise<{ id: string
         <Link href="/shop" className="flex items-center text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors group">
           <ChevronLeft className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1" /> Back to Boutique
         </Link>
-        <Link href="/cart" className="flex items-center text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors relative">
+        <button 
+          onClick={() => setIsCartOpen(true)} 
+          className="flex items-center text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors relative cursor-pointer"
+        >
            <ShoppingBag className="w-4 h-4 mr-2" />
            Cart
            {cartCount > 0 && (
-             <span className="absolute -top-2 -right-3 bg-[var(--color-accent)] text-white text-[8px] w-4 h-4 flex items-center justify-center rounded-full shadow-lg">
+             <span className="absolute -top-2 -right-3 bg-[var(--color-accent)] text-white text-[8px] w-4 h-4 flex items-center justify-center rounded-full shadow-lg font-mono">
                {cartCount}
              </span>
            )}
-        </Link>
+        </button>
       </header>
 
       <div className="flex flex-col lg:flex-row min-h-screen pt-24 lg:pt-24">

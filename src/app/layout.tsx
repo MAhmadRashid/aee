@@ -18,8 +18,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${montserrat.variable} ${playfair.variable} font-sans antialiased`}>
+    <html lang="en" suppressHydrationWarning>
+      <body 
+        suppressHydrationWarning
+        className={`${montserrat.variable} ${playfair.variable} font-sans antialiased`}
+      >
         <Providers>
           <ConditionalLayout>
             {children}

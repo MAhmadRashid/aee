@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { Search, User, ShoppingBag, ChevronDown, Sun, Moon, Tag, Sparkles, X, Home } from 'lucide-react';
+import { Search, User, ShoppingBag, ChevronDown, Sun, Moon, Tag, Sparkles, X, Home, Menu } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../hooks/useCurrency';
 import { useTheme } from '../context/ThemeContext';
@@ -15,6 +15,7 @@ export function Header() {
   const { theme, setTheme } = useTheme();
   
   const [showThemeMenu, setShowThemeMenu] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
   const pathname = usePathname();
@@ -149,40 +150,52 @@ export function Header() {
                 {cartCount}
               </span>
             </button>
+            {/* Mobile Menu Toggle Button */}
+            <button 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
+              className="md:hidden text-neutral-300 hover:text-white p-1"
+              aria-label="Toggle Navigation Menu"
+            >
+              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
         </div>
 
-        {/* Navigation Menu Bar */}
+        {/* Desktop Navigation Menu Bar */}
         <nav className="border-t border-white/5 bg-black/40 py-3 hidden md:block">
           <ul className="flex items-center justify-center gap-8 text-[11px] uppercase tracking-[0.2em] font-medium text-neutral-300">
             <li><Link href="/" className={pathname === '/' ? 'text-amber-300' : 'hover:text-white transition-colors'}>Home</Link></li>
             <li><Link href="/shop" className={pathname.startsWith('/shop') ? 'text-amber-300' : 'hover:text-white transition-colors'}>Shop</Link></li>
             <li><Link href="/fragrance-finder" className={pathname.startsWith('/fragrance-finder') ? 'text-amber-300' : 'hover:text-white transition-colors'}>Fragrance Finder</Link></li>
             <li><Link href="/custom-box" className={pathname.startsWith('/custom-box') ? 'text-amber-300' : 'hover:text-white transition-colors'}>Build a Box</Link></li>
-            
-            <li className="relative group">
-              <span className={`cursor-pointer ${pathname.startsWith('/category') ? 'text-amber-300' : 'hover:text-white transition-colors'}`}>
-                Collections
-              </span>
-              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 w-48">
-                <div className="bg-neutral-950 border border-white/10 shadow-xl rounded-sm overflow-hidden flex flex-col py-2">
-                  <Link href="/category/oud" className="px-4 py-2.5 text-[11px] hover:bg-white/5 hover:text-amber-300 transition-colors text-left text-neutral-300">
-                    OUD
-                  </Link>
-                  <Link href="/category/attar" className="px-4 py-2.5 text-[11px] hover:bg-white/5 hover:text-amber-300 transition-colors text-left text-neutral-300">
-                    ATTAR
-                  </Link>
-                  <Link href="/category/gifting-packages" className="px-4 py-2.5 text-[11px] hover:bg-white/5 hover:text-amber-300 transition-colors text-left text-neutral-300">
-                    GIFTING PACKAGES
-                  </Link>
-                </div>
-              </div>
-            </li>
-            
+            <li><Link href="/categories" className={pathname.startsWith('/categories') ? 'text-amber-300' : 'hover:text-white transition-colors'}>Collections</Link></li>
             <li><Link href="/loyalty" className={pathname.startsWith('/loyalty') ? 'text-amber-300' : 'hover:text-white transition-colors'}>Loyalty</Link></li>
             <li><Link href="/contact" className={pathname.startsWith('/contact') ? 'text-amber-300' : 'hover:text-white transition-colors'}>Contact</Link></li>
           </ul>
         </nav>
+
+        {/* Mobile Navigation Drawer */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden border-t border-white/10 bg-neutral-950/98 px-6 py-6 overflow-hidden"
+            >
+              <ul className="flex flex-col space-y-4 text-xs uppercase tracking-[0.2em] font-medium text-neutral-300">
+                <li><Link href="/" onClick={() => setIsMobileMenuOpen(false)} className={pathname === '/' ? 'text-amber-300' : 'hover:text-white'}>Home</Link></li>
+                <li><Link href="/shop" onClick={() => setIsMobileMenuOpen(false)} className={pathname.startsWith('/shop') ? 'text-amber-300' : 'hover:text-white'}>Shop All</Link></li>
+                <li><Link href="/categories" onClick={() => setIsMobileMenuOpen(false)} className={pathname.startsWith('/categories') ? 'text-amber-300' : 'hover:text-white'}>Collections</Link></li>
+                <li><Link href="/fragrance-finder" onClick={() => setIsMobileMenuOpen(false)} className={pathname.startsWith('/fragrance-finder') ? 'text-amber-300' : 'hover:text-white'}>Fragrance Finder</Link></li>
+                <li><Link href="/custom-box" onClick={() => setIsMobileMenuOpen(false)} className={pathname.startsWith('/custom-box') ? 'text-amber-300' : 'hover:text-white'}>Build a Box</Link></li>
+                <li><Link href="/loyalty" onClick={() => setIsMobileMenuOpen(false)} className={pathname.startsWith('/loyalty') ? 'text-amber-300' : 'hover:text-white'}>Loyalty</Link></li>
+                <li><Link href="/account" onClick={() => setIsMobileMenuOpen(false)} className={pathname.startsWith('/account') ? 'text-amber-300' : 'hover:text-white'}>My Account</Link></li>
+                <li><Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className={pathname.startsWith('/contact') ? 'text-amber-300' : 'hover:text-white'}>Contact</Link></li>
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       {/* Slide-out Cart */}

@@ -48,6 +48,24 @@ const CATEGORIES = [
     slug: 'gift-boxes',
     img: '/images/gift_blue_box_1788335469264.jpg', 
     tags: 'The perfect present • Premium unboxing'
+  },
+  { 
+    title: 'Tester Boxes', 
+    slug: 'tester-box',
+    img: '/images/categories/sample_sets.jpg', 
+    tags: 'Curated discovery sets • Try before you buy'
+  },
+  { 
+    title: 'Body Mist', 
+    slug: 'body-mist',
+    img: '/images/categories/premium_perfumes.jpg', 
+    tags: 'Light • Refreshing • Daily indulgence'
+  },
+  { 
+    title: 'Car Diffusers', 
+    slug: 'car-diffusers',
+    img: '/images/categories/home_space_fragrances.jpg', 
+    tags: 'Luxury journey • Sophisticated travel scents'
   }
 ];
 

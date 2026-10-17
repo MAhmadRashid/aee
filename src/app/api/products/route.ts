@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/lib/firebase-admin';
 import { perfumes as fallbackPerfumes } from '@/data/perfumes';
-import { IProduct } from '@/types';
 
 export const dynamic = 'force-dynamic';
 
@@ -19,19 +18,32 @@ export async function GET(request: Request) {
         if (category && category !== 'All') {
           query = query.where('category', '==', category);
         }
-        const snapshot = await query.orderBy('createdAt', 'desc').get();
+        let snapshot;
+        try {
+          snapshot = await query.orderBy('createdAt', 'desc').get();
+        } catch {
+          snapshot = await query.get();
+        }
         snapshot.forEach((doc: any) => {
           products.push({ id: doc.id, ...doc.data() });
         });
       } catch (err) {
-        console.warn("Firebase fetch skipped/failed, using fallback data");
+        console.warn("Firebase fetch skipped/failed, using fallback data:", err);
       }
     }
     
-    // Removed fallback if Firebase returns nothing
+    // Graceful fallback to static catalogue if DB returned no products
+    if (products.length === 0) {
+      if (category && category !== 'All') {
+        products = fallbackPerfumes.filter(p => p.category?.toLowerCase() === category.toLowerCase());
+      } else {
+        products = fallbackPerfumes;
+      }
+    }
     
     return NextResponse.json({ success: true, data: products }, { status: 200 });
   } catch (error: any) {
-    return NextResponse.json({ success: false, data: [] }, { status: 500 });
+    console.error("Products route error:", error);
+    return NextResponse.json({ success: false, data: fallbackPerfumes }, { status: 200 });
   }
 }
