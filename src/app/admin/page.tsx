@@ -1,59 +1,58 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Package, Tag, Users, DollarSign, TrendingUp, Activity, BarChart3, ArrowUpRight, Sparkles, ShoppingBag } from 'lucide-react';
-import { db } from '@/lib/firebase-admin';
+import { Package, Tag, Users, DollarSign, TrendingUp, BarChart3, ArrowUpRight, Sparkles, ShoppingBag } from 'lucide-react';
 import { perfumes } from '@/data/perfumes';
 import RevenueChart from '@/components/admin/RevenueChart';
 
-export const dynamic = 'force-dynamic';
-
-export default async function AdminDashboard() {
-  let productCount = perfumes.length; // 91 curated boutique fragrances
-  let categoryCount = 10; // 10 luxury collections
-  let userCount = 14;
-  let totalRevenue = 284500;
-  let isLiveDb = false;
+export default function AdminDashboard() {
+  const [productCount, setProductCount] = useState(perfumes.length);
+  const [categoryCount, setCategoryCount] = useState(10);
+  const [userCount, setUserCount] = useState(14);
+  const [totalRevenue, setTotalRevenue] = useState(284500);
+  const [isLiveDb, setIsLiveDb] = useState(false);
 
   // Realistic seasonal baseline chart data
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'];
-  const baseRevenues = [45000, 52000, 48000, 61000, 58000, 72000, 69000, 84000, 92000, 114000];
-  const chartData = months.map((m, idx) => ({ name: m, revenue: baseRevenues[idx] }));
+  const [chartData, setChartData] = useState([
+    { name: 'Jan', revenue: 45000 },
+    { name: 'Feb', revenue: 52000 },
+    { name: 'Mar', revenue: 48000 },
+    { name: 'Apr', revenue: 61000 },
+    { name: 'May', revenue: 58000 },
+    { name: 'Jun', revenue: 72000 },
+    { name: 'Jul', revenue: 69000 },
+    { name: 'Aug', revenue: 84000 },
+    { name: 'Sep', revenue: 92000 },
+    { name: 'Oct', revenue: 114000 }
+  ]);
 
-  try {
-    if (db && Object.keys(db).length > 0) {
-      const productsCountSnapshot = await db.collection('products').count().get().catch(() => null);
-      const categoriesCountSnapshot = await db.collection('categories').count().get().catch(() => null);
-      const usersCountSnapshot = await db.collection('users').count().get().catch(() => null);
-      const ordersSnapshot = await db.collection('orders').get().catch(() => null);
-
-      if (productsCountSnapshot && productsCountSnapshot.data().count > 0) {
-        productCount = productsCountSnapshot.data().count;
-      }
-      if (categoriesCountSnapshot && categoriesCountSnapshot.data().count > 0) {
-        categoryCount = categoriesCountSnapshot.data().count;
-      }
-      if (usersCountSnapshot && usersCountSnapshot.data().count > 0) {
-        userCount = usersCountSnapshot.data().count;
-      }
-
-      if (ordersSnapshot && !ordersSnapshot.empty) {
-        let liveRevenue = 0;
-        ordersSnapshot.forEach((doc: any) => {
-          const order = doc.data();
-          const amount = Number(order.totalPrice) || Number(order.total) || 0;
-          liveRevenue += amount;
-        });
-        if (liveRevenue > 0) {
-          totalRevenue = liveRevenue;
-          chartData[9].revenue = Math.max(chartData[9].revenue, liveRevenue);
+  useEffect(() => {
+    fetch('/api/admin/stats')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.success) {
+          if (data.productCount) setProductCount(data.productCount);
+          if (data.categoryCount) setCategoryCount(data.categoryCount);
+          if (data.userCount) setUserCount(data.userCount);
+          if (data.totalRevenue) {
+            setTotalRevenue(data.totalRevenue);
+            setChartData(prev => {
+              const updated = [...prev];
+              updated[updated.length - 1] = {
+                ...updated[updated.length - 1],
+                revenue: Math.max(updated[updated.length - 1].revenue, data.totalRevenue)
+              };
+              return updated;
+            });
+          }
+          if (data.isLiveDb) setIsLiveDb(true);
         }
-      }
-
-      isLiveDb = true;
-    }
-  } catch (error) {
-    console.warn("Using curated baseline stats for admin dashboard:", error);
-  }
+      })
+      .catch(err => {
+        console.warn('Admin stats sync:', err);
+      });
+  }, []);
 
   const stats = [
     { 
