@@ -30,6 +30,19 @@ export default function AdminOrdersPage() {
     }
   };
 
+  const handleQuickStatus = async (orderId: string, newStatus: string) => {
+    setOrders(prev => prev.map(o => (o.id === orderId || o._id === orderId ? { ...o, status: newStatus } : o)));
+    try {
+      await fetch(`/api/admin/orders/${orderId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: newStatus })
+      });
+    } catch (e) {
+      console.error('Failed to update order status:', e);
+    }
+  };
+
   const formatOrderDate = (createdAt: any) => {
     if (!createdAt) return 'Just now';
     if (typeof createdAt === 'string') {
@@ -116,9 +129,12 @@ export default function AdminOrdersPage() {
             className="bg-[#121212] border border-white/10 rounded-lg px-4 py-3 text-xs text-neutral-200 focus:outline-none focus:border-[#D4AF37] transition-colors cursor-pointer"
           >
             <option value="All" className="bg-[#181818]">All Consignments</option>
+            <option value="pending" className="bg-[#181818]">Pending Approval</option>
+            <option value="confirmed" className="bg-[#181818]">Confirmed</option>
             <option value="processing" className="bg-[#181818]">Processing</option>
-            <option value="shipped" className="bg-[#181818]">Shipped / In Transit</option>
-            <option value="completed" className="bg-[#181818]">Delivered & Completed</option>
+            <option value="shipped" className="bg-[#181818]">Shipped (In Transit)</option>
+            <option value="delivered" className="bg-[#181818]">Delivered</option>
+            <option value="completed" className="bg-[#181818]">Completed</option>
             <option value="cancelled" className="bg-[#181818]">Cancelled</option>
           </select>
         </div>
@@ -192,21 +208,33 @@ export default function AdminOrdersPage() {
                         Rs. {(order.totalPrice || order.total || 0).toLocaleString()}
                       </td>
                       <td className="p-5">
-                        <span className={`inline-flex items-center text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border ${
-                          status === 'processing' 
-                            ? 'bg-amber-500/10 text-amber-400 border-amber-500/30' 
-                            : status === 'shipped'
-                            ? 'bg-blue-500/10 text-blue-400 border-blue-500/30'
-                            : status === 'completed'
-                            ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
-                            : 'bg-red-500/10 text-red-400 border-red-500/30'
-                        }`}>
-                          {status === 'processing' && <Clock className="w-3 h-3 mr-1" />}
-                          {status === 'shipped' && <Truck className="w-3 h-3 mr-1" />}
-                          {status === 'completed' && <CheckCircle className="w-3 h-3 mr-1" />}
-                          {status === 'cancelled' && <XCircle className="w-3 h-3 mr-1" />}
-                          {order.status || 'Processing'}
-                        </span>
+                        <div className="flex items-center gap-2">
+                          <select
+                            value={status}
+                            onChange={(e) => handleQuickStatus(order._id || order.id, e.target.value)}
+                            className={`text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full border bg-black/80 cursor-pointer focus:outline-none transition-colors ${
+                              status === 'pending'
+                                ? 'text-purple-400 border-purple-500/40 bg-purple-500/10'
+                                : status === 'confirmed'
+                                ? 'text-cyan-400 border-cyan-500/40 bg-cyan-500/10'
+                                : status === 'processing' 
+                                ? 'text-amber-400 border-amber-500/40 bg-amber-500/10' 
+                                : status === 'shipped'
+                                ? 'text-blue-400 border-blue-500/40 bg-blue-500/10'
+                                : (status === 'completed' || status === 'delivered')
+                                ? 'text-emerald-400 border-emerald-500/40 bg-emerald-500/10'
+                                : 'text-red-400 border-red-500/40 bg-red-500/10'
+                            }`}
+                          >
+                            <option value="pending" className="bg-[#121212] text-purple-400">Pending</option>
+                            <option value="confirmed" className="bg-[#121212] text-cyan-400">Confirmed</option>
+                            <option value="processing" className="bg-[#121212] text-amber-400">Processing</option>
+                            <option value="shipped" className="bg-[#121212] text-blue-400">Shipped</option>
+                            <option value="delivered" className="bg-[#121212] text-emerald-400">Delivered</option>
+                            <option value="completed" className="bg-[#121212] text-emerald-400">Completed</option>
+                            <option value="cancelled" className="bg-[#121212] text-red-400">Cancelled</option>
+                          </select>
+                        </div>
                       </td>
                       <td className="p-5 pr-6 text-right">
                         <Link 

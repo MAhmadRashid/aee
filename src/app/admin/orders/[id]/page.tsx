@@ -34,6 +34,17 @@ export default function OrderDetailPage({ params }: { params: Promise<{ id: stri
   useEffect(() => {
     const fetchOrder = async () => {
       try {
+        // 1. Direct single order endpoint
+        const singleRes = await fetch(`/api/admin/orders/${resolvedParams.id}`);
+        if (singleRes.ok) {
+          const data = await singleRes.json();
+          if (data && (data.id || data._id)) {
+            setOrder(data);
+            return;
+          }
+        }
+
+        // 2. Fallback to list
         const res = await fetch('/api/admin/orders');
         if (res.ok) {
           const orders = await res.json();
@@ -60,8 +71,16 @@ export default function OrderDetailPage({ params }: { params: Promise<{ id: stri
         body: JSON.stringify({ status: newStatus })
       });
       if (res.ok) {
-        setOrder((prev: any) => ({ ...prev, status: newStatus }));
+        const result = await res.json();
+        setOrder((prev: any) => ({ 
+          ...prev, 
+          status: newStatus,
+          statusHistory: result.statusHistory || prev.statusHistory
+        }));
         showToast(`Consignment status updated to ${newStatus.toUpperCase()}`);
+      } else {
+        const errData = await res.json().catch(() => ({}));
+        showToast(errData.error || 'Failed to update consignment status.');
       }
     } catch (err) {
       console.error('Failed to update status:', err);
@@ -137,17 +156,23 @@ export default function OrderDetailPage({ params }: { params: Promise<{ id: stri
               {order.orderNumber || order.id}
             </h1>
             <span className={`inline-flex items-center text-[10px] uppercase tracking-widest px-3 py-1 rounded-full font-bold border ${
-              status === 'processing' 
+              status === 'pending'
+                ? 'bg-purple-500/10 text-purple-400 border-purple-500/30'
+                : status === 'confirmed'
+                ? 'bg-cyan-500/10 text-cyan-400 border-cyan-500/30'
+                : status === 'processing' 
                 ? 'bg-amber-500/10 text-amber-400 border-amber-500/30' 
                 : status === 'shipped'
                 ? 'bg-blue-500/10 text-blue-400 border-blue-500/30'
-                : status === 'completed'
+                : (status === 'completed' || status === 'delivered')
                 ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
                 : 'bg-red-500/10 text-red-400 border-red-500/30'
             }`}>
+              {status === 'pending' && <Clock className="w-3 h-3 mr-1.5" />}
+              {status === 'confirmed' && <CheckCircle className="w-3 h-3 mr-1.5" />}
               {status === 'processing' && <Clock className="w-3 h-3 mr-1.5" />}
               {status === 'shipped' && <Truck className="w-3 h-3 mr-1.5" />}
-              {status === 'completed' && <CheckCircle className="w-3 h-3 mr-1.5" />}
+              {(status === 'completed' || status === 'delivered') && <CheckCircle className="w-3 h-3 mr-1.5" />}
               {status === 'cancelled' && <XCircle className="w-3 h-3 mr-1.5" />}
               {order.status || 'Processing'}
             </span>
@@ -159,8 +184,11 @@ export default function OrderDetailPage({ params }: { params: Promise<{ id: stri
               onChange={(e) => handleStatusChange(e.target.value)}
               className="bg-black/60 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-neutral-200 focus:outline-none focus:border-[#D4AF37] transition-colors cursor-pointer"
             >
-              <option value="processing" className="bg-[#121212]">Processing</option>
-              <option value="shipped" className="bg-[#121212]">Shipped</option>
+              <option value="pending" className="bg-[#121212]">Pending Approval</option>
+              <option value="confirmed" className="bg-[#121212]">Confirmed</option>
+              <option value="processing" className="bg-[#121212]">Processing (Preparing)</option>
+              <option value="shipped" className="bg-[#121212]">Shipped (In Transit)</option>
+              <option value="delivered" className="bg-[#121212]">Delivered</option>
               <option value="completed" className="bg-[#121212]">Completed</option>
               <option value="cancelled" className="bg-[#121212]">Cancelled</option>
             </select>

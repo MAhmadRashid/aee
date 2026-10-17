@@ -78,6 +78,28 @@ Impact:
   - Administrative Control: Admin can create new fragrances (+ ADD FRAGRANCE), edit specifications (pencil), adjust stock in real-time (+/-), and de-list products (trash).
 Verification:
   - Next.js Turbopack build: PASS (44/44 static/dynamic routes compiled in 1.8s)
+Next Priority:
+  - Task 2.2: Connect Checkout page to /api/orders with local guest session persistence and validation.
+---
+[Iteration 003] - 2026-10-17
+Feature: Admin Order Status Transition Engine (Consignments Fulfillment)
+Tasks Completed:
+  - Task 2.1: Implemented complete GET, PUT, and DELETE API endpoints at /api/admin/orders/[id] with status history tracking, audit timeline, and validation across 7 order stages (pending, confirmed, processing, shipped, delivered, completed, cancelled).
+  - Enhanced AdminOrdersPage with interactive quick status selector dropdown directly in table rows for rapid order fulfillment.
+  - Added full status filter spectrum to Consignments list (Pending, Confirmed, Processing, Shipped, Delivered, Completed, Cancelled).
+  - Updated OrderDetailPage with single-order endpoint fetch, expanded live status selector, and visual status badges.
+Files Modified:
+  - src/app/api/admin/orders/[id]/route.ts
+  - src/app/admin/orders/page.tsx
+  - src/app/admin/orders/[id]/page.tsx
+  - PRD.md
+  - progress.txt
+Impact:
+  - Fulfillment Workflow: Admins can update consignment statuses with 1 click directly from the list or detail view.
+  - Audit Trail: Automated statusHistory entries capture each transition with ISO timestamp and status note.
+Verification:
+  - Next.js Turbopack build: PASS (44/44 routes compiled in 2.0s)
   - TypeScript check: PASS (0 errors)
 ================================================================================
+
 
