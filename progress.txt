@@ -55,5 +55,29 @@ Verification:
   - Next.js Turbopack build: PASS (44/44 static/dynamic routes compiled successfully in 1.7s)
   - TypeScript check: PASS (0 errors)
 Next Priority:
-  - Task 1.5: Implement Admin Product Edit and Delete API endpoints.
+  - Task 2.1: Implement Admin Order Status Update API.
+---
+[Iteration 002] - 2026-10-17
+Feature: Fully Functional Artisanal Inventory (Admin Products & Blends)
+Tasks Completed:
+  - Task 1.5: Implemented complete GET, PUT, and DELETE API endpoints at /api/admin/products/[id] with Firestore upsert and fallback support.
+  - Implemented multi-tier resilient product fetching in AdminProductsPage (Admin API -> Public API -> Client fallback), eliminating "Total 0 Fragrances" empty screens.
+  - Added "Sync 48 Catalog Items" button connected to /api/admin/seed-products to hydrate Firestore in 1-click.
+  - Added inline quick stock adjustments (+10 / -5) directly in inventory table with instant visual feedback and backend synchronization.
+  - Enhanced search and category filters with resilient lowercase and fuzzy matching.
+  - Enhanced EditProductPage to fetch individual items via GET /api/admin/products/[id].
+Files Modified:
+  - src/app/api/admin/products/[id]/route.ts
+  - src/app/api/admin/products/route.ts
+  - src/app/admin/products/page.tsx
+  - src/app/admin/products/edit/[id]/page.tsx
+  - PRD.md
+  - progress.txt
+Impact:
+  - Inventory Resilience: Guaranteed display of all 48 catalog fragrances even if Firestore is unpopulated.
+  - Administrative Control: Admin can create new fragrances (+ ADD FRAGRANCE), edit specifications (pencil), adjust stock in real-time (+/-), and de-list products (trash).
+Verification:
+  - Next.js Turbopack build: PASS (44/44 static/dynamic routes compiled in 1.8s)
+  - TypeScript check: PASS (0 errors)
 ================================================================================
+

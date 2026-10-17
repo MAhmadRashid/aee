@@ -41,10 +41,32 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
   useEffect(() => {
     const fetchProduct = async () => {
       try {
+        // 1. Direct single product endpoint
+        const singleRes = await fetch(`/api/admin/products/${resolvedParams.id}`);
+        if (singleRes.ok) {
+          const product = await singleRes.json();
+          if (product && (product._id || product.id)) {
+            setFormData({
+              name: product.name || '',
+              brand: product.brand || 'Zero to One',
+              category: product.category || 'Classic Perfumes',
+              price: product.price || 0,
+              originalPrice: product.originalPrice || product.price || 0,
+              description: product.description || product.tagline || '',
+              shortDescription: product.shortDescription || product.tagline || '',
+              image: product.image || product.image_url || '/perfumes/1.webp',
+              stock: product.stock ?? product.stock_quantity ?? 50
+            });
+            return;
+          }
+        }
+
+        // 2. Fetch full list
         const res = await fetch('/api/admin/products');
         if (res.ok) {
           const products = await res.json();
-          const product = products.find((p: any) => p._id === resolvedParams.id || p.id === resolvedParams.id);
+          const items = Array.isArray(products) ? products : (products.data || []);
+          const product = items.find((p: any) => p._id === resolvedParams.id || p.id === resolvedParams.id);
           if (product) {
             setFormData({
               name: product.name || '',
@@ -52,8 +74,8 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
               category: product.category || 'Classic Perfumes',
               price: product.price || 0,
               originalPrice: product.originalPrice || product.price || 0,
-              description: product.description || '',
-              shortDescription: product.shortDescription || '',
+              description: product.description || product.tagline || '',
+              shortDescription: product.shortDescription || product.tagline || '',
               image: product.image || product.image_url || '/perfumes/1.webp',
               stock: product.stock ?? product.stock_quantity ?? 50
             });

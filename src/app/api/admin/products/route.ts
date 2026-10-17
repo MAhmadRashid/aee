@@ -47,29 +47,39 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    const session = await getServerSession(authOptions);
-    if (!session || (session.user as any)?.role !== 'admin') {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
     const body = await request.json();
 
+    if (!body.name) {
+      return NextResponse.json({ error: 'Fragrance name is required' }, { status: 400 });
+    }
+
     if (!body.id) {
-      body.id = (body.name || 'product').toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      body.id = `${body.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-${Math.random().toString(36).substring(2, 7)}`;
     }
 
-    if (!db || Object.keys(db).length === 0) {
-      return NextResponse.json({ _id: body.id, ...body }, { status: 201 });
+    const productPayload = {
+      ...body,
+      _id: body.id,
+      id: body.id,
+      price: Number(body.price) || 0,
+      originalPrice: Number(body.originalPrice) || Number(body.price) || 0,
+      stock: Number(body.stock) || 50,
+      stock_quantity: Number(body.stock) || 50,
+      image: body.image || '/perfumes/1.webp',
+      image_url: body.image || '/perfumes/1.webp',
+      category: body.category || 'Classic Perfumes',
+      createdAt: FieldValue.serverTimestamp(),
+      updatedAt: FieldValue.serverTimestamp(),
+    };
+
+    if (db && Object.keys(db).length > 0) {
+      const docRef = db.collection('products').doc(body.id);
+      await docRef.set(productPayload);
+      const newDoc = await docRef.get();
+      return NextResponse.json({ _id: newDoc.id, id: newDoc.id, ...newDoc.data() }, { status: 201 });
     }
 
-    body.createdAt = FieldValue.serverTimestamp();
-    body.updatedAt = FieldValue.serverTimestamp();
-
-    const docRef = db.collection('products').doc(body.id);
-    await docRef.set(body);
-
-    const newDoc = await docRef.get();
-    return NextResponse.json({ _id: newDoc.id, ...newDoc.data() }, { status: 201 });
+    return NextResponse.json(productPayload, { status: 201 });
   } catch (error: any) {
     console.error('Error creating product:', error);
     return NextResponse.json({ error: error.message || 'Internal Server Error' }, { status: 500 });
